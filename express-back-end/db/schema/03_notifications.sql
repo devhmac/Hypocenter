@@ -1,0 +1,7 @@
+DROP TABLE IF EXISTS notifications CASCADE;
+CREATE TABLE notifications (
+  id SERIAL PRIMARY KEY NOT NULL,
+  country VARCHAR(255) NOT NULL,
+  magnitude VARCHAR(10) NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE
+);
