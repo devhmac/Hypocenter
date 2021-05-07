@@ -1,4 +1,4 @@
-require('./db/db');
+require('./lib/db');
 const Express = require('express');
 const App = Express();
 const BodyParser = require('body-parser');
