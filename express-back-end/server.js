@@ -14,7 +14,7 @@ App.use(Express.static('public'));
 App.get('/api/data', (req, res) => {
   getTestEq(1)
     .then((response) => {
-      return response;
+      res.json(response);
     });
 }
 );

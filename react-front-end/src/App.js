@@ -13,6 +13,7 @@ class App extends Component {
   fetchData = () => {
     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
     .then((response) => {
+      console.log('here')
       // handle success
       console.log(response.data) // The entire response from the Rails API
 
