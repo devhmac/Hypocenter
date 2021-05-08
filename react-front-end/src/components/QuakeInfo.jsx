@@ -1,5 +1,6 @@
 import React from "react";
 import { List, ListItem, ListItemText } from "@material-ui/core";
+import pagerConversion from "../helpers/pagerConversion";
 
 function QuakeInfo(props) {
   return (
@@ -13,13 +14,15 @@ function QuakeInfo(props) {
       <ListItem>
         <ListItemText
           primary="Estimated Economic Damage"
-          secondary={"Secondary Text"}
+          secondary={props.pager ? pagerConversion[props.pager].damage : null}
         />
       </ListItem>
       <ListItem>
         <ListItemText
           primary="Potential Fatalities"
-          secondary={"Secondary Text"}
+          secondary={
+            props.pager ? pagerConversion[props.pager].fatalities : null
+          }
         />
       </ListItem>
       <ListItem>
