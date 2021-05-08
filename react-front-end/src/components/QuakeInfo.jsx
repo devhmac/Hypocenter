@@ -25,7 +25,7 @@ function QuakeInfo(props) {
       <ListItem>
         <ListItemText
           primary="Time of Occurence"
-          secondary={props.time_stamp}
+          secondary={new Date(Number(props.time_stamp)).toString()}
         />
       </ListItem>
       <ListItem>
