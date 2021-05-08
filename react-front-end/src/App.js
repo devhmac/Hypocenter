@@ -21,18 +21,18 @@ function App() {
     sampleEarthquakes: [
       {
         id: 1,
-        latitude: 50.27763,
-        longitude: 87.74748
+        latitude: "50.27763",
+        longitude: "87.74748"
       },
       {
         id: 2,
-        latitude: 7.73975,
-        longitude: -46.12468
+        latitude: "7.73975",
+        longitude: "-46.12468"
       },
       {
         id: 3,
-        latitude: -68.63457,
-        longitude: -158.60193
+        latitude: "-68.63457",
+        longitude: "-158.60193"
       }
     ]
   });
