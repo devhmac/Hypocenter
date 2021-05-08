@@ -12,8 +12,8 @@ export default function MainMap(props) {
   const eqArr = props.earthquakes.map(earthquake => {
     return (<LocationPin
       key={earthquake.id}
-      lat={earthquake.latitude}
-      lng={earthquake.longitude}
+      lat={Number(earthquake.latitude)}
+      lng={Number(earthquake.longitude)}
     />
   );
 });
