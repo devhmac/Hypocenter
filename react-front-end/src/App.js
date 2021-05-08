@@ -12,22 +12,20 @@ class App extends Component {
 
   fetchData = () => {
     axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
-    .then((response) => {
-      console.log('here')
-      // handle success
-      console.log(response.data) // The entire response from the Rails API
+      .then((response) => {
+        // handle success
+        console.log(response.data) // The entire response from the express server route
 
-      console.log(response.data.message) // Just the message
-      this.setState({
-        title: response.data[0].title
-      });
-    })
+        this.setState({
+          title: response.data[0].title
+        });
+      })
   }
 
   render() {
     return (
       <div className="App">
-        <h1>{ this.state.title }</h1>
+        <h1>{this.state.title}</h1>
         <button onClick={this.fetchData} >
           Fetch Data
         </button>

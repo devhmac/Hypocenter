@@ -6,7 +6,7 @@
   "author": "garrettgsb",
   "license": "MIT",
   "scripts": {
-    "go": "nodemon server.js",
+    "start": "nodemon server.js",
     "db:reset": "node bin/resetdb.js"
   },
   "dependencies": {
@@ -14,8 +14,10 @@
     "chalk": "^4.1.1",
     "dotenv": "^9.0.0",
     "express": "^4.16.4",
-    "nodemon": "^1.18.7",
     "pg": "^8.6.0",
     "pg-native": "^3.0.0"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.4"
   }
 }
