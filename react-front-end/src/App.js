@@ -73,10 +73,6 @@ function App() {
           longitude={state.earthquake.longitude}
         />
       )}
-      <EqMap
-        latitude={state.latitude}
-        longitude={state.longitude}
-      />
       <QuakeInfo />
     </div>
   );
