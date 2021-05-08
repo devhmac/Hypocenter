@@ -1,16 +1,37 @@
-import React, { Component, useState } from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import './App.css';
 
 import EqMap from "./components/EqMap.js";
+import MainMap from "./components/MainMap.js";
 
 
 function App() {
 
   const [state, setState] = useState({
     message: 'Click the button to load data!',
-    latitude: 0,
-    longitude: 0
+    earthquake: {
+      latitude: 0,
+      longitude: 0
+    },
+    mode: "main",
+    sampleEarthquakes: [
+      {
+        id: 1,
+        latitude: 50.27763,
+        longitude: 87.74748
+      },
+      {
+        id: 2,
+        latitude: 7.73975,
+        longitude: -46.12468
+      },
+      {
+        id: 3,
+        latitude: -68.63457,
+        longitude: -158.60193
+      }
+    ]
   });
 
   const fetchData = () => {
@@ -22,8 +43,11 @@ function App() {
         console.log(response.data.message) // Just the message
         setState({
           title: response.data[0].title,
-          latitude: response.data[0].latitude,
-          longitude: response.data[0].longitude
+          earthquake: {
+            latitude: response.data[0].latitude,
+            longitude: response.data[0].longitude
+          },
+          mode: "earthquake"
         });
       })
   }
@@ -34,10 +58,18 @@ function App() {
       <button onClick={fetchData} >
         Fetch Data
         </button>
-      <EqMap
-        latitude={state.latitude}
-        longitude={state.longitude}
-      />
+      {state.mode === "main" && (
+        <MainMap
+          earthquakes={state.sampleEarthquakes}
+        />
+      )}
+      {state.mode === "earthquake" && (
+        <EqMap
+          latitude={state.earthquake.latitude}
+          longitude={state.earthquake.longitude}
+        />
+      )}
+
     </div>
   );
 }
