@@ -2,11 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './App.css';
 
+import EqMap from "./components/EqMap.js";
+
 class App extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      message: 'Click the button to load data!'
+      message: 'Click the button to load data!',
+      latitude: 0,
+      longitude: 0
     }
   }
 
@@ -16,10 +20,13 @@ class App extends Component {
         // handle success
         console.log(response.data) // The entire response from the express server route
 
-        this.setState({
-          title: response.data[0].title
-        });
-      })
+      console.log(response.data.message) // Just the message
+      this.setState({
+        title: response.data[0].title,
+        latitude: response.data[0].latitude,
+        longitude: response.data[0].longitude
+      });
+    })
   }
 
   render() {
@@ -29,6 +36,10 @@ class App extends Component {
         <button onClick={this.fetchData} >
           Fetch Data
         </button>
+        <EqMap
+          latitude={this.state.latitude}
+          longitude={this.state.longitude}
+        />
       </div>
     );
   }
