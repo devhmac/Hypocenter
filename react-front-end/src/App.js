@@ -3,6 +3,7 @@ import axios from 'axios';
 import './App.css';
 
 import EqMap from "./components/EqMap.js";
+import QuakeInfo from './components/QuakeInfo'
 
 
 function App() {
@@ -38,6 +39,7 @@ function App() {
         latitude={state.latitude}
         longitude={state.longitude}
       />
+      <QuakeInfo />
     </div>
   );
 }
