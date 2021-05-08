@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@iconify/icons-mdi": "^1.1.15",
+    "@iconify/react": "^1.1.4",
     "axios": "^0.18.1",
+    "google-map-react": "^2.1.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-scripts": "2.1.8"
