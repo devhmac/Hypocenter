@@ -48,7 +48,11 @@ function App() {
           title: response.data[0].title,
           earthquake: {
             latitude: response.data[0].latitude,
-            longitude: response.data[0].longitude
+            longitude: response.data[0].longitude,
+            magnitude: response.data[0].magnitude,
+            pager: response.data[0].pager,
+            time_stamp: response.data[0].time_stamp,
+            tsunami: response.data[0].tsunami,
           },
           mode: "earthquake"
         });
@@ -68,10 +72,18 @@ function App() {
         />
       )}
       {state.mode === "earthquake" && (
-        <EqMap
-          latitude={state.earthquake.latitude}
-          longitude={state.earthquake.longitude}
-        />
+        <>
+          <EqMap
+            latitude={state.earthquake.latitude}
+            longitude={state.earthquake.longitude}
+          />
+          <QuakeInfo
+            magnitude={state.earthquake.magnitude}
+            pager={state.earthquake.pager}
+            time_stamp={state.earthquake.time_stamp}
+            tsunami={state.earthquake.tsunami}
+          />
+        </>
       )}
     </div>
   );
