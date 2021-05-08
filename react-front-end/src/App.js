@@ -3,6 +3,8 @@ import axios from 'axios';
 import './App.css';
 
 import EqMap from "./components/EqMap.js";
+import QuakeInfo from './components/QuakeInfo'
+import NavBar from './components/NavBar'
 
 
 function App() {
@@ -30,6 +32,7 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       <h1>{state.title}</h1>
       <button onClick={fetchData} >
         Fetch Data
@@ -38,6 +41,7 @@ function App() {
         latitude={state.latitude}
         longitude={state.longitude}
       />
+      <QuakeInfo />
     </div>
   );
 }
