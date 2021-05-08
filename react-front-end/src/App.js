@@ -25,7 +25,11 @@ function App() {
         setState({
           title: response.data[0].title,
           latitude: response.data[0].latitude,
-          longitude: response.data[0].longitude
+          longitude: response.data[0].longitude,
+          magnitude: response.data[0].magnitude,
+          pager: response.data[0].pager,
+          time_stamp: response.data[0].time_stamp,
+          tsuname: response.data[0].tsunami
         });
       })
   }
@@ -41,7 +45,12 @@ function App() {
         latitude={state.latitude}
         longitude={state.longitude}
       />
-      <QuakeInfo />
+      <QuakeInfo
+        magnitude={state.magnitude}
+        pager={state.pager}
+        time_stamp={state.time_stamp}
+        tsunami={state.tsunami}
+      />
     </div>
   );
 }
