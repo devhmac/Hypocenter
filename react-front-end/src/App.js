@@ -18,18 +18,18 @@ class App extends Component {
 
       console.log(response.data.message) // Just the message
       this.setState({
-        message: response.data.message
+        title: response.data[0].title
       });
-    }) 
+    })
   }
 
   render() {
     return (
       <div className="App">
-        <h1>{ this.state.message }</h1>
+        <h1>{ this.state.title }</h1>
         <button onClick={this.fetchData} >
           Fetch Data
-        </button>        
+        </button>
       </div>
     );
   }
