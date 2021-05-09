@@ -1,17 +1,18 @@
-import React, { useState } from 'react';
-import axios from 'axios';
-import './App.css';
+import React, { Component, useState } from "react";
+import axios from "axios";
+import "./App.css";
 
 import EqMap from "./components/EqMap.js";
-import MainMap from "./components/MainMap.js";
-import QuakeInfo from './components/QuakeInfo'
-import NavBar from './components/NavBar'
+import QuakeInfo from "./components/QuakeInfo";
+import NavBar from "./components/NavBar";
+import CommentButton from "./components/Buttons/CommentButton.jsx";
+import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 
 
 
 function App() {
-
   const [state, setState] = useState({
+
     message: 'Click the button to load data!',
     earthquake: {
       latitude: 0,
@@ -38,14 +39,16 @@ function App() {
   });
 
   const fetchData = () => {
-    axios.get('/api/data') // You can simply make your requests to "/api/whatever you want"
+    axios
+      .get("/api/data") // You can simply make your requests to "/api/whatever you want"
       .then((response) => {
         // handle success
-        console.log(response.data) // The entire response from the express server route
+        console.log(response.data); // The entire response from the express server route
 
-        console.log(response.data.message) // Just the message
+        console.log(response.data.message); // Just the message
         setState({
           title: response.data[0].title,
+
           earthquake: {
             latitude: response.data[0].latitude,
             longitude: response.data[0].longitude,
@@ -56,13 +59,14 @@ function App() {
           },
           mode: "earthquake"
         });
-      })
-  }
+      });
+  };
 
   return (
     <div className="App">
       <NavBar />
       <h1>{state.title}</h1>
+
       <button onClick={fetchData} >
         Fetch Data
         </button>
@@ -88,6 +92,5 @@ function App() {
     </div>
   );
 }
-
 
 export default App;
