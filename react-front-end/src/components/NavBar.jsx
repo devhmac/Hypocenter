@@ -35,7 +35,7 @@ function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6" className={classes.title}>
-            Hypocenter
+            <Button color="inherit">Hypocenter</Button>
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
