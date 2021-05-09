@@ -9,9 +9,9 @@ import NavBar from "./components/NavBar";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 
+
 function App() {
   const [state, setState] = useState({
-    message: "Click the button to load data!",
     earthquake: {
       latitude: 0,
       longitude: 0,
@@ -63,14 +63,12 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <h1>{state.title}</h1>
-
-      <button onClick={fetchData}>Fetch Data</button>
       {state.mode === "main" && (
         <MainMap earthquakes={state.sampleEarthquakes} />
       )}
       {state.mode === "earthquake" && (
         <>
+        <h1>{state.title}</h1>
           <EqMap
             latitude={state.earthquake.latitude}
             longitude={state.earthquake.longitude}
@@ -86,6 +84,7 @@ function App() {
           <DeleteButton />
         </>
       )}
+      <button onClick={fetchData}>Fetch Data</button>
     </div>
   );
 }
