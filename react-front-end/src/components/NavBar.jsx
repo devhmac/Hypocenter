@@ -17,6 +17,9 @@ const useStyles = makeStyles((theme) => ({
   title: {
     flexGrow: 1,
   },
+  login: {
+    float: "right",
+  },
 }));
 
 function NavBar() {
@@ -34,8 +37,10 @@ function NavBar() {
           >
             <MenuIcon />
           </IconButton>
-          <Typography variant="h6" className={classes.title}>
-            Hypocenter
+          <Typography variant="h6">
+            <Button className={classes.title} color="inherit">
+              Hypocenter
+            </Button>
           </Typography>
           <Button color="inherit">Login</Button>
         </Toolbar>
