@@ -6,10 +6,9 @@
   text-align: center;
 }
 
-.eqgoogle-map {
-  width: 60%;
+.google-map {
+  width: 100%;
   height: 60vh;
-  margin-left: 10%;
 }
 
 .pin {
@@ -28,8 +27,8 @@
 }
 
 @media screen and (min-width: 799px) {
-  .eqgoogle-map {
-    height: 80vh;
+  .google-map {
+    height: 94vh;
   }
 
   .map-h2 {
