@@ -4,8 +4,8 @@ import './App.css';
 
 import EqMap from "./components/EqMap.js";
 import MainMap from "./components/MainMap.js";
-import QuakeInfo from './components/QuakeInfo'
-import NavBar from './components/NavBar'
+import QuakeInfo from './components/QuakeInfo';
+import NavBar from './components/NavBar';
 
 
 
