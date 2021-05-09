@@ -14,26 +14,26 @@ function App() {
   const [state, setState] = useState({
     earthquake: {
       latitude: 0,
-      longitude: 0
+      longitude: 0,
     },
     mode: "main",
     sampleEarthquakes: [
       {
         id: 1,
         latitude: "50.27763",
-        longitude: "87.74748"
+        longitude: "87.74748",
       },
       {
         id: 2,
         latitude: "7.73975",
-        longitude: "-46.12468"
+        longitude: "-46.12468",
       },
       {
         id: 3,
         latitude: "-68.63457",
-        longitude: "-158.60193"
-      }
-    ]
+        longitude: "-158.60193",
+      },
+    ],
   });
 
   const fetchData = () => {
@@ -55,7 +55,7 @@ function App() {
             time_stamp: response.data[0].time_stamp,
             tsunami: response.data[0].tsunami,
           },
-          mode: "earthquake"
+          mode: "earthquake",
         });
       });
   };
@@ -63,18 +63,12 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <h1>{state.title}</h1>
-
-      <button onClick={fetchData} >
-        Fetch Data
-        </button>
       {state.mode === "main" && (
-        <MainMap
-          earthquakes={state.sampleEarthquakes}
-        />
+        <MainMap earthquakes={state.sampleEarthquakes} />
       )}
       {state.mode === "earthquake" && (
         <>
+        <h1>{state.title}</h1>
           <EqMap
             latitude={state.earthquake.latitude}
             longitude={state.earthquake.longitude}
@@ -85,8 +79,12 @@ function App() {
             time_stamp={state.earthquake.time_stamp}
             tsunami={state.earthquake.tsunami}
           />
+          <CommentButton />
+
+          <DeleteButton />
         </>
       )}
+      <button onClick={fetchData}>Fetch Data</button>
     </div>
   );
 }
