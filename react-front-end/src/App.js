@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+import MainMap from "./components/MainMap";
 import EqMap from "./components/EqMap.js";
 import QuakeInfo from "./components/QuakeInfo";
 import NavBar from "./components/NavBar";
