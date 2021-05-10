@@ -10,7 +10,8 @@ export default function Globe(props) {
     { ...earthquake,
       coordinates: [earthquake.latitude, earthquake.longitude],
       color: earthquake.pager,
-      value: earthquake.magnitude
+      value: earthquake.magnitude,
+      date: new Date(Number(earthquake.time_stamp)).toDateString().split(' ').slice(1).join(' ')
     }
   ));
 
@@ -19,7 +20,7 @@ export default function Globe(props) {
       focusAnimationDuration: 2000,
       focusEasingFunction: ['Linear', 'None'],
       globeGlowColor: 'green',
-      markerTooltipRenderer: marker => `${marker.title} \nMagnitude ${marker.value}`,
+      markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.value}`,
     };
 
   return (
