@@ -2,21 +2,6 @@ import React, { createContext, useState } from 'react';
 
 
 
-// export default function StateProvider(props) {
-//   const [state, setState] = useState(initPins)
-
-//   const quakeState = state
-//   //can set this to take in a quakeID, to render that specific earthquake
-//   const setQuakeState = (data) => {
-//     setState(data)
-//   };
-
-//   return (
-//     <stateContext.Provider value={{ quakeState, setQuakeState }}>
-//       {props.children}
-//     </stateContext.Provider>
-//   )
-// }
 const initialPins = {
   earthquake: {
     latitude: 0,
@@ -52,17 +37,17 @@ const initialPins = {
       time_stamp: "1620400873733"
     },
   ],
-}
+};
 
 export const stateContext = createContext();
 
-export function StateProvider({ children }) {
-
+export function StateProvider(props) {
   const [state, setState] = useState(initialPins);
+
 
   return (
     <stateContext.Provider value={{ state, setState }}>
-      {children}
+      {props.children}
     </stateContext.Provider>
   )
 };
