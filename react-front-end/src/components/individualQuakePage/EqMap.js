@@ -1,5 +1,5 @@
 import React, { useContext } from 'react'
-import { stateContext } from '../../contextProviders/StateContext'
+import { stateContext } from '../../contextProviders/stateContext'
 import GoogleMapReact from 'google-map-react'
 import './EqMap.css'
 

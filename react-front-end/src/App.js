@@ -7,7 +7,7 @@ import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
 
 
-import { stateContext } from "./contextProviders/StateContext";
+import { stateContext } from "./contextProviders/stateContext";
 import QuakePage from "./components/individualQuakePage/QuakePage"
 
 
