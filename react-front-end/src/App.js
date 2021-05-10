@@ -91,10 +91,6 @@ function App() {
           <>
             <NavBar />
             <QuakePage />
-
-            <CommentButton />
-
-            <DeleteButton />
           </>
         )}
         <button onClick={fetchData}>Fetch Data</button>
