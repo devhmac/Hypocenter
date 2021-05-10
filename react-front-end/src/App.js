@@ -1,53 +1,19 @@
-import React, { Component, useState } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import "./App.css";
 
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
-import EqMap from "./components/EqMap.js";
-import QuakeInfo from "./components/QuakeInfo";
 import NavBar from "./components/NavBar";
-import CommentButton from "./components/Buttons/CommentButton.jsx";
-import DeleteButton from "./components/Buttons/DeleteButton.jsx";
+
+
+import { stateContext } from "./contextProviders/stateContext";
+import QuakePage from "./components/individualQuakePage/QuakePage"
+
 
 
 function App() {
-  const [state, setState] = useState({
-    earthquake: {
-      latitude: 0,
-      longitude: 0,
-    },
-    mode: "main",
-    sampleEarthquakes: [
-      {
-        id: 1,
-        title: "40km SSW of Valsingrad, Russia",
-        latitude: "50.27763",
-        longitude: "87.74748",
-        magnitude: "5.5",
-        pager: "yellow",
-        time_stamp: "1620400873733"
-      },
-      {
-        id: 2,
-        title: "30km E of Brazil",
-        latitude: "7.73975",
-        longitude: "-46.12468",
-        magnitude: "4.5",
-        pager: "green",
-        time_stamp: "1620400873733"
-      },
-      {
-        id: 3,
-        title: "20km NNW of Antarctica",
-        latitude: "-68.63457",
-        longitude: "-158.60193",
-        magnitude: "6",
-        pager: "red",
-        time_stamp: "1620400873733"
-      },
-    ],
-  });
+  const { state, setState } = useContext(stateContext);
 
   const fetchData = () => {
     axios
@@ -75,7 +41,6 @@ function App() {
 
   return (
     <div className="App">
-
       {state.mode === "main" && (
         // <MainMap earthquakes={state.sampleEarthquakes} />
         <Globe
@@ -85,20 +50,7 @@ function App() {
       {state.mode === "earthquake" && (
         <>
           <NavBar />
-          <h1>{state.title}</h1>
-          <EqMap
-            latitude={state.earthquake.latitude}
-            longitude={state.earthquake.longitude}
-          />
-          <QuakeInfo
-            magnitude={state.earthquake.magnitude}
-            pager={state.earthquake.pager}
-            time_stamp={state.earthquake.time_stamp}
-            tsunami={state.earthquake.tsunami}
-          />
-          <CommentButton />
-
-          <DeleteButton />
+          <QuakePage />
         </>
       )}
     </div>
