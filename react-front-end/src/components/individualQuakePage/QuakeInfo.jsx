@@ -4,7 +4,7 @@ import pagerConversion from "../../helpers/pagerConversion";
 import { stateContext } from "../../contextProviders/StateContext";
 
 function QuakeInfo(props) {
-  const { state, useState } = useContext(stateContext);
+  const { state } = useContext(stateContext);
   const quake = state.earthquake;
 
   return (

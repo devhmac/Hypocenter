@@ -6,8 +6,7 @@ import CommentButton from "../Buttons/CommentButton";
 import DeleteButton from "../Buttons/DeleteButton";
 
 export default function QuakePage(props) {
-  const { state, useState } = useContext(stateContext);
-  const quake = state.earthquake;
+  const { state } = useContext(stateContext);
 
   return (
     <div>

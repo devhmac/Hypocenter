@@ -8,7 +8,7 @@ import { acDark } from '../mapstyles/ac-dark';
 
 
 export default function EqMap(props) {
-  const { state, useState } = useContext(stateContext);
+  const { state } = useContext(stateContext);
   const quake = state.earthquake;
   const mapOptions = acDark;
 

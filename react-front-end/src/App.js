@@ -1,12 +1,12 @@
-import React, { Component, useState, useContext } from "react";
+import React, { useContext } from "react";
 import axios from "axios";
 import "./App.css";
 
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
-import CommentButton from "./components/Buttons/CommentButton.jsx";
-import DeleteButton from "./components/Buttons/DeleteButton.jsx";
+
+
 import { stateContext } from "./contextProviders/StateContext";
 import QuakePage from "./components/individualQuakePage/QuakePage"
 
