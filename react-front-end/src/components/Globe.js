@@ -17,20 +17,18 @@ export default function Globe(props) {
 
   const options = {
       cameraRotateSpeed: 0.5,
-      focusAnimationDuration: 2000,
+      focusAnimationDuration: 1500,
       focusEasingFunction: ['Linear', 'None'],
-      globeGlowColor: 'green',
+      globeGlowColor: 'grey',
       markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.value}`,
     };
 
   return (
-    <div className = "map" >
-      <div className = "google-map" >
+      <div className = "globe" >
         <ReactGlobe
           markers={eqArr}
           options={options}
         / >
       </div>
-    </div>
   )
 }

@@ -101,9 +101,10 @@ function App() {
           <DeleteButton />
         </>
       )}
-      <button onClick={fetchData}>Fetch Data</button>
     </div>
   );
 }
 
 export default App;
+
+// <button onClick={fetchData}>Fetch Data</button>
