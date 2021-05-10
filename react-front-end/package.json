@@ -11,7 +11,9 @@
     "google-map-react": "^2.1.9",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "react-scripts": "2.1.8"
+    "react-globe": "^5.0.2",
+    "react-scripts": "2.1.8",
+    "three": "^0.119.1"
   },
   "scripts": {
     "start": "react-scripts start",
