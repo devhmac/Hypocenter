@@ -4,12 +4,11 @@ import "./App.css";
 
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
-import EqMap from "./components/EqMap.js";
-import QuakeInfo from "./components/QuakeInfo";
 import NavBar from "./components/NavBar";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import { stateContext } from "./contextProviders/stateContext";
+import QuakePage from "./components/individualQuakePage/QuakePage"
 
 
 
@@ -91,12 +90,8 @@ function App() {
         {state.mode === "earthquake" && (
           <>
             <NavBar />
-            <h1>{state.title}</h1>
-            <EqMap
-              latitude={state.earthquake.latitude}
-              longitude={state.earthquake.longitude}
-            />
-            <QuakeInfo />
+            <QuakePage />
+
             <CommentButton />
 
             <DeleteButton />
