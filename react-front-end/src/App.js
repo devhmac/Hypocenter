@@ -15,7 +15,6 @@ import QuakePage from "./components/individualQuakePage/QuakePage"
 function App() {
   const { state, setState } = useContext(stateContext);
 
-
   const fetchData = () => {
     axios
       .get("/api/data") // You can simply make your requests to "/api/whatever you want"
