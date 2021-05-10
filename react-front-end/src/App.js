@@ -2,6 +2,7 @@ import React, { Component, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
+import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import EqMap from "./components/EqMap.js";
 import QuakeInfo from "./components/QuakeInfo";
@@ -22,16 +23,19 @@ function App() {
         id: 1,
         latitude: "50.27763",
         longitude: "87.74748",
+        magnitude: 5.5
       },
       {
         id: 2,
         latitude: "7.73975",
         longitude: "-46.12468",
+        magnitude:4.5
       },
       {
         id: 3,
         latitude: "-68.63457",
         longitude: "-158.60193",
+        magnitude: 6
       },
     ],
   });
@@ -64,7 +68,10 @@ function App() {
     <div className="App">
       <NavBar />
       {state.mode === "main" && (
-        <MainMap earthquakes={state.sampleEarthquakes} />
+        // <MainMap earthquakes={state.sampleEarthquakes} />
+        <Globe
+        earthquakes={state.sampleEarthquakes}
+        />
       )}
       {state.mode === "earthquake" && (
         <>
