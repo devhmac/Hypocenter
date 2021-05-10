@@ -1,5 +1,5 @@
 import React, { useContext } from "react";
-import { stateContext } from "../../contextProviders/stateContext";
+import { stateContext } from "../../contextProviders/StateContext";
 import QuakeInfo from "./QuakeInfo";
 import EqMap from "./EqMap";
 import CommentButton from "../Buttons/CommentButton";

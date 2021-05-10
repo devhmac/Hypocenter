@@ -1,7 +1,7 @@
 import React, { useContext } from "react";
 import { List, ListItem, ListItemText } from "@material-ui/core";
 import pagerConversion from "../../helpers/pagerConversion";
-import { stateContext } from "../../contextProviders/stateContext";
+import { stateContext } from "../../contextProviders/StateContext";
 
 function QuakeInfo(props) {
   const { state, useState } = useContext(stateContext);

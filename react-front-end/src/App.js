@@ -7,7 +7,7 @@ import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
-import { stateContext } from "./contextProviders/stateContext";
+import { stateContext } from "./contextProviders/StateContext";
 import QuakePage from "./components/individualQuakePage/QuakePage"
 
 
