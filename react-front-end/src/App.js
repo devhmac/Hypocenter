@@ -21,21 +21,27 @@ function App() {
     sampleEarthquakes: [
       {
         id: 1,
+        title: "40km SSW of Valsingrad, Russia",
         latitude: "50.27763",
         longitude: "87.74748",
-        magnitude: 5.5
+        magnitude: 5.5,
+        pager: "yellow"
       },
       {
         id: 2,
+        title: "30km E of Brazil",
         latitude: "7.73975",
         longitude: "-46.12468",
-        magnitude:4.5
+        magnitude:4.5,
+        pager: "green"
       },
       {
         id: 3,
+        title: "20km NNW of Antarctica",
         latitude: "-68.63457",
         longitude: "-158.60193",
-        magnitude: 6
+        magnitude: 6,
+        pager: "red"
       },
     ],
   });
