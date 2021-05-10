@@ -75,16 +75,17 @@ function App() {
 
   return (
     <div className="App">
-      <NavBar />
+
       {state.mode === "main" && (
         // <MainMap earthquakes={state.sampleEarthquakes} />
         <Globe
-        earthquakes={state.sampleEarthquakes}
+          earthquakes={state.sampleEarthquakes}
         />
       )}
       {state.mode === "earthquake" && (
         <>
-        <h1>{state.title}</h1>
+          <NavBar />
+          <h1>{state.title}</h1>
           <EqMap
             latitude={state.earthquake.latitude}
             longitude={state.earthquake.longitude}
