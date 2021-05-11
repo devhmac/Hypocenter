@@ -63,7 +63,7 @@ function App() {
       <NavBar />
       {/* 
       {state.mode === "main" && !mapToggle && <Globe />} */}
-      {state.mode === "main" && !mapToggle ? <Globe /> : <MainMap earthquakes={state.earthquakes} />}
+      {state.mode === "main" && !mapToggle ? <Globe /> : <MainMap />}
 
       {state.mode === "earthquake" && (
         <>
