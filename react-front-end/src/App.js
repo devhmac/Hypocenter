@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 import axios from "axios";
 import "./App.css";
 
@@ -39,12 +39,24 @@ function App() {
       });
   };
 
+  useEffect(() => {
+    axios
+      .get("/api/earthquakes")
+        .then((response) => {
+          console.log(response.data)
+          setState({
+            ...state,
+            earthquakes: response.data
+          })
+        })
+    .catch((error) => console.log(error));
+  }, []);
+
   return (
     <div className="App">
       {state.mode === "main" && (
-        // <MainMap earthquakes={state.sampleEarthquakes} />
         <Globe
-          earthquakes={state.sampleEarthquakes}
+          earthquakes={state.earthquakes}
         />
       )}
       {state.mode === "earthquake" && (
@@ -54,6 +66,7 @@ function App() {
         </>
       )}
       <button onClick={fetchData}>Fetch Data</button>
+      <MainMap earthquakes={state.earthquakes} />
     </div>
   );
 }

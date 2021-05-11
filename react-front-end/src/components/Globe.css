@@ -1,3 +1,7 @@
 .tippy-content {
     white-space: pre-wrap;
 }
+
+.globe {
+  height: 100vh;
+}

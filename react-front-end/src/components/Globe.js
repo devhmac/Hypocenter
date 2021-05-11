@@ -6,10 +6,26 @@ import './Globe.css'
 
 export default function Globe(props) {
 
+  const colorMaker = function(magnitude) {
+
+    if (magnitude <= 5.5) {
+      return "lightgreen"
+    } else if (magnitude > 5.5 && magnitude <= 6.5) {
+      return "yellow"
+    } else if (magnitude > 6.5 && magnitude <= 7.5) {
+      return "orange"
+    } else {
+      return "red"
+    }
+  }
+
+  console.log(props)
+
   const eqArr = props.earthquakes.map(earthquake => (
+
     { ...earthquake,
       coordinates: [earthquake.latitude, earthquake.longitude],
-      color: earthquake.pager,
+      color: colorMaker(earthquake.magnitude),
       value: earthquake.magnitude,
       date: new Date(Number(earthquake.time_stamp)).toDateString().split(' ').slice(1).join(' ')
     }
@@ -17,20 +33,19 @@ export default function Globe(props) {
 
   const options = {
       cameraRotateSpeed: 0.5,
-      focusAnimationDuration: 2000,
+      focusAnimationDuration: 1500,
       focusEasingFunction: ['Linear', 'None'],
-      globeGlowColor: 'green',
-      markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.value}`,
+      globeGlowColor: 'grey',
+      markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
+      markerRadiusScaleRange: [0.005, 0.009]
     };
 
   return (
-    <div className = "map" >
-      <div className = "google-map" >
+      <div className = "globe" >
         <ReactGlobe
           markers={eqArr}
           options={options}
         / >
       </div>
-    </div>
   )
 }
