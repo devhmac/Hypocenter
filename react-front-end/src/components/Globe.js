@@ -6,7 +6,7 @@ import 'tippy.js/animations/scale.css';
 import './Globe.css'
 
 export default function Globe(props) {
-  const { state } = useContext(stateContext);
+  const { state, setState } = useContext(stateContext);
 
 
   const colorMaker = function(magnitude) {
@@ -22,7 +22,21 @@ export default function Globe(props) {
     }
   }
 
-  console.log(props)
+  const toQuakePage = (marker) => {
+    setState({
+      ...state,
+      earthquake: {
+        title: marker.title,
+        latitude: marker.latitude,
+        longitude: marker.longitude,
+        magnitude: marker.magnitude,
+        pager: marker.pager,
+        date: marker.date,
+        tsunami: marker.tsunami,
+      },
+      mode: 'earthquake'
+    })
+  };
 
   const eqArr = state.earthquakes.map(earthquake => (
 
@@ -48,6 +62,7 @@ export default function Globe(props) {
   return (
     <div className="globe" >
       <ReactGlobe
+        onClickMarker={marker => console.log(marker)}
         markers={eqArr}
         options={options}
       />
