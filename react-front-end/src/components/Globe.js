@@ -37,8 +37,7 @@ export default function Globe(props) {
         },
         mode: 'earthquake'
       })
-    }, 1000)
-
+    }, 1000);
   };
 
   const eqArr = state.earthquakes.map(earthquake => (
