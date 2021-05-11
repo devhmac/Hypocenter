@@ -17,6 +17,7 @@ export default function Globe(props) {
           title: marker.title,
           latitude: marker.latitude,
           longitude: marker.longitude,
+          depth: marker.depth,
           magnitude: marker.magnitude,
           pager: marker.pager,
           time_stamp: marker.time_stamp,
