@@ -23,13 +23,7 @@ App.use(Express.static("public"));
 
 // Sample GET route
 App.get("/api/earthquakes", (req, res) => {
-  getEarthquakeData(1).then((response) => {
-    res.json(response);
-  });
-});
-
-App.get("/api/data", (req, res) => {
-  getEarthquakeData(1).then((response) => {
+  getEarthquakeData(400).then((response) => {
     res.json(response);
   });
 });
