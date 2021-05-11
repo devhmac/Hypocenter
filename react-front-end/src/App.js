@@ -8,6 +8,7 @@ import QuakeInfo from "./components/QuakeInfo";
 import NavBar from "./components/NavBar";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
+import ChatBox from "./components/Chatbox/ChatBox";
 
 function App() {
   const [state, setState] = useState({
@@ -84,6 +85,7 @@ function App() {
           <CommentButton />
 
           <DeleteButton />
+          <ChatBox />
         </>
       )}
     </div>
