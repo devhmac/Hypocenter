@@ -1,10 +1,13 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
+import { stateContext } from '../contextProviders/stateContext'
 import ReactGlobe from 'react-globe';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import './Globe.css'
 
 export default function Globe(props) {
+  const { state } = useContext(stateContext);
+
 
   const colorMaker = function(magnitude) {
 
@@ -21,7 +24,7 @@ export default function Globe(props) {
 
   console.log(props)
 
-  const eqArr = props.earthquakes.map(earthquake => (
+  const eqArr = state.earthquakes.map(earthquake => (
 
     {
       ...earthquake,

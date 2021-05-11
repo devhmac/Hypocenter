@@ -56,9 +56,7 @@ function App() {
     <div className="App">
       <NavBar />
       {state.mode === "main" && (
-        <Globe
-          earthquakes={state.earthquakes}
-        />
+        <Globe />
       )}
       {state.mode === "earthquake" && (
         <QuakePage />
