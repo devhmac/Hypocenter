@@ -10,7 +10,7 @@ export default function QuakePage(props) {
 
   return (
     <div>
-      <h1>{state.title}</h1>
+      <h1>{state.earthquake.title}</h1>
       <EqMap />
       <QuakeInfo />
       <CommentButton />
