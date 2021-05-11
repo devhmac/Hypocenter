@@ -19,14 +19,42 @@ function App() {
   const { state, setState } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
-  const pusher = new Pusher("7a7e150b8cf104d8b9b9", {
-    cluster: "us3",
-    encrypted: true,
-  });
-  const channel = pusher.subscribe('quakes');
-  channel.bind('new-earthquakes', (data) => {
-    console.log('from pusher', data)
-  })
+
+  useEffect(() => {
+    //pusher connection for new earthquakes
+    const pusher = new Pusher("7a7e150b8cf104d8b9b9", {
+      cluster: "us3",
+      encrypted: true,
+    });
+    const channel = pusher.subscribe('quakes');
+    channel.bind('new-earthquakes', (data) => {
+      console.log('from pusher', data.earthquakes)
+
+      //immutable state update - adds new eq's to earthquakes array
+
+      //console.log('quakeList', earthquakeList)
+
+      setState(prev => {
+
+        const earthquakeList = [...prev.earthquakes];
+
+        console.log('before pusher', earthquakeList)
+
+        for (let quake of data.earthquakes) {
+          earthquakeList.push(quake)
+        }
+
+        console.log('after pusher', earthquakeList)
+
+        return {
+          ...prev,
+          earthquakes: earthquakeList
+        }
+      })
+    })
+  }, [])
+
+
 
   useEffect(() => {
     axios
