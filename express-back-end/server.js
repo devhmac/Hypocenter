@@ -4,8 +4,7 @@ const request = require("request-promise-native");
 const App = Express();
 const BodyParser = require("body-parser");
 const PORT = 8000;
-const { earthquakes } = require("./lib/queries/earthquakes.js");
-const { getTestEq } = require("./lib/queries/test.js");
+const { getEarthquakeData } = require("./lib/queries/getEarthquakeData.js");
 const { upsert } = require("./lib/queries/upsert.js");
 const Pusher = require("pusher");
 
@@ -24,13 +23,13 @@ App.use(Express.static("public"));
 
 // Sample GET route
 App.get("/api/earthquakes", (req, res) => {
-  getTestEq(400).then((response) => {
+  getEarthquakeData(450).then((response) => {
     res.json(response);
   });
 });
 
 App.get("/api/data", (req, res) => {
-  getTestEq(1).then((response) => {
+  getEarthquakeData(1).then((response) => {
     res.json(response);
   });
 });
@@ -43,7 +42,7 @@ App.post("/comment", (req, res) => {
   res.status(200).send("OK");
 });
 
-const getEarthquakes = function () {
+const getEarthquakes = function() {
   return request(
     "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
   );
