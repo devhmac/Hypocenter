@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
@@ -16,6 +16,7 @@ import DarkMode from "./components/Darkmode/DarkMode.js";
 
 function App() {
   const { state, setState } = useContext(stateContext);
+  const [mapToggle, setMapToggle] = useState(false);
 
   // const fetchData = () => {
   //   axios
@@ -61,19 +62,23 @@ function App() {
     <div className="App">
       <NavBar />
 
-      {state.mode === "main" && <Globe />}
+      {state.mode === "main" && !mapToggle && <Globe />}
+      {state.mode === "main" && mapToggle && <MainMap earthquakes={state.earthquakes} />}
+
       {state.mode === "earthquake" && (
         <>
           <QuakePage />
-
           <CommentButton />
-
           <DeleteButton />
           <ChatBox />
         </>
       )}
-      <button>Fetch Data</button>
-      <MainMap earthquakes={state.earthquakes} />
+      <button
+        onClick={() => {
+          setMapToggle((prev) => { setMapToggle(!prev) })
+        }}
+      >Fetch Data</button>
+
 
       <DarkMode />
     </div>
