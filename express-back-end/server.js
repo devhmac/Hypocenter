@@ -4,6 +4,7 @@ const request = require('request-promise-native');
 const App = Express();
 const BodyParser = require('body-parser');
 const PORT = 8000;
+const { earthquakes } = require('./lib/queries/earthquakes.js');
 const { getTestEq } = require('./lib/queries/test.js');
 const { upsert } = require('./lib/queries/upsert.js');
 
@@ -14,6 +15,14 @@ App.use(Express.static('public'));
 
 // Sample GET route
 App.get('/api/earthquakes', (req, res) => {
+  getTestEq(200)
+    .then((response) => {
+      res.json(response);
+    });
+}
+);
+
+App.get('/api/data', (req, res) => {
   getTestEq(1)
     .then((response) => {
       res.json(response);

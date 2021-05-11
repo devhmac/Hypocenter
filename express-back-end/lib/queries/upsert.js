@@ -6,7 +6,7 @@ const upsert = (body) => {
   const bodyParse = JSON.parse(body);
   const earthquakes = bodyParse.features;
 
-  for (let earthquake in earthquakes) {
+  for (let earthquake of earthquakes) {
 
     if (earthquake.properties.alert === null) {
       earthquake.properties.alert = "green";
