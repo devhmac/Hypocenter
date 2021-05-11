@@ -6,6 +6,7 @@ const BodyParser = require("body-parser");
 const PORT = 8000;
 const { getEarthquakeData } = require("./lib/queries/getEarthquakeData.js");
 const { upsert } = require("./lib/queries/upsert.js");
+const { getRecentEarthquakes } = require('./lib/queries/getRecentEarthquakes');
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
@@ -45,7 +46,7 @@ const getEarthquakes = function() {
 const fn60sec = function() {
   getEarthquakes()
     .then(upsert)
-    .then(() => getEarthquakeData(1))
+    .then(getRecentEarthquakes)
     .then((res) => {
       console.log('new pushed quake', res);
       pusher.trigger('quakes', 'new-earthquakes', {
