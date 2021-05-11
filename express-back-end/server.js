@@ -50,9 +50,15 @@ const getEarthquakes = function() {
 
 const fn60sec = function() {
   getEarthquakes()
-    .then(upsert)
-    .then(() => {
-      console.log('puuuushaaa?')
+    .then((res) => {
+      upsert(res);
+      return res;
+    })
+    .then((res) => {
+      pusher.trigger('quakes', 'new-earthquakes', {
+        message: 'helloooo from pusha?'
+      });
+      console.log('puuuushaaa?');
     });
 };
 
