@@ -1,6 +1,9 @@
 import React from 'react'
 import GoogleMapReact from 'google-map-react'
 import './MainMap.css'
+import 'tippy.js/dist/tippy.css';
+import 'tippy.js/animations/scale.css';
+import tippy from 'tippy.js';
 
 import LocationPin from "./LocationPin";
 import { acDark } from './mapstyles/ac-dark';
@@ -17,6 +20,9 @@ export default function MainMap(props) {
       lng={Number(earthquake.longitude)}
       magnitude={earthquake.magnitude}
       pager={earthquake.pager}
+      onMouseEnter={tippy(`#${earthquake.id}`, {
+        content: `${earthquake.title} \n${earthquake.date} \nMagnitude ${earthquake.magnitude}`,
+      })}
     />
   );
 });

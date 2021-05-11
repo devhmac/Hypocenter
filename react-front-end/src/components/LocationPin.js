@@ -7,7 +7,7 @@ import magnitudeColor from '../helpers/magnitudeColor'
 export default function LocationPin(props) {
 
   return (
-    <div className={"pin pin--" + magnitudeColor(props.magnitude, props.pager)}>
+    <div id={props.key} className={"pin pin--" + magnitudeColor(props.magnitude, props.pager)}>
       <Icon icon={bullseyeIcon} className="pin-icon" />
     </div>
   )
