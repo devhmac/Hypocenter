@@ -19,11 +19,13 @@ export default function EqMap(props) {
           bootstrapURLKeys={{ key: 'AIzaSyBRh1M71jpKwzOH6qrK6FsmmBRu7Ukzt5Q' }}
           center={{ lat: Number(quake.latitude), lng: Number(quake.longitude) }}
           defaultZoom={4}
-          options={{ styles: mapOptions }}
+          options={{styles: mapOptions}}
         >
           <LocationPin
             lat={quake.latitude}
             lng={quake.longitude}
+            magnitude={quake.magnitude}
+            pager={quake.pager}
           />
         </GoogleMapReact>
       </div>

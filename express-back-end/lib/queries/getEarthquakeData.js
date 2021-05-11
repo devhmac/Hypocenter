@@ -1,17 +1,16 @@
 const { response } = require('express');
 const db = require('../db');
 
-
-const earthquakes = function() {
-  return db.query('SELECT * FROM earthquakes LIMIT $1')
+// test query
+const getEarthquakeData = (limit = 20) => {
+  return db.query('SELECT * FROM earthquakes LIMIT $1', [limit])
     .then((response) => {
-      console.log(response.rows);
       return response.rows;
     });
 };
 
 module.exports = {
 
-  earthquakes
+  getEarthquakeData
 
 };

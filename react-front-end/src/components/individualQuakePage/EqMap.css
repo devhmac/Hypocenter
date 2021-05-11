@@ -16,11 +16,26 @@
   display: flex;
   align-items: center;
   width: 80px;
-  color: green;
+}
+
+.pin--lightgreen {
+  color: #03fc17;
+}
+
+.pin--yellow {
+  color: #f8fc03;
+}
+
+.pin--orange {
+  color: #ff9900;
+}
+
+.pin--red {
+  color: #ff1c1c;
 }
 
 .pin-icon {
-  font-size: 2rem;
+  font-size: 1rem;
 }
 
 .pin-text {
