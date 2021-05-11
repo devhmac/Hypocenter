@@ -14,7 +14,7 @@ const useStyles = makeStyles((theme) => ({
   },
   menuButton: {
     color: "white",
-    marginRight: theme.spacing(2),
+    marginRight: theme.spacing(1),
   },
   title: {
     color: "white",
@@ -43,7 +43,7 @@ function NavBar() {
             color="inherit"
             aria-label="menu"
           >
-            <MenuIcon />
+            <img src="/images/icon.png" alt="icon" style={{ height: 30 }} />
           </IconButton>
           <Typography variant="h6">
             <Button className={classes.title}>Hypocenter</Button>
