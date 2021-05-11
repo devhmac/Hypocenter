@@ -25,6 +25,7 @@ export default function EqMap(props) {
             lat={quake.latitude}
             lng={quake.longitude}
             magnitude={quake.magnitude}
+            pager={quake.pager}
           />
         </GoogleMapReact>
       </div>
