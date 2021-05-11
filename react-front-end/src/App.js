@@ -6,11 +6,12 @@ import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
 
-
 import { stateContext } from "./contextProviders/stateContext";
-import QuakePage from "./components/individualQuakePage/QuakePage"
+import QuakePage from "./components/individualQuakePage/QuakePage";
 
-
+import CommentButton from "./components/Buttons/CommentButton.jsx";
+import DeleteButton from "./components/Buttons/DeleteButton.jsx";
+import ChatBox from "./components/Chatbox/ChatBox";
 
 function App() {
   const { state, setState } = useContext(stateContext);
@@ -45,11 +46,11 @@ function App() {
     axios
       .get("/api/earthquakes")
       .then((response) => {
-        console.log(response.data)
+        console.log(response.data);
         setState({
           ...state,
-          earthquakes: response.data
-        })
+          earthquakes: response.data,
+        });
       })
       .catch((error) => console.log(error));
   }, []);
@@ -62,7 +63,14 @@ function App() {
         <Globe />
       )}
       {state.mode === "earthquake" && (
-        <QuakePage />
+        <>
+          <QuakePage />
+
+          <CommentButton />
+
+          <DeleteButton />
+          <ChatBox />
+        </>
       )}
       <button onClick={fetchData}>Fetch Data</button>
       <MainMap earthquakes={state.earthquakes} />
