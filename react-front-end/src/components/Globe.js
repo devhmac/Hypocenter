@@ -31,7 +31,7 @@ export default function Globe(props) {
         longitude: marker.longitude,
         magnitude: marker.magnitude,
         pager: marker.pager,
-        date: marker.date,
+        time_stamp: marker.time_stamp,
         tsunami: marker.tsunami,
       },
       mode: 'earthquake'
@@ -62,7 +62,7 @@ export default function Globe(props) {
   return (
     <div className="globe" >
       <ReactGlobe
-        onClickMarker={marker => console.log(marker)}
+        onClickMarker={toQuakePage}
         markers={eqArr}
         options={options}
       />
