@@ -54,16 +54,14 @@ function App() {
 
   return (
     <div className="App">
+      <NavBar />
       {state.mode === "main" && (
         <Globe
           earthquakes={state.earthquakes}
         />
       )}
       {state.mode === "earthquake" && (
-        <>
-          <NavBar />
-          <QuakePage />
-        </>
+        <QuakePage />
       )}
       <button onClick={fetchData}>Fetch Data</button>
       <MainMap earthquakes={state.earthquakes} />

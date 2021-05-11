@@ -10,14 +10,18 @@ import MenuIcon from "@material-ui/icons/Menu";
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    boxShadow: "none",
   },
   menuButton: {
+    color: "white",
     marginRight: theme.spacing(2),
   },
   title: {
+    color: "white",
     flexGrow: 1,
   },
   login: {
+    color: "white",
     float: "right",
   },
 }));
@@ -27,7 +31,11 @@ function NavBar() {
 
   return (
     <div className={classes.root}>
-      <AppBar position="static">
+      <AppBar
+        position="absolute"
+        color="transparent"
+        style={{ background: "transparent", boxShadow: "none" }}
+      >
         <Toolbar>
           <IconButton
             edge="start"
@@ -38,11 +46,9 @@ function NavBar() {
             <MenuIcon />
           </IconButton>
           <Typography variant="h6">
-            <Button className={classes.title} color="inherit">
-              Hypocenter
-            </Button>
+            <Button className={classes.title}>Hypocenter</Button>
           </Typography>
-          <Button color="inherit">Login</Button>
+          <Button className={classes.login}>Login</Button>
         </Toolbar>
       </AppBar>
     </div>
