@@ -34,14 +34,14 @@ const getEarthquakes = function() {
   return request('https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson');
 };
 
-getEarthquakes()
-  .then(upsert);
+const fn60sec = function() {
+  console.log("lets go")
+  getEarthquakes()
+    .then(upsert);
+};
 
-// const fn60sec() {
-// getEarthquakes()
-// }
-// fn60sec();
-// setInterval(fn60sec, 60000);
+fn60sec();
+setInterval(fn60sec, 60000);
 
 App.listen(PORT, () => {
   // eslint-disable-next-line no-console
