@@ -27,6 +27,7 @@ function App() {
           title: response.data[0].title,
           earthquakes: [],
           earthquake: {
+            title: response.data[0].title,
             latitude: response.data[0].latitude,
             longitude: response.data[0].longitude,
             magnitude: response.data[0].magnitude,
@@ -39,6 +40,7 @@ function App() {
       });
   };
 
+  // on load set state to earthquake list
   useEffect(() => {
     axios
       .get("/api/earthquakes")
@@ -51,6 +53,7 @@ function App() {
       })
       .catch((error) => console.log(error));
   }, []);
+
 
   return (
     <div className="App">

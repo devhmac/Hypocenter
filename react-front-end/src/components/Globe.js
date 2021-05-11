@@ -6,7 +6,7 @@ import 'tippy.js/animations/scale.css';
 import './Globe.css'
 
 export default function Globe(props) {
-  const { state } = useContext(stateContext);
+  const { state, setState } = useContext(stateContext);
 
 
   const colorMaker = function(magnitude) {
@@ -22,7 +22,23 @@ export default function Globe(props) {
     }
   }
 
-  console.log(props)
+  const toQuakePage = (marker) => {
+    setTimeout(() => {
+      setState({
+        ...state,
+        earthquake: {
+          title: marker.title,
+          latitude: marker.latitude,
+          longitude: marker.longitude,
+          magnitude: marker.magnitude,
+          pager: marker.pager,
+          time_stamp: marker.time_stamp,
+          tsunami: marker.tsunami,
+        },
+        mode: 'earthquake'
+      })
+    }, 1000);
+  };
 
   const eqArr = state.earthquakes.map(earthquake => (
 
@@ -37,9 +53,11 @@ export default function Globe(props) {
 
   const options = {
     cameraRotateSpeed: 0.5,
-    focusAnimationDuration: 1500,
+    focusAnimationDuration: 1000,
     focusEasingFunction: ['Linear', 'None'],
     globeGlowColor: 'grey',
+    ambientLightColor: 'grey',
+    ambientLightIntensity: 1,
     markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
     markerRadiusScaleRange: [0.005, 0.009],
     markerGlowRadiusScale: 0
@@ -48,6 +66,7 @@ export default function Globe(props) {
   return (
     <div className="globe" >
       <ReactGlobe
+        onClickMarker={toQuakePage}
         markers={eqArr}
         options={options}
       />
