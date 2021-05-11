@@ -23,19 +23,22 @@ export default function Globe(props) {
   }
 
   const toQuakePage = (marker) => {
-    setState({
-      ...state,
-      earthquake: {
-        title: marker.title,
-        latitude: marker.latitude,
-        longitude: marker.longitude,
-        magnitude: marker.magnitude,
-        pager: marker.pager,
-        time_stamp: marker.time_stamp,
-        tsunami: marker.tsunami,
-      },
-      mode: 'earthquake'
-    })
+    setTimeout(() => {
+      setState({
+        ...state,
+        earthquake: {
+          title: marker.title,
+          latitude: marker.latitude,
+          longitude: marker.longitude,
+          magnitude: marker.magnitude,
+          pager: marker.pager,
+          time_stamp: marker.time_stamp,
+          tsunami: marker.tsunami,
+        },
+        mode: 'earthquake'
+      })
+    }, 1000)
+
   };
 
   const eqArr = state.earthquakes.map(earthquake => (
@@ -51,7 +54,7 @@ export default function Globe(props) {
 
   const options = {
     cameraRotateSpeed: 0.5,
-    focusAnimationDuration: 1500,
+    focusAnimationDuration: 1000,
     focusEasingFunction: ['Linear', 'None'],
     globeGlowColor: 'grey',
     markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
