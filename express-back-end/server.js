@@ -56,6 +56,7 @@ const fn60sec = function() {
       }
     })
     .catch(err => console.log('err', err));
+  console.log('polling api')
 };
 
 fn60sec();
