@@ -61,9 +61,9 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      {/* 
-      {state.mode === "main" && !mapToggle && <Globe />} */}
-      {state.mode === "main" && !mapToggle ? <Globe /> : <MainMap />}
+
+      {state.mode === "main" && !mapToggle && <Globe />}
+      {state.mode === "main" && mapToggle && <MainMap />}
 
       {state.mode === "earthquake" && (
         <>
