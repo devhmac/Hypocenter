@@ -25,7 +25,7 @@ function App() {
         console.log(response.data.message); // Just the message
         setState({
           title: response.data[0].title,
-
+          earthquakes: [],
           earthquake: {
             latitude: response.data[0].latitude,
             longitude: response.data[0].longitude,
@@ -42,14 +42,14 @@ function App() {
   useEffect(() => {
     axios
       .get("/api/earthquakes")
-        .then((response) => {
-          console.log(response.data)
-          setState({
-            ...state,
-            earthquakes: response.data
-          })
+      .then((response) => {
+        console.log(response.data)
+        setState({
+          ...state,
+          earthquakes: response.data
         })
-    .catch((error) => console.log(error));
+      })
+      .catch((error) => console.log(error));
   }, []);
 
   return (

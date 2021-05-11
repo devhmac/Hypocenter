@@ -15,7 +15,7 @@ App.use(Express.static('public'));
 
 // Sample GET route
 App.get('/api/earthquakes', (req, res) => {
-  getTestEq(200)
+  getTestEq(400)
     .then((response) => {
       res.json(response);
     });
@@ -35,7 +35,7 @@ const getEarthquakes = function() {
 };
 
 const fn60sec = function() {
-  console.log("lets go")
+  console.log("lets go");
   getEarthquakes()
     .then(upsert);
 };
