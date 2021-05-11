@@ -23,7 +23,8 @@ export default function Globe(props) {
 
   const eqArr = props.earthquakes.map(earthquake => (
 
-    { ...earthquake,
+    {
+      ...earthquake,
       coordinates: [earthquake.latitude, earthquake.longitude],
       color: colorMaker(earthquake.magnitude),
       value: earthquake.magnitude,
@@ -32,20 +33,21 @@ export default function Globe(props) {
   ));
 
   const options = {
-      cameraRotateSpeed: 0.5,
-      focusAnimationDuration: 1500,
-      focusEasingFunction: ['Linear', 'None'],
-      globeGlowColor: 'grey',
-      markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
-      markerRadiusScaleRange: [0.005, 0.009]
-    };
+    cameraRotateSpeed: 0.5,
+    focusAnimationDuration: 1500,
+    focusEasingFunction: ['Linear', 'None'],
+    globeGlowColor: 'grey',
+    markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
+    markerRadiusScaleRange: [0.005, 0.009],
+    markerGlowRadiusScale: 0
+  };
 
   return (
-      <div className = "globe" >
-        <ReactGlobe
-          markers={eqArr}
-          options={options}
-        / >
-      </div>
+    <div className="globe" >
+      <ReactGlobe
+        markers={eqArr}
+        options={options}
+      />
+    </div>
   )
 }

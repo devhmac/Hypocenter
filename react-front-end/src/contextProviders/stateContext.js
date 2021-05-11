@@ -6,7 +6,7 @@ const initialPins = {
     longitude: 0,
   },
   mode: "main",
-  earthquakes: [],
+  earthquakes: []
 };
 
 
