@@ -16,6 +16,7 @@ export default function MainMap(props) {
       lat={Number(earthquake.latitude)}
       lng={Number(earthquake.longitude)}
       magnitude={earthquake.magnitude}
+      pager={earthquake.pager}
     />
   );
 });

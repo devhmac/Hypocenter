@@ -33,7 +33,7 @@ export default function Globe(props) {
     {
       ...earthquake,
       coordinates: [earthquake.latitude, earthquake.longitude],
-      color: magnitudeColor(earthquake.magnitude),
+      color: magnitudeColor(earthquake.magnitude, earthquake.pager),
       value: earthquake.magnitude,
       date: new Date(Number(earthquake.time_stamp)).toDateString().split(' ').slice(1).join(' ')
     }
