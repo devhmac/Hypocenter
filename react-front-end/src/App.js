@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import "./App.css";
 
@@ -16,32 +16,33 @@ import DarkMode from "./components/Darkmode/DarkMode.js";
 
 function App() {
   const { state, setState } = useContext(stateContext);
+  const [mapToggle, setMapToggle] = useState(false);
 
-  const fetchData = () => {
-    axios
-      .get("/api/data") // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data); // The entire response from the express server route
+  // const fetchData = () => {
+  //   axios
+  //     .get("/api/data") // You can simply make your requests to "/api/whatever you want"
+  //     .then((response) => {
+  //       // handle success
+  //       console.log(response.data); // The entire response from the express server route
 
-        console.log(response.data.message); // Just the message
-        setState({
-          title: response.data[0].title,
-          earthquakes: [],
-          earthquake: {
-            title: response.data[0].title,
-            latitude: response.data[0].latitude,
-            longitude: response.data[0].longitude,
-            magnitude: response.data[0].magnitude,
-            depth: response.data[0].depth,
-            pager: response.data[0].pager,
-            time_stamp: response.data[0].time_stamp,
-            tsunami: response.data[0].tsunami,
-          },
-          mode: "earthquake",
-        });
-      });
-  };
+  //       console.log(response.data.message); // Just the message
+  //       setState({
+  //         title: response.data[0].title,
+  //         earthquakes: [],
+  //         earthquake: {
+  //           title: response.data[0].title,
+  //           latitude: response.data[0].latitude,
+  //           longitude: response.data[0].longitude,
+  //           magnitude: response.data[0].magnitude,
+  //           depth: response.data[0].depth,
+  //           pager: response.data[0].pager,
+  //           time_stamp: response.data[0].time_stamp,
+  //           tsunami: response.data[0].tsunami,
+  //         },
+  //         mode: "earthquake",
+  //       });
+  //     });
+  // };
 
   // on load set state to earthquake list
   useEffect(() => {
@@ -60,20 +61,24 @@ function App() {
   return (
     <div className="App">
       <NavBar />
+      {/* 
+      {state.mode === "main" && !mapToggle && <Globe />} */}
+      {state.mode === "main" && !mapToggle ? <Globe /> : <MainMap />}
 
-      {state.mode === "main" && <Globe />}
       {state.mode === "earthquake" && (
         <>
           <QuakePage />
-
           <CommentButton />
-
           <DeleteButton />
           <ChatBox />
         </>
       )}
-      <button onClick={fetchData}>Fetch Data</button>
-      <MainMap earthquakes={state.earthquakes} />
+      <button
+        onClick={() => {
+          setMapToggle((prev) => { setMapToggle(!prev) })
+        }}
+      >Fetch Data</button>
+
 
       <DarkMode />
     </div>
