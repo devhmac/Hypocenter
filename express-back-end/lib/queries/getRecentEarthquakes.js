@@ -7,7 +7,6 @@ const getRecentEarthquakes = (limit = 20) => {
     `SELECT * FROM earthquakes
     WHERE added BETWEEN NOW() - INTERVAL '119 SECONDS' AND NOW()`)
     .then((response) => {
-      console.log('recent eq', response.rows);
       return response.rows;
     });
 };
