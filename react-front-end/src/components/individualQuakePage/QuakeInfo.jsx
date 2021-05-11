@@ -17,6 +17,12 @@ function QuakeInfo(props) {
       </ListItem>
       <ListItem>
         <ListItemText
+          primary="Depth"
+          secondary={quake.depth + " km"}
+        />
+      </ListItem>
+      <ListItem>
+        <ListItemText
           primary="Estimated Economic Damage"
           secondary={quake.pager ? pagerConversion[quake.pager].damage : null}
         />

@@ -32,6 +32,7 @@ function App() {
             latitude: response.data[0].latitude,
             longitude: response.data[0].longitude,
             magnitude: response.data[0].magnitude,
+            depth: response.data[0].depth,
             pager: response.data[0].pager,
             time_stamp: response.data[0].time_stamp,
             tsunami: response.data[0].tsunami,
