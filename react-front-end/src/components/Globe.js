@@ -56,6 +56,8 @@ export default function Globe(props) {
     focusAnimationDuration: 1000,
     focusEasingFunction: ['Linear', 'None'],
     globeGlowColor: 'grey',
+    ambientLightColor: 'grey',
+    ambientLightIntensity: 1,
     markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
     markerRadiusScaleRange: [0.005, 0.009],
     markerGlowRadiusScale: 0
