@@ -24,7 +24,7 @@ App.use(Express.static("public"));
 
 // Sample GET route
 App.get("/api/earthquakes", (req, res) => {
-  getEarthquakeData(400).then((response) => {
+  getEarthquakeData(1).then((response) => {
     res.json(response);
   });
 });
@@ -48,10 +48,12 @@ const fn60sec = function() {
     .then(upsert)
     .then(getRecentEarthquakes)
     .then((res) => {
-      console.log('new pushed quake', res);
-      pusher.trigger('quakes', 'new-earthquakes', {
-        'earthquakes': res
-      });
+      if (res.length > 0) {
+        console.log('new pushed quake', res);
+        pusher.trigger('quakes', 'new-earthquakes', {
+          'earthquakes': res
+        });
+      }
     })
     .catch(err => console.log('err', err));
 };

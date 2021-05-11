@@ -5,7 +5,7 @@ const db = require('../db');
 const getRecentEarthquakes = (limit = 20) => {
   return db.query(
     `SELECT * FROM earthquakes
-    WHERE added BETWEEN NOW() - INTERVAL '119 SECONDS' AND NOW()`)
+    WHERE added BETWEEN NOW() - INTERVAL '60 SECONDS' AND NOW()`)
     .then((response) => {
       return response.rows;
     });
