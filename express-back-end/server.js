@@ -50,7 +50,10 @@ const getEarthquakes = function() {
 
 const fn60sec = function() {
   getEarthquakes()
-    .then(upsert);
+    .then(upsert)
+    .then(() => {
+      console.log('puuuushaaa?')
+    });
 };
 
 fn60sec();
