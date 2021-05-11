@@ -3,12 +3,12 @@ import GoogleMapReact from 'google-map-react'
 import './MainMap.css'
 
 import LocationPin from "./LocationPin";
-// import { acDark } from './mapstyles/ac-dark';
-import { lightMode } from './mapstyles/lightmode';
+import { acDark } from './mapstyles/ac-dark';
+// import { lightMode } from './mapstyles/lightmode';
 
 export default function MainMap(props) {
 
-  const mapOptions = lightMode;
+ const mapOptions = acDark;
 
   const eqArr = props.earthquakes.map(earthquake => {
     return (<LocationPin
