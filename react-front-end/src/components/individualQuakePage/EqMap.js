@@ -24,6 +24,7 @@ export default function EqMap(props) {
           <LocationPin
             lat={quake.latitude}
             lng={quake.longitude}
+            magnitude={quake.magnitude}
           />
         </GoogleMapReact>
       </div>

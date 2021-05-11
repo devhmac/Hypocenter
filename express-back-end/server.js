@@ -35,7 +35,6 @@ const getEarthquakes = function() {
 };
 
 const fn60sec = function() {
-  console.log("lets go");
   getEarthquakes()
     .then(upsert);
 };

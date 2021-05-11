@@ -4,23 +4,10 @@ import ReactGlobe from 'react-globe';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import './Globe.css'
+import magnitudeColor from '../helpers/magnitudeColor'
 
 export default function Globe(props) {
   const { state, setState } = useContext(stateContext);
-
-
-  const colorMaker = function(magnitude) {
-
-    if (magnitude <= 5.5) {
-      return "lightgreen"
-    } else if (magnitude > 5.5 && magnitude <= 6.5) {
-      return "yellow"
-    } else if (magnitude > 6.5 && magnitude <= 7.5) {
-      return "orange"
-    } else {
-      return "red"
-    }
-  }
 
   const toQuakePage = (marker) => {
     setTimeout(() => {
@@ -45,7 +32,7 @@ export default function Globe(props) {
     {
       ...earthquake,
       coordinates: [earthquake.latitude, earthquake.longitude],
-      color: colorMaker(earthquake.magnitude),
+      color: magnitudeColor(earthquake.magnitude),
       value: earthquake.magnitude,
       date: new Date(Number(earthquake.time_stamp)).toDateString().split(' ').slice(1).join(' ')
     }
