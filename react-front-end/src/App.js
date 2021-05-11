@@ -16,31 +16,31 @@ import ChatBox from "./components/Chatbox/ChatBox";
 function App() {
   const { state, setState } = useContext(stateContext);
 
-  const fetchData = () => {
-    axios
-      .get("/api/data") // You can simply make your requests to "/api/whatever you want"
-      .then((response) => {
-        // handle success
-        console.log(response.data); // The entire response from the express server route
+  // const fetchData = () => {
+  //   axios
+  //     .get("/api/data") // You can simply make your requests to "/api/whatever you want"
+  //     .then((response) => {
+  //       // handle success
+  //       console.log(response.data); // The entire response from the express server route
 
-        console.log(response.data.message); // Just the message
-        setState({
-          title: response.data[0].title,
-          earthquakes: [],
-          earthquake: {
-            title: response.data[0].title,
-            latitude: response.data[0].latitude,
-            longitude: response.data[0].longitude,
-            magnitude: response.data[0].magnitude,
-            depth: response.data[0].depth,
-            pager: response.data[0].pager,
-            time_stamp: response.data[0].time_stamp,
-            tsunami: response.data[0].tsunami,
-          },
-          mode: "earthquake",
-        });
-      });
-  };
+  //       console.log(response.data.message); // Just the message
+  //       setState({
+  //         title: response.data[0].title,
+  //         earthquakes: [],
+  //         earthquake: {
+  //           title: response.data[0].title,
+  //           latitude: response.data[0].latitude,
+  //           longitude: response.data[0].longitude,
+  //           magnitude: response.data[0].magnitude,
+  //           depth: response.data[0].depth,
+  //           pager: response.data[0].pager,
+  //           time_stamp: response.data[0].time_stamp,
+  //           tsunami: response.data[0].tsunami,
+  //         },
+  //         mode: "earthquake",
+  //       });
+  //     });
+  // };
 
   // on load set state to earthquake list
   useEffect(() => {
@@ -73,7 +73,7 @@ function App() {
           <ChatBox />
         </>
       )}
-      <button onClick={fetchData}>Fetch Data</button>
+      <button>Fetch Data</button>
       <MainMap earthquakes={state.earthquakes} />
     </div>
   );
