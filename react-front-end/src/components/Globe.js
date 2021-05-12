@@ -7,6 +7,7 @@ import './Globe.css'
 import magnitudeColor from '../helpers/magnitudeColor'
 import LiveList from './LiveList'
 
+
 export default function Globe(props) {
   const { state, setState } = useContext(stateContext);
 
