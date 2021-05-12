@@ -22,10 +22,16 @@ export default function EqMap(props) {
           options={{styles: mapOptions}}
         >
           <LocationPin
-            lat={quake.latitude}
-            lng={quake.longitude}
-            magnitude={quake.magnitude}
-            pager={quake.pager}
+          key={quake.id}
+          title={quake.title}
+          lat={Number(quake.latitude)}
+          lng={Number(quake.longitude)}
+          depth={quake.depth}
+          magnitude={quake.magnitude}
+          pager={quake.pager}
+          time_stamp={quake.time_stamp}
+          tsunami={quake.tsunami}
+          tooltip={`${quake.title} \n${new Date(Number(quake.time_stamp)).toDateString().split(' ').slice(1).join(' ')} \nMagnitude ${quake.magnitude}`}
           />
         </GoogleMapReact>
       </div>
