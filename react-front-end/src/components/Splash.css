@@ -1,4 +1,4 @@
-.intro {
+.splash {
   bottom: 0;
   left: 0;
   pointer-events: none;
@@ -10,16 +10,13 @@
   flex-direction: column;
   justify-content: center;
   text-align: center;
+  color: white;
 }
 
-.cover {
-  bottom: 0;
-  left: 0;
-  pointer-events: none;
-  position: fixed;
-  right: 0;
-  top: 0;
-  background-color: black;
+.engage {
+  display: inline;
+  cursor: pointer;
+  pointer-events: auto;
 }
 
 .hidden {

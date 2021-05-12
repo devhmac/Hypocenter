@@ -10,6 +10,7 @@ import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
 
 import { stateContext } from "./contextProviders/stateContext";
+import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
 
 import CommentButton from "./components/Buttons/CommentButton.jsx";
@@ -57,10 +58,11 @@ function App() {
 
   return (
     <div className="App">
-      <Splash />
+    <GlobeLoaderProvider>
       <NavBar />
 
       {state.mode === "main" && !mapToggle && <Globe />}
+      <Splash />
       {state.mode === "main" && mapToggle && <MainMap />}
 
       {state.mode === "earthquake" && (
@@ -71,6 +73,7 @@ function App() {
           <ChatBox />
         </>
       )}
+      </GlobeLoaderProvider>
       <button
         onClick={() => {
           setMapToggle((prev) => {
