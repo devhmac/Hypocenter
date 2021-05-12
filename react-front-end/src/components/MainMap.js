@@ -8,6 +8,7 @@ import LocationPin from "./LocationPin";
 import { acDark } from './mapstyles/ac-dark';
 // import { lightMode } from './mapstyles/lightmode';
 
+
 export default function MainMap(props) {
   const { state } = useContext(stateContext);
   const mapOptions = acDark;
@@ -42,9 +43,7 @@ export default function MainMap(props) {
           </GoogleMapReact>
         </div>
       </div>
-      <LiveList
-        onClick={toQuakePage}
-      />
+      <LiveList />
     </>
   )
 };
