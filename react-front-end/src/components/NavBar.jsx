@@ -43,7 +43,11 @@ function NavBar() {
             color="inherit"
             aria-label="menu"
           >
-            <img src="/images/icon.png" alt="icon" style={{ height: 30 }} />
+            <img
+              src="/images/hypocenter.svg"
+              alt="icon"
+              style={{ height: 30 }}
+            />
           </IconButton>
           <Typography variant="h6">
             <Button className={classes.title}>Hypocenter</Button>
