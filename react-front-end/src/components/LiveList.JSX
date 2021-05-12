@@ -14,6 +14,10 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: "grey",
     color: "white",
   },
+
+  "MuiListItemText-secondary": {
+    color: "white",
+  },
 }));
 
 //map through livelist state, put each one into a list item, but that in {var} list
@@ -29,7 +33,11 @@ export default function SimpleList() {
     <div className={classes.root}>
       <List aria-label="new earthquake">
         <ListItem button>
-          <ListItemText primary="Inbox" />
+          <ListItemText
+            className={classes["list-text"]}
+            primary="Inbox"
+            secondary="test test"
+          />
         </ListItem>
         <ListItem button>
           <ListItemText primary="Drafts" />
