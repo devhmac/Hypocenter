@@ -6,6 +6,7 @@ import "./App.css";
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
+import LiveList from './components/LiveList'
 
 import { stateContext } from "./contextProviders/stateContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
@@ -68,6 +69,7 @@ function App() {
           <ChatBox />
         </>
       )}
+
       <button
         onClick={() => {
           setMapToggle((prev) => {
@@ -77,6 +79,7 @@ function App() {
       >
         Fetch Data
       </button>
+      <LiveList />
     </div>
   );
 }
