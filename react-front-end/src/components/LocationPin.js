@@ -12,19 +12,21 @@ export default function LocationPin(props) {
   const { state, setState } = useContext(stateContext);
 
   const quakePage = function() {
-    setState({
-      ...state,
-      earthquake: {
-        title: props.title,
-        latitude: props.lat,
-        longitude: props.lng,
-        depth: props.depth,
-        magnitude: props.magnitude,
-        pager: props.pager,
-        time_stamp: props.time_stamp,
-        tsunami: props.tsunami,
-      },
-      mode: 'earthquake'
+    setState(prev => {
+      return {
+        ...prev,
+        earthquake: {
+          title: props.title,
+          latitude: props.lat,
+          longitude: props.lng,
+          depth: props.depth,
+          magnitude: props.magnitude,
+          pager: props.pager,
+          time_stamp: props.time_stamp,
+          tsunami: props.tsunami,
+        },
+        mode: 'earthquake'
+      }
     })
   }
 
