@@ -8,5 +8,6 @@ CREATE TABLE earthquakes (
   latitude VARCHAR(255) NOT NULL,
   depth VARCHAR(255) NOT NULL,
   tsunami SMALLINT NOT NULL,
-  time_stamp BIGINT NOT NULL
+  time_stamp BIGINT NOT NULL,
+  added TIMESTAMP NOT NULL DEFAULT now()
 );

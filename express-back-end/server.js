@@ -6,6 +6,7 @@ const BodyParser = require("body-parser");
 const PORT = 8000;
 const { getEarthquakeData } = require("./lib/queries/getEarthquakeData.js");
 const { upsert } = require("./lib/queries/upsert.js");
+const { getRecentEarthquakes } = require('./lib/queries/getRecentEarthquakes');
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
@@ -23,13 +24,7 @@ App.use(Express.static("public"));
 
 // Sample GET route
 App.get("/api/earthquakes", (req, res) => {
-  getEarthquakeData(450).then((response) => {
-    res.json(response);
-  });
-});
-
-App.get("/api/data", (req, res) => {
-  getEarthquakeData(1).then((response) => {
+  getEarthquakeData(400).then((response) => {
     res.json(response);
   });
 });
@@ -50,7 +45,18 @@ const getEarthquakes = function() {
 
 const fn60sec = function() {
   getEarthquakes()
-    .then(upsert);
+    .then(upsert)
+    .then(getRecentEarthquakes)
+    .then((res) => {
+      if (res.length > 0) {
+        console.log('new pushed quake', res);
+        pusher.trigger('quakes', 'new-earthquakes', {
+          'earthquakes': res
+        });
+      }
+    })
+    .catch(err => console.log('err', err));
+  console.log('polling api');
 };
 
 fn60sec();

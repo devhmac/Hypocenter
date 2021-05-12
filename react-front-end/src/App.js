@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import axios from "axios";
+import Pusher from "pusher-js";
 import "./App.css";
 
 import Globe from "./components/Globe";
@@ -17,34 +18,8 @@ function App() {
   const { state, setState } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
-  // const fetchData = () => {
-  //   axios
-  //     .get("/api/data") // You can simply make your requests to "/api/whatever you want"
-  //     .then((response) => {
-  //       // handle success
-  //       console.log(response.data); // The entire response from the express server route
-
-  //       console.log(response.data.message); // Just the message
-  //       setState({
-  //         title: response.data[0].title,
-  //         earthquakes: [],
-  //         earthquake: {
-  //           title: response.data[0].title,
-  //           latitude: response.data[0].latitude,
-  //           longitude: response.data[0].longitude,
-  //           magnitude: response.data[0].magnitude,
-  //           depth: response.data[0].depth,
-  //           pager: response.data[0].pager,
-  //           time_stamp: response.data[0].time_stamp,
-  //           tsunami: response.data[0].tsunami,
-  //         },
-  //         mode: "earthquake",
-  //       });
-  //     });
-  // };
-
-  // on load set state to earthquake list
   useEffect(() => {
+    //initial get request for eq's
     axios
       .get("/api/earthquakes")
       .then((response) => {
@@ -55,6 +30,27 @@ function App() {
         });
       })
       .catch((error) => console.log(error));
+
+    //pusher connection for new earthquakes
+    const pusher = new Pusher("7a7e150b8cf104d8b9b9", {
+      cluster: "us3",
+      encrypted: true,
+    });
+    const channel = pusher.subscribe('quakes');
+    channel.bind('new-earthquakes', (data) => {
+      //immutable state update - adds new eq's to earthquakes array
+      setState(prev => {
+        const earthquakeList = [...prev.earthquakes];
+
+        for (let quake of data.earthquakes) {
+          earthquakeList.push(quake)
+        }
+        return {
+          ...prev,
+          earthquakes: earthquakeList
+        };
+      })
+    })
   }, []);
 
   return (
