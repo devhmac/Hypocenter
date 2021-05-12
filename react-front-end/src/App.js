@@ -80,7 +80,6 @@ function App() {
       >
         Fetch Data
       </button>
-      <LiveList />
     </div>
   );
 }
