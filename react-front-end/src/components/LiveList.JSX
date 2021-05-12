@@ -1,8 +1,9 @@
-import React from "react";
+import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import { stateContext } from "../contextProviders/stateContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -29,20 +30,19 @@ function ListItemLink(props) {
 export default function SimpleList() {
   const classes = useStyles();
 
+  const { liveList } = useContext(stateContext);
+
+  const eqList = liveList.map((quake) => {
+    return (
+      <ListItem button>
+        <ListItemText primary={quake.title} secondary={quake.magnitude} />
+      </ListItem>
+    );
+  });
+
   return (
     <div className={classes.root}>
-      <List aria-label="new earthquake">
-        <ListItem button>
-          <ListItemText
-            className={classes["list-text"]}
-            primary="Inbox"
-            secondary="test test"
-          />
-        </ListItem>
-        <ListItem button>
-          <ListItemText primary="Drafts" />
-        </ListItem>
-      </List>
+      <List aria-label="new earthquake">{eqList}</List>
     </div>
   );
 }
