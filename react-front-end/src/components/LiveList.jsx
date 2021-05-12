@@ -27,37 +27,16 @@ function ListItemLink(props) {
   return <ListItem button component="a" {...props} />;
 }
 
-export default function SimpleList() {
+export default function LiveList(props) {
   const classes = useStyles();
 
   const { state, setState, liveList } = useContext(stateContext);
-
-  const toQuakePage = (marker) => {
-    setTimeout(() => {
-      setState((prev) => {
-        return {
-          ...prev,
-          earthquake: {
-            title: marker.title,
-            latitude: marker.latitude,
-            longitude: marker.longitude,
-            depth: marker.depth,
-            magnitude: marker.magnitude,
-            pager: marker.pager,
-            time_stamp: marker.time_stamp,
-            tsunami: marker.tsunami,
-          },
-          mode: "earthquake",
-        };
-      });
-    }, 1000);
-  };
 
   const eqList = liveList.map((quake) => {
     return (
       <ListItem button>
         <ListItemText
-          onClick={() => toQuakePage(quake)}
+          onClick={() => props.onClick(quake)}
           primary={quake.title}
           secondary={quake.magnitude}
         />
