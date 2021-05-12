@@ -7,6 +7,7 @@ const initialPins = {
   },
   mode: "main",
   earthquakes: [],
+  tooltip: ""
 };
 
 

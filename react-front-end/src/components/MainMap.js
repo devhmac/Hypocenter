@@ -22,7 +22,7 @@ export default function MainMap(props) {
       pager={earthquake.pager}
       time_stamp={earthquake.time_stamp}
       tsunami={earthquake.tsunami}
-      tooltip={`${earthquake.title} \n${earthquake.date} \nMagnitude ${earthquake.magnitude}`}
+      tooltip={`${earthquake.title} \n${new Date(Number(earthquake.time_stamp)).toDateString().split(' ').slice(1).join(' ')} \nMagnitude ${earthquake.magnitude}`}
     />
     );
   });

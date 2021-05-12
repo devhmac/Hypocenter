@@ -2,7 +2,9 @@ import React, { useContext } from 'react'
 import { stateContext } from '../contextProviders/stateContext'
 import { Icon } from '@iconify/react';
 import bullseyeIcon from '@iconify-icons/la/bullseye';
-import magnitudeColor from '../helpers/magnitudeColor'
+import magnitudeColor from '../helpers/magnitudeColor';
+import Tippy from '@tippyjs/react';
+import 'tippy.js/dist/tippy.css';
 
 
 export default function LocationPin(props) {
@@ -27,9 +29,11 @@ export default function LocationPin(props) {
   }
 
   return (
-    <div id={props.key} className={"pin pin--" + magnitudeColor(props.magnitude, props.pager)} onClick={quakePage}>
-      <Icon icon={bullseyeIcon} className="pin-icon" />
-    </div>
+    <Tippy content={props.tooltip}>
+      <div id={props.key} className={"pin pin--" + magnitudeColor(props.magnitude, props.pager)} onClick={quakePage}>
+        <Icon icon={bullseyeIcon} className="pin-icon" />
+      </div>
+    </Tippy>
   )
 };
 
