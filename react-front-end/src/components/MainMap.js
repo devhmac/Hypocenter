@@ -16,8 +16,12 @@ export default function MainMap(props) {
       key={earthquake.id}
       lat={Number(earthquake.latitude)}
       lng={Number(earthquake.longitude)}
+      depth={earthquake.depth}
       magnitude={earthquake.magnitude}
       pager={earthquake.pager}
+      time_stamp={earthquake.time_stamp}
+      tsunami={earthquake.tsunami}
+      tooltip={`${earthquake.title} \n${earthquake.date} \nMagnitude ${earthquake.magnitude}`}
     />
     );
   });
