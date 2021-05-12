@@ -10,12 +10,13 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function TextButtons(props) {
+export default function UniversalButton(props) {
   const classes = useStyles();
-
   return (
     <div className={classes.root}>
-      <Button color="primary">Comment</Button>
+      <Button variant="contained" color="primary" onClick={props.onClick}>
+        {props.children}
+      </Button>
     </div>
   );
 }
