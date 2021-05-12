@@ -61,7 +61,9 @@ export default function Globe(props) {
         markers={eqArr}
         options={options}
       />
-      <LiveList />
+      <LiveList
+        onClick={toQuakePage}
+      />
     </div>
   )
 }
