@@ -27,8 +27,8 @@ export function StateProvider(props) {
 
 
   return (
-      <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate }}>
-        {props.children}
-      </stateContext.Provider>
+    <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate }}>
+      {props.children}
+    </stateContext.Provider>
   );
 };
