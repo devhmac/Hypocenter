@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { stateContext } from '../contextProviders/stateContext'
 import ReactGlobe from 'react-globe';
 import 'tippy.js/dist/tippy.css';
@@ -9,11 +9,21 @@ import magnitudeColor from '../helpers/magnitudeColor'
 export default function Globe(props) {
   const { state, setState } = useContext(stateContext);
 
+  const [
+    hasGlobeBackgroundTextureLoaded,
+    setHasGlobeBackgroundTextureLoaded,
+  ] = useState(false);
+  const [
+    hasGlobeCloudsTextureLoaded,
+    setHasGlobeCloudsTextureLoaded,
+  ] = useState(false);
+  const [hasGlobeTextureLoaded, setHasGlobeTextureLoaded] = useState(false);
+
   useEffect(() => {
     if (
-      state.starsLoaded &&
-      state.globeTextureLoaded &&
-      state.cloudsLoaded
+      hasGlobeBackgroundTextureLoaded &&
+      hasGlobeCloudsTextureLoaded &&
+      hasGlobeTextureLoaded
     ) {
       setState({
         ...state,
@@ -23,7 +33,7 @@ export default function Globe(props) {
   }, [
     state.starsLoaded,
     state.globeTextureLoaded,
-    state.cloudsLoaded,
+    state.cloudsLoaded
   ]);
 
   const toQuakePage = (marker) => {
@@ -69,36 +79,15 @@ export default function Globe(props) {
     enableCameraRotate: state.startSite
   };
 
-  const setGlobeTextureLoaded = () => {
-    setState({
-      ...state,
-      globeTextureLoaded: true
-    })
-  }
-
-  const setStarsLoaded = () => {
-    setState({
-      ...state,
-      starsLoaded: true
-    })
-  }
-
-  const setCloudsLoaded = () => {
-    setState({
-      ...state,
-      cloudsLoaded: true
-    })
-  }
-
   return (
     <div className="globe" >
       <ReactGlobe
         onClickMarker={toQuakePage}
         markers={eqArr}
         options={options}
-        onGlobeTextureLoaded={() => setGlobeTextureLoaded()}
-        onGlobeBackgroundTextureLoaded={() =>setStarsLoaded()}
-        onGlobeCloudsTextureLoaded={() =>setCloudsLoaded()}
+        onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
+        onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
+        onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
       />
     </div>
   )

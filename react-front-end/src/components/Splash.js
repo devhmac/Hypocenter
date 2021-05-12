@@ -1,6 +1,6 @@
 import React, { useContext } from 'react';
 import { stateContext } from '../contextProviders/stateContext';
-import EngageButton from './engagebutton.js';
+import EngageButton from './engageButton.js';
 import Fade from './Fade.js';
 import './Splash.css';
 

@@ -3,6 +3,8 @@ import axios from "axios";
 import Pusher from "pusher-js";
 import "./App.css";
 
+import Splash from "./components/Splash";
+
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
@@ -55,6 +57,7 @@ function App() {
 
   return (
     <div className="App">
+      <Splash />
       <NavBar />
 
       {state.mode === "main" && !mapToggle && <Globe />}
