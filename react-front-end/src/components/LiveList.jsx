@@ -30,7 +30,7 @@ function ListItemLink(props) {
 export default function LiveList(props) {
   const classes = useStyles();
 
-  const { state, setState, liveList } = useContext(stateContext);
+  const { liveList } = useContext(stateContext);
 
   const eqList = liveList.map((quake) => {
     return (
