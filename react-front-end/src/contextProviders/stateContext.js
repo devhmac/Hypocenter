@@ -7,7 +7,11 @@ const initialPins = {
   },
   mode: "main",
   earthquakes: [],
-  tooltip: ""
+  startSite: false,
+  globeLoaded: false,
+  starsLoaded: false,
+  globeTextureLoaded: false,
+  cloudsLoaded: false,
 };
 
 
