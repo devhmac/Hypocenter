@@ -15,15 +15,12 @@ export const stateContext = createContext(null);
 
 export function StateProvider(props) {
   const [state, setState] = useState(initialPins);
+  const [liveList, setLiveList] = useState([]);
 
-  const setMap = function(mapid) {
-    //we could use this to set the state to specific map based on the id
-    setState()
-  }
-
-
+    
+ 
   return (
-    <stateContext.Provider value={{ state, setState }}>
+    <stateContext.Provider value={{ state, setState, liveList, setLiveList }}>
       {props.children}
     </stateContext.Provider>
   );
