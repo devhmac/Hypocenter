@@ -12,7 +12,6 @@ import QuakePage from "./components/individualQuakePage/QuakePage";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
-import DarkMode from "./components/Darkmode/DarkMode.js";
 
 function App() {
   const { state, setState } = useContext(stateContext);
@@ -75,12 +74,13 @@ function App() {
       )}
       <button
         onClick={() => {
-          setMapToggle((prev) => { setMapToggle(!prev) })
+          setMapToggle((prev) => {
+            setMapToggle(!prev);
+          });
         }}
-      >Fetch Data</button>
-
-
-      <DarkMode />
+      >
+        Fetch Data
+      </button>
     </div>
   );
 }
