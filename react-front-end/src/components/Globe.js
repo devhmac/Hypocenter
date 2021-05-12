@@ -5,6 +5,7 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import './Globe.css'
 import magnitudeColor from '../helpers/magnitudeColor'
+import Fade from './Fade.js'
 
 export default function Globe(props) {
   const { state, setState } = useContext(stateContext);
@@ -13,13 +14,16 @@ export default function Globe(props) {
     hasGlobeBackgroundTextureLoaded,
     setHasGlobeBackgroundTextureLoaded,
   ] = useState(false);
+
   const [
     hasGlobeCloudsTextureLoaded,
     setHasGlobeCloudsTextureLoaded,
   ] = useState(false);
+
   const [hasGlobeTextureLoaded, setHasGlobeTextureLoaded] = useState(false);
 
   useEffect(() => {
+    console.log(hasGlobeBackgroundTextureLoaded, hasGlobeTextureLoaded, hasGlobeTextureLoaded)
     if (
       hasGlobeBackgroundTextureLoaded &&
       hasGlobeCloudsTextureLoaded &&
@@ -31,9 +35,9 @@ export default function Globe(props) {
       })
     }
   }, [
-    state.starsLoaded,
-    state.globeTextureLoaded,
-    state.cloudsLoaded
+    hasGlobeBackgroundTextureLoaded,
+    hasGlobeCloudsTextureLoaded,
+    hasGlobeTextureLoaded,
   ]);
 
   const toQuakePage = (marker) => {
@@ -80,7 +84,8 @@ export default function Globe(props) {
   };
 
   return (
-    <div className="globe" >
+    <>
+    <div className={"globe"}>
       <ReactGlobe
         onClickMarker={toQuakePage}
         markers={eqArr}
@@ -90,5 +95,8 @@ export default function Globe(props) {
         onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
       />
     </div>
+    </>
   )
 }
+
+//<Fade animationDuration={3000} className="cover" show={!state.globeLoaded} />

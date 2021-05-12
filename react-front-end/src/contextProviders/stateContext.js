@@ -9,9 +9,6 @@ const initialPins = {
   earthquakes: [],
   startSite: false,
   globeLoaded: false,
-  starsLoaded: false,
-  globeTextureLoaded: false,
-  cloudsLoaded: false,
 };
 
 
