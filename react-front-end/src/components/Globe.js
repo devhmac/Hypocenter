@@ -22,6 +22,11 @@ export default function Globe(props) {
 
   const [hasGlobeTextureLoaded, setHasGlobeTextureLoaded] = useState(false);
 
+  const [
+    globeLoaded,
+    setglobeLoaded,
+  ] = useState(false);
+
   useEffect(() => {
     console.log(hasGlobeBackgroundTextureLoaded, hasGlobeTextureLoaded, hasGlobeTextureLoaded)
     if (
@@ -29,10 +34,7 @@ export default function Globe(props) {
       hasGlobeCloudsTextureLoaded &&
       hasGlobeTextureLoaded
     ) {
-      setState({
-        ...state,
-        globeLoaded: true
-      })
+      setglobeLoaded(true)
     }
   }, [
     hasGlobeBackgroundTextureLoaded,
