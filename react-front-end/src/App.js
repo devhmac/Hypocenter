@@ -16,7 +16,7 @@ import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
 
 function App() {
-  const { state, setState } = useContext(stateContext);
+  const { state, setState, liveListUpdate } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
   useEffect(() => {
@@ -29,6 +29,7 @@ function App() {
           ...state,
           earthquakes: response.data,
         });
+        liveListUpdate(response.data);
       })
       .catch((error) => console.log(error));
 
