@@ -8,7 +8,6 @@ import { stateContext } from "../contextProviders/stateContext";
 import NewEarthquakePopup from "./NewEarthquakePopup";
 import magnitudeColor from "../helpers/magnitudeColor";
 
-const theme = {};
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
@@ -18,14 +17,12 @@ const useStyles = makeStyles((theme) => ({
     backgroundColor: `transparent`,
     color: "white",
   },
-  "root:hover": {
-    background: "green",
-  },
+
   "list-title": {
     "text-decoration": "underline",
   },
   "list-text": {
-    color: "white",
+    //color: "white",
   },
   lightgreen: {
     backgroundColor: "rgb(2, 237, 116, 0.4)",
@@ -52,8 +49,10 @@ const useStyles = makeStyles((theme) => ({
 //map through livelist state, put each one into a list item, but that in {var} list
 
 export default function LiveList(props) {
-  const classes = useStyles();
   const { state, setState, liveList, eqPopup } = useContext(stateContext);
+
+  const classes = useStyles();
+
   const quakePage = function (eq) {
     setState({
       ...state,
@@ -70,6 +69,7 @@ export default function LiveList(props) {
       mode: "earthquake",
     });
   };
+  //et secondary =
 
   const eqList = liveList.map((quake) => {
     return (
@@ -77,20 +77,20 @@ export default function LiveList(props) {
         key={quake.id}
         button
         onClick={() => quakePage(quake)}
-        className={[
-          classes["list-item"],
-          classes[`${magnitudeColor(quake.magnitude, quake.pager)}`],
-        ]}
+        className={`
+          ${classes["list-item"]}
+          ${classes[`${magnitudeColor(quake.magnitude, quake.pager)}`]}`}
       >
-        <Typography>
-          <ListItemText
-            className={classes["list-text"]}
-            primary={<strong>{quake.title}</strong>}
-            secondary={`Magnitude: ${quake.magnitude}, ${new Date(
-              Number(quake.time_stamp)
-            ).toString()}`}
-          />
-        </Typography>
+        <ListItemText
+          className={classes["list-text"]}
+          primary={<strong>{quake.title}</strong>}
+          secondary={
+            <Typography style={{ color: "lightgrey", "font-size": "12px" }}>
+              Magnitude: {quake.magnitude},
+              {new Date(Number(quake.time_stamp)).toString()}
+            </Typography>
+          }
+        />
       </ListItem>
     );
   });
@@ -98,7 +98,7 @@ export default function LiveList(props) {
   return (
     <>
       <div className={classes.root}>
-        <List aria-label="new earthquake">
+        <List aria-label="new earthquake list">
           <ListItem>
             <ListItemText
               className={classes["list-title"]}
