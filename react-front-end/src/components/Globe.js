@@ -1,13 +1,44 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import { stateContext } from '../contextProviders/stateContext'
 import ReactGlobe from 'react-globe';
 import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import './Globe.css'
 import magnitudeColor from '../helpers/magnitudeColor'
+import Fade from './Fade.js'
+import { globeLoaderContext } from '../contextProviders/globeLoaderContext'
 
 export default function Globe(props) {
   const { state, setState } = useContext(stateContext);
+  const { globeLoaded, setGlobeLoaded, startSite, setStartSite } = useContext(globeLoaderContext)
+
+  const [
+    hasGlobeBackgroundTextureLoaded,
+    setHasGlobeBackgroundTextureLoaded,
+  ] = useState(false);
+
+  const [
+    hasGlobeCloudsTextureLoaded,
+    setHasGlobeCloudsTextureLoaded,
+  ] = useState(false);
+
+  const [hasGlobeTextureLoaded, setHasGlobeTextureLoaded] = useState(false);
+
+  useEffect(() => {
+    console.log(hasGlobeBackgroundTextureLoaded, hasGlobeTextureLoaded, hasGlobeTextureLoaded)
+    if (
+      hasGlobeBackgroundTextureLoaded &&
+      hasGlobeCloudsTextureLoaded &&
+      hasGlobeTextureLoaded
+    ) {
+      console.log('here')
+      setGlobeLoaded(true)
+    }
+  }, [
+    hasGlobeBackgroundTextureLoaded,
+    hasGlobeCloudsTextureLoaded,
+    hasGlobeTextureLoaded,
+  ]);
 
   const toQuakePage = (marker) => {
     setTimeout(() => {
@@ -48,16 +79,25 @@ export default function Globe(props) {
     ambientLightIntensity: 1,
     markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
     markerRadiusScaleRange: [0.005, 0.009],
-    markerGlowRadiusScale: 0
+    markerGlowRadiusScale: 0,
+    enableCameraRotate: startSite
   };
 
   return (
-    <div className="globe" >
+    <>
+    <div className={globeLoaded ? 'globe' : 'hidden'}>
       <ReactGlobe
         onClickMarker={toQuakePage}
         markers={eqArr}
         options={options}
+        onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
+        onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
+        onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
       />
     </div>
+    <Fade animationDuration={3000} className="cover" show={!globeLoaded} />
+    </>
   )
 }
+
+//<Fade animationDuration={3000} className="cover" show={!state.globeLoaded} />

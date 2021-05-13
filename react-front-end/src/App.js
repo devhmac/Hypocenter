@@ -3,11 +3,14 @@ import axios from "axios";
 import Pusher from "pusher-js";
 import "./App.css";
 
+import Splash from "./components/Splash";
+
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
 
 import { stateContext } from "./contextProviders/stateContext";
+import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
 
 import CommentButton from "./components/Buttons/CommentButton.jsx";
@@ -57,31 +60,31 @@ function App() {
 
   return (
     <div className="App">
-      <ThemeProvider>
-        <NavBar />
+    <GlobeLoaderProvider>
+      <NavBar />
 
-        {state.mode === "main" && !mapToggle && <Globe />}
-        {state.mode === "main" && mapToggle && <MainMap />}
+      {state.mode === "main" && !mapToggle && <Globe />}
+      <Splash />
+      {state.mode === "main" && mapToggle && <MainMap />}
 
-        {state.mode === "earthquake" && (
-          <>
-            <QuakePage />
-            <CommentButton />
-            <DeleteButton />
-            <ChatBox />
-          </>
-        )}
-        <button
-          onClick={() => {
-            setMapToggle((prev) => {
-              setMapToggle(!prev);
-            });
-          }}
-        >
-          Fetch Data
-        </button>
-        <div className="toggle-container"></div>
-      </ThemeProvider>
+      {state.mode === "earthquake" && (
+        <>
+          <QuakePage />
+          <CommentButton />
+          <DeleteButton />
+          <ChatBox />
+        </>
+      )}
+      </GlobeLoaderProvider>
+      <button
+        onClick={() => {
+          setMapToggle((prev) => {
+            setMapToggle(!prev);
+          });
+        }}
+      >
+        Fetch Data
+      </button>
     </div>
   );
 }
