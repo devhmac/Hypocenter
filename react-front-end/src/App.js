@@ -23,6 +23,10 @@ function App() {
   const { state, setState } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
+  window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+  } 
+
   useEffect(() => {
     //initial get request for eq's
     axios
@@ -58,8 +62,6 @@ function App() {
     })
   }, []);
 
-  const addBodyClass = className => document.body.classList.add(className);
-  const removeBodyClass = className => document.body.classList.remove(className);
 
 
   useEffect(() => {

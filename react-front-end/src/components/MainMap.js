@@ -9,7 +9,7 @@ import { acDark } from './mapstyles/ac-dark';
 
 export default function MainMap(props) {
   const { state } = useContext(stateContext);
-  const mapOptions = acDark;
+  const mapOptions = acDark; 
 
   const eqArr = state.earthquakes.map(earthquake => {
     return (<LocationPin
