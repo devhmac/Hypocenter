@@ -10,9 +10,9 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "15%",
     left: "3%",
-    width: "100%",
     maxWidth: 360,
-    backgroundColor: "transparent",
+    backgroundColor: "grey",
+    opacity: "0.5",
     color: "white",
   },
   "list-title": {
