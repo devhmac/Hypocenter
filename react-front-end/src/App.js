@@ -16,7 +16,9 @@ import QuakePage from "./components/individualQuakePage/QuakePage";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
-import { ThemeProvider } from "./components/Darkmode/ThemeContext"
+import { ThemeProvider } from "./components/Darkmode/ThemeContext";
+import "./components/Darkmode/Theme.css";
+
 
 function App() {
   const { state, setState } = useContext(stateContext);
