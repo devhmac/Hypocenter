@@ -82,7 +82,7 @@ export default function LiveList(props) {
       >
         <ListItemText
           className={classes["list-text"]}
-          primary={quake.title}
+          primary={<strong>{quake.title}</strong>}
           secondary={`Magnitude: ${quake.magnitude}, ${new Date(
             Number(quake.time_stamp)
           ).toString()}`}
