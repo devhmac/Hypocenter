@@ -5,13 +5,14 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { stateContext } from "../contextProviders/stateContext";
 import NewEarthquakePopup from "./NewEarthquakePopup";
+import magnitudeColor from "../helpers/magnitudeColor";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
     top: "15%",
     left: "3%",
-    maxWidth: 360,
+    maxWidth: 300,
     backgroundColor: `transparent`,
     color: "white",
   },
@@ -24,8 +25,19 @@ const useStyles = makeStyles((theme) => ({
   "list-text": {
     color: "white",
   },
-  "list-item": {
+  lightgreen: {
     backgroundColor: "rgb(2, 237, 116, 0.3)",
+  },
+  yellow: {
+    backgroundColor: "rgb(255,255,0, 0.3)",
+  },
+  orange: {
+    backgroundColor: "rgb(255,165,0, 0.3)",
+  },
+  red: {
+    backgroundColor: "rgb(255, 0, 0, 0.3)",
+  },
+  "list-item": {
     //border: "2px solid black",
     borderRadius: "5px",
     marginTop: "2px",
@@ -63,12 +75,17 @@ export default function LiveList(props) {
         key={quake.id}
         button
         onClick={() => quakePage(quake)}
-        className={classes["list-item"]}
+        className={[
+          classes["list-item"],
+          classes[`${magnitudeColor(quake.magnitude, quake.pager)}`],
+        ]}
       >
         <ListItemText
           className={classes["list-text"]}
           primary={quake.title}
-          secondary={quake.magnitude}
+          secondary={`${quake.magnitude}, ${new Date(
+            Number(quake.time_stamp)
+          ).toString()}`}
         />
       </ListItem>
     );
