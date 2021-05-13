@@ -5,8 +5,6 @@ import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { stateContext } from "../contextProviders/stateContext";
 
-const hi = false;
-
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
@@ -81,7 +79,7 @@ export default function LiveList(props) {
         <ListItem>
           <ListItemText
             className={classes["list-title"]}
-            primary="Most Recent Earthquakes"
+            primary="Recent Earthquakes"
           />
         </ListItem>
         {eqList}
