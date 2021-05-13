@@ -25,6 +25,10 @@ export function StateProvider(props) {
     return setLiveList(recentEQs);
   };
 
+  const prependNewQuake = (data) => {
+
+  }
+
 
   return (
     <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate }}>
