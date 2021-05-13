@@ -23,10 +23,6 @@ const useStyles = makeStyles((theme) => ({
 
 //map through livelist state, put each one into a list item, but that in {var} list
 
-function ListItemLink(props) {
-  return <ListItem button component="a" {...props} />;
-}
-
 export default function LiveList(props) {
   const classes = useStyles();
   const { state, setState, liveList } = useContext(stateContext);

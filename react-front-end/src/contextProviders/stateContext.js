@@ -18,7 +18,7 @@ export function StateProvider(props) {
   const [liveList, setLiveList] = useState([]);
 
   const liveListUpdate = (data) => {
-    const recentEQs = []
+    const recentEQs = [];
     for (let i = 0; i < 5; i++) {
       recentEQs.push(data[i])
     }
@@ -26,8 +26,11 @@ export function StateProvider(props) {
   };
 
   const prependNewQuake = (data) => {
+    const recentEQs = [];
+    for (let quake of data) {
 
-  }
+    }
+  };
 
 
   return (
