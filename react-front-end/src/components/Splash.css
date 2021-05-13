@@ -14,13 +14,11 @@
 }
 
 .splashlogo {
-  display: inline;
   margin-top: -2rem;
   margin-bottom: -7rem;
 }
 
 .engage {
-  display: inline;
   cursor: pointer;
   pointer-events: auto;
 }

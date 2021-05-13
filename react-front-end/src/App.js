@@ -58,12 +58,23 @@ function App() {
     })
   }, []);
 
+  const addBodyClass = className => document.body.classList.add(className);
+  const removeBodyClass = className => document.body.classList.remove(className);
+
+
+  useEffect(() => {
+    if (state.mode === "main") {
+      document.body.classList.add('overflow-controller');
+    } else {
+      document.body.classList.remove('overflow-controller');
+    }
+},[state.mode])
+
   return (
     <div className="App">
       <ThemeProvider>
         <GlobeLoaderProvider>
           <NavBar />
-
           {state.mode === "main" && !mapToggle && <Globe />}
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
