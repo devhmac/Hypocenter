@@ -16,7 +16,7 @@ import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
 
 function App() {
-  const { state, setState, liveListUpdate, addNewLiveListItem } = useContext(stateContext);
+  const { state, setState, liveListUpdate, addNewLiveListItem, addNewEarthquakePin } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
   useEffect(() => {
@@ -42,18 +42,8 @@ function App() {
     channel.bind('new-earthquakes', (data) => {
       console.log('pusher data', data)
       //immutable state update - adds new eq's to earthquakes array
-      setState(prev => {
-        const earthquakeList = [...prev.earthquakes];
 
-        for (let quake of data.earthquakes) {
-          earthquakeList.push(quake)
-        }
-        return {
-          ...prev,
-          earthquakes: earthquakeList
-        };
-      })
-
+      addNewEarthquakePin(data.earthquakes);
       addNewLiveListItem(data.earthquakes);
     })
   }, []);
