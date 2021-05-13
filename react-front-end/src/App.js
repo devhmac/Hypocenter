@@ -3,21 +3,30 @@ import axios from "axios";
 import Pusher from "pusher-js";
 import "./App.css";
 
+import Splash from "./components/Splash";
+
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
 import LiveList from './components/LiveList'
 
 import { stateContext } from "./contextProviders/stateContext";
+import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
 
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
+import { ThemeProvider } from "./components/Darkmode/ThemeContext";
+import "./components/Darkmode/Theme.css";
 
 function App() {
   const { state, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
+
+  window.onbeforeunload = function () {
+  window.scrollTo(0, 0);
+  } 
 
   useEffect(() => {
     //initial get request for eq's
@@ -44,12 +53,24 @@ function App() {
     })
   }, []);
 
+
+
+  useEffect(() => {
+    if (state.mode === "main") {
+      document.body.classList.add('overflow-controller');
+    } else {
+      document.body.classList.remove('overflow-controller');
+    }
+},[state.mode])
+
   return (
     <div className="App">
-      <NavBar />
-
-      {state.mode === "main" && !mapToggle && <Globe />}
-      {state.mode === "main" && mapToggle && <MainMap />}
+      <ThemeProvider>
+        <GlobeLoaderProvider>
+          <NavBar />
+          {state.mode === "main" && !mapToggle && <Globe />}
+          <Splash />
+          {state.mode === "main" && mapToggle && <MainMap />}
 
       {state.mode === "earthquake" && (
         <>
@@ -68,7 +89,9 @@ function App() {
         }}
       >
         Fetch Data
+
       </button>
+      </ThemeProvider>
     </div>
   );
 }

@@ -6,7 +6,7 @@ const BodyParser = require("body-parser");
 const PORT = 8000;
 const { getEarthquakeData } = require("./lib/queries/getEarthquakeData.js");
 const { upsert } = require("./lib/queries/upsert.js");
-const { getRecentEarthquakes } = require('./lib/queries/getRecentEarthquakes');
+const { getRecentEarthquakes } = require("./lib/queries/getRecentEarthquakes");
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
@@ -30,33 +30,34 @@ App.get("/api/earthquakes", (req, res) => {
 });
 
 App.post("/comment", (req, res) => {
+  console.log("test server", req.body.text);
   pusher.trigger("comments", "new-comment", {
-    comment: req.body.newComment,
+    comment: req.body.text,
   });
   console.log("pusher triggered okay");
   res.status(200).send("OK");
 });
 
-const getEarthquakes = function() {
+const getEarthquakes = function () {
   return request(
     "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
   );
 };
 
-const fn60sec = function() {
+const fn60sec = function () {
   getEarthquakes()
     .then(upsert)
     .then(getRecentEarthquakes)
     .then((res) => {
       if (res.length > 0) {
-        console.log('new pushed quake', res);
-        pusher.trigger('quakes', 'new-earthquakes', {
-          'earthquakes': res
+        console.log("new pushed quake", res);
+        pusher.trigger("quakes", "new-earthquakes", {
+          earthquakes: res,
         });
       }
     })
-    .catch(err => console.log('err', err));
-  console.log('polling api');
+    .catch((err) => console.log("err", err));
+  console.log("polling api");
 };
 
 fn60sec();

@@ -1,0 +1,48 @@
+.splash {
+  bottom: 0;
+  left: 0;
+  pointer-events: none;
+  position: fixed;
+  right: 0;
+  top: 0;
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  color: white;
+}
+
+.splashlogo {
+  margin-top: -2rem;
+  margin-bottom: -7rem;
+}
+
+.engage {
+  cursor: pointer;
+  pointer-events: auto;
+}
+
+.hidden {
+  opacity: 0;
+}
+
+@keyframes fade-in {
+  0% {
+    filter: blur(10px);
+    opacity: 0;
+  }
+  100% {
+    filter: blur(0px);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-out {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}

@@ -10,6 +10,7 @@ import { acDark } from './mapstyles/ac-dark';
 
 
 export default function MainMap(props) {
+
   const { state, setState } = useContext(stateContext);
   const mapOptions = acDark;
 
