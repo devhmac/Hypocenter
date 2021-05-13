@@ -60,31 +60,33 @@ function App() {
 
   return (
     <div className="App">
-    <GlobeLoaderProvider>
-      <NavBar />
+      <ThemeProvider>
+        <GlobeLoaderProvider>
+          <NavBar />
 
-      {state.mode === "main" && !mapToggle && <Globe />}
-      <Splash />
-      {state.mode === "main" && mapToggle && <MainMap />}
+          {state.mode === "main" && !mapToggle && <Globe />}
+          <Splash />
+          {state.mode === "main" && mapToggle && <MainMap />}
 
-      {state.mode === "earthquake" && (
-        <>
-          <QuakePage />
-          <CommentButton />
-          <DeleteButton />
-          <ChatBox />
-        </>
-      )}
-      </GlobeLoaderProvider>
-      <button
-        onClick={() => {
-          setMapToggle((prev) => {
-            setMapToggle(!prev);
-          });
-        }}
-      >
-        Fetch Data
+          {state.mode === "earthquake" && (
+            <>
+              <QuakePage />
+              <CommentButton />
+              <DeleteButton />
+              <ChatBox />
+            </>
+          )}
+        </GlobeLoaderProvider>
+        <button
+          onClick={() => {
+            setMapToggle((prev) => {
+              setMapToggle(!prev);
+            });
+          }}
+        >
+          Fetch Data
       </button>
+      </ThemeProvider>
     </div>
   );
 }
