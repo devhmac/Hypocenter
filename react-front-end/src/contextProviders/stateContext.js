@@ -70,6 +70,7 @@ export function StateProvider(props) {
         }
       };
       // sets eqPopup state with brand new eq's to set notifications
+      //dont love my implementation here, function doing a lot
       setEqPopup(prev => {
         return {
           ...prev,
@@ -84,7 +85,7 @@ export function StateProvider(props) {
 
 
   return (
-    <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins }}>
+    <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins, eqPopup, setEqPopup }}>
       {props.children}
     </stateContext.Provider>
   );
