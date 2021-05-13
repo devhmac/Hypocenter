@@ -48,7 +48,7 @@ export function StateProvider(props) {
 
   const liveListUpdate = (data) => {
     const recentEQs = [];
-    for (let i = 0; i < 6; i++) {
+    for (let i = 0; i < 5; i++) {
       recentEQs.push(data[i])
     }
     return setLiveList(recentEQs);
