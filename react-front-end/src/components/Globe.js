@@ -5,8 +5,13 @@ import 'tippy.js/dist/tippy.css';
 import 'tippy.js/animations/scale.css';
 import './Globe.css'
 import magnitudeColor from '../helpers/magnitudeColor'
+
+import LiveList from './LiveList'
+
+
 import Fade from './Fade.js'
 import { globeLoaderContext } from '../contextProviders/globeLoaderContext'
+
 
 export default function Globe(props) {
   const { state, setState } = useContext(stateContext);
@@ -40,19 +45,21 @@ export default function Globe(props) {
 
   const toQuakePage = (marker) => {
     setTimeout(() => {
-      setState({
-        ...state,
-        earthquake: {
-          title: marker.title,
-          latitude: marker.latitude,
-          longitude: marker.longitude,
-          depth: marker.depth,
-          magnitude: marker.magnitude,
-          pager: marker.pager,
-          time_stamp: marker.time_stamp,
-          tsunami: marker.tsunami,
-        },
-        mode: 'earthquake'
+      setState(prev => {
+        return {
+          ...prev,
+          earthquake: {
+            title: marker.title,
+            latitude: marker.latitude,
+            longitude: marker.longitude,
+            depth: marker.depth,
+            magnitude: marker.magnitude,
+            pager: marker.pager,
+            time_stamp: marker.time_stamp,
+            tsunami: marker.tsunami,
+          },
+          mode: 'earthquake'
+        }
       })
     }, 1000);
   };
@@ -91,6 +98,8 @@ export default function Globe(props) {
         onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
         onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
         onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
+      />
+      <LiveList
       />
     </div>
     <Fade animationDuration={3000} className="cover" show={!globeLoaded} />

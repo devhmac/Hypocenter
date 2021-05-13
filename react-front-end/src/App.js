@@ -8,6 +8,7 @@ import Splash from "./components/Splash";
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
+import LiveList from './components/LiveList'
 
 import { stateContext } from "./contextProviders/stateContext";
 import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
@@ -20,7 +21,7 @@ import { ThemeProvider } from "./components/Darkmode/ThemeContext";
 import "./components/Darkmode/Theme.css";
 
 function App() {
-  const { state, setState } = useContext(stateContext);
+  const { state, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
   window.onbeforeunload = function () {
@@ -33,10 +34,8 @@ function App() {
       .get("/api/earthquakes")
       .then((response) => {
         console.log(response.data);
-        setState({
-          ...state,
-          earthquakes: response.data,
-        });
+        earthquakePins(response.data)
+        liveListUpdate(response.data);
       })
       .catch((error) => console.log(error));
 
@@ -47,18 +46,10 @@ function App() {
     });
     const channel = pusher.subscribe('quakes');
     channel.bind('new-earthquakes', (data) => {
-      //immutable state update - adds new eq's to earthquakes array
-      setState(prev => {
-        const earthquakeList = [...prev.earthquakes];
 
-        for (let quake of data.earthquakes) {
-          earthquakeList.push(quake)
-        }
-        return {
-          ...prev,
-          earthquakes: earthquakeList
-        };
-      })
+      //updates state in contextProvider for livelist and pins
+      addNewEarthquakePin(data.earthquakes);
+      addNewLiveListItem(data.earthquakes);
     })
   }, []);
 
@@ -81,23 +72,24 @@ function App() {
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
 
-          {state.mode === "earthquake" && (
-            <>
-              <QuakePage />
-              <CommentButton />
-              <DeleteButton />
-              <ChatBox />
-            </>
-          )}
-        </GlobeLoaderProvider>
-        <button
-          onClick={() => {
-            setMapToggle((prev) => {
-              setMapToggle(!prev);
-            });
-          }}
-        >
-          Fetch Data
+      {state.mode === "earthquake" && (
+        <>
+          <QuakePage />
+          <CommentButton />
+          <DeleteButton />
+          <ChatBox />
+        </>
+      )}
+
+      <button
+        onClick={() => {
+          setMapToggle((prev) => {
+            setMapToggle(!prev);
+          });
+        }}
+      >
+        Fetch Data
+
       </button>
       </ThemeProvider>
     </div>
