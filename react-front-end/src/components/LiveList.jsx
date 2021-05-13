@@ -75,8 +75,8 @@ export default function LiveList(props) {
   });
 
   return (
-    <div className={classes.root}>
-      <div>
+    <>
+      <div className={classes.root}>
         <List aria-label="new earthquake">
           <ListItem>
             <ListItemText
@@ -88,6 +88,6 @@ export default function LiveList(props) {
         </List>
       </div>
       {eqPopup.new === true && <NewEarthquakePopup />}
-    </div>
+    </>
   );
 }

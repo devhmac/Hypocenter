@@ -9,7 +9,14 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
     "& > * + *": {
       marginTop: theme.spacing(2),
-      background: "rgb(2, 237, 116, 0.3)",
+      background: "rgb(255, 218, 124, 0.7)",
+      border: "2px solid rgb(255, 183, 101)",
+      Transition: "width 1s",
+      position: "absolute",
+      top: "25%",
+      right: "3%",
+      maxWidth: 360,
+      color: "white",
     },
   },
 }));
