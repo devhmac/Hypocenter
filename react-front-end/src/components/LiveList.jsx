@@ -39,7 +39,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LiveList(props) {
   const classes = useStyles();
-  const { state, setState, liveList } = useContext(stateContext);
+  const { state, setState, liveList, eqPopup } = useContext(stateContext);
   const quakePage = function (eq) {
     setState({
       ...state,
@@ -87,7 +87,7 @@ export default function LiveList(props) {
           {eqList}
         </List>
       </div>
-      <NewEarthquakePopup />
+      {eqPopup.new === true && <NewEarthquakePopup />}
     </div>
   );
 }
