@@ -6,6 +6,8 @@ import Typography from "@material-ui/core/Typography";
 import Button from "@material-ui/core/Button";
 import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
+import ToggleBtn from "./Darkmode/ToggleBtn";
+
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -43,12 +45,17 @@ function NavBar() {
             color="inherit"
             aria-label="menu"
           >
-            <img src="/images/icon.png" alt="icon" style={{ height: 30 }} />
+            <img
+              src="/images/hypocenter.svg"
+              alt="icon"
+              style={{ height: 30 }}
+            />
           </IconButton>
           <Typography variant="h6">
             <Button className={classes.title}>Hypocenter</Button>
           </Typography>
           <Button className={classes.login}>Login</Button>
+          <ToggleBtn/>
         </Toolbar>
       </AppBar>
     </div>
