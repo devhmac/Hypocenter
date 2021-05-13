@@ -20,6 +20,7 @@ class App extends Component {
   postComment = (event) => {
     event.preventDefault();
     const { username, newComment } = this.state;
+    console.log("valueees", newComment, username);
     if (username.trim() === "" || newComment.trim() === "") return;
 
     const data = {
@@ -40,7 +41,7 @@ class App extends Component {
   };
 
   vote = (id, num) => {
-    axios.post("/vote", {
+    axios.post("http://localhost:8000/vote", {
       id,
       vote: num,
     });
@@ -51,16 +52,13 @@ class App extends Component {
       cluster: "us3",
       encrypted: true,
     });
+
     const channel = pusher.subscribe("comments");
     channel.bind("new-comment", (data) => {
-      this.setState((prevState) => {
-        const { comments } = prevState;
-        comments.push(data.comment);
-
-        return {
-          comments,
-        };
-      });
+      console.log("dataaaaa", data);
+      let tempComments = this.state.comments;
+      tempComments.push(data);
+      this.setState({ comments: tempComments });
     });
 
     channel.bind("new-vote", (data) => {
@@ -81,11 +79,11 @@ class App extends Component {
 
   render() {
     const { username, newComment, comments } = this.state;
-
+    console.log("test comment", comments);
     const userComments = comments.map((e) => (
       <article className="comment" key={e._id}>
         <h1 className="comment-user">{e.name}</h1>
-        <p className="comment-text">{e.text}</p>
+        <p className="comment-text">{e.comment}</p>
         <div className="voting">
           <div className="vote-buttons">
             <button className="upvote" onClick={() => this.vote(e._id, 1)}>
