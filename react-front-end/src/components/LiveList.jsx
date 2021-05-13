@@ -4,6 +4,7 @@ import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
 import { stateContext } from "../contextProviders/stateContext";
+import NewEarthquakePopup from "./NewEarthquakePopup";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -75,15 +76,18 @@ export default function LiveList(props) {
 
   return (
     <div className={classes.root}>
-      <List aria-label="new earthquake">
-        <ListItem>
-          <ListItemText
-            className={classes["list-title"]}
-            primary="Recent Earthquakes"
-          />
-        </ListItem>
-        {eqList}
-      </List>
+      <div>
+        <List aria-label="new earthquake">
+          <ListItem>
+            <ListItemText
+              className={classes["list-title"]}
+              primary="Recent Earthquakes"
+            />
+          </ListItem>
+          {eqList}
+        </List>
+      </div>
+      <NewEarthquakePopup />
     </div>
   );
 }
