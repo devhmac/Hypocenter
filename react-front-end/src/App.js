@@ -16,6 +16,7 @@ import QuakePage from "./components/individualQuakePage/QuakePage";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
+import { ThemeProvider } from "./components/Darkmode/ThemeContext"
 
 function App() {
   const { state, setState } = useContext(stateContext);
@@ -58,22 +59,23 @@ function App() {
 
   return (
     <div className="App">
-    <GlobeLoaderProvider>
-      <NavBar />
+      <ThemeProvider>
+        <GlobeLoaderProvider>
+          <NavBar />
 
-      {state.mode === "main" && !mapToggle && <Globe />}
-      <Splash />
-      {state.mode === "main" && mapToggle && <MainMap />}
+            {state.mode === "main" && !mapToggle && <Globe />}
+            <Splash />
+            {state.mode === "main" && mapToggle && <MainMap />}
 
-      {state.mode === "earthquake" && (
-        <>
-          <QuakePage />
-          <CommentButton />
-          <DeleteButton />
-          <ChatBox />
-        </>
-      )}
-      </GlobeLoaderProvider>
+            {state.mode === "earthquake" && (
+            <>
+            <QuakePage />
+            <CommentButton />
+            <DeleteButton />
+            <ChatBox />
+            </>
+            )}
+        </GlobeLoaderProvider>
       <button
         onClick={() => {
           setMapToggle((prev) => {
@@ -83,6 +85,7 @@ function App() {
       >
         Fetch Data
       </button>
+      </ThemeProvider>
     </div>
   );
 }
