@@ -3,10 +3,12 @@ import { makeStyles } from "@material-ui/core/styles";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ListItemText from "@material-ui/core/ListItemText";
+import Typography from "@material-ui/core/Typography";
 import { stateContext } from "../contextProviders/stateContext";
 import NewEarthquakePopup from "./NewEarthquakePopup";
 import magnitudeColor from "../helpers/magnitudeColor";
 
+const theme = {};
 const useStyles = makeStyles((theme) => ({
   root: {
     position: "absolute",
@@ -26,24 +28,24 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
   },
   lightgreen: {
-    backgroundColor: "rgb(2, 237, 116, 0.3)",
+    backgroundColor: "rgb(2, 237, 116, 0.4)",
   },
   yellow: {
-    backgroundColor: "rgb(255,255,0, 0.3)",
+    backgroundColor: "rgb(255,255,0, 0.4)",
   },
   orange: {
-    backgroundColor: "rgb(255,165,0, 0.3)",
+    backgroundColor: "rgb(255,165,0, 0.4)",
   },
   red: {
-    backgroundColor: "rgb(255, 0, 0, 0.3)",
+    backgroundColor: "rgb(255, 0, 0, 0.4)",
   },
   "list-item": {
     //border: "2px solid black",
     borderRadius: "5px",
     marginTop: "2px",
-  },
-  "MuiListItemText-secondary": {
-    color: "red",
+    "&:hover": {
+      border: "2px solid rgb(255,255,255,0.5)",
+    },
   },
 }));
 
@@ -80,13 +82,15 @@ export default function LiveList(props) {
           classes[`${magnitudeColor(quake.magnitude, quake.pager)}`],
         ]}
       >
-        <ListItemText
-          className={classes["list-text"]}
-          primary={<strong>{quake.title}</strong>}
-          secondary={`Magnitude: ${quake.magnitude}, ${new Date(
-            Number(quake.time_stamp)
-          ).toString()}`}
-        />
+        <Typography>
+          <ListItemText
+            className={classes["list-text"]}
+            primary={<strong>{quake.title}</strong>}
+            secondary={`Magnitude: ${quake.magnitude}, ${new Date(
+              Number(quake.time_stamp)
+            ).toString()}`}
+          />
+        </Typography>
       </ListItem>
     );
   });
@@ -98,7 +102,7 @@ export default function LiveList(props) {
           <ListItem>
             <ListItemText
               className={classes["list-title"]}
-              primary="Recent Earthquakes"
+              primary={<strong>Recent Earthquakes</strong>}
             />
           </ListItem>
           {eqList}
