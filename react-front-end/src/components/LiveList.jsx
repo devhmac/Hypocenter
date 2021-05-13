@@ -12,10 +12,12 @@ const useStyles = makeStyles((theme) => ({
     left: "3%",
     width: "100%",
     maxWidth: 360,
-    backgroundColor: "grey",
+    backgroundColor: "transparent",
     color: "white",
   },
-
+  "list-title": {
+    "text-decoration": "underline",
+  },
   "MuiListItemText-secondary": {
     color: "white",
   },
@@ -57,7 +59,15 @@ export default function LiveList(props) {
 
   return (
     <div className={classes.root}>
-      <List aria-label="new earthquake">{eqList}</List>
+      <List aria-label="new earthquake">
+        <ListItem>
+          <ListItemText
+            className={classes["list-title"]}
+            primary="Most Recent Earthquakes"
+          />
+        </ListItem>
+        {eqList}
+      </List>
     </div>
   );
 }
