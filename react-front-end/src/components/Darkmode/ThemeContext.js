@@ -58,8 +58,8 @@ const lightTheme = [
   " --btnBackground: #4e63d9;",
   " --active: #d9bb29;",
   " --inactive: #bdc4ed;",
-  " --background: greyscale ;",
-  "--secondary: greyscale ; ",
+  " --background: grey;",
+  "--secondary: grey; ",
 ];
 
 const darkTheme = [
