@@ -26,7 +26,7 @@ function App() {
 
   window.onbeforeunload = function () {
   window.scrollTo(0, 0);
-  } 
+  }
 
   useEffect(() => {
     //initial get request for eq's
@@ -71,7 +71,7 @@ function App() {
           {state.mode === "main" && !mapToggle && <Globe />}
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
-
+          </GlobeLoaderProvider>
       {state.mode === "earthquake" && (
         <>
           <QuakePage />
