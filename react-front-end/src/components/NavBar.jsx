@@ -8,7 +8,6 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ToggleBtn from "./Darkmode/ToggleBtn";
 
-
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
@@ -46,7 +45,7 @@ function NavBar() {
             aria-label="menu"
           >
             <img
-              src="/images/hypocenter.svg"
+              src="/images/orange-logo.svg"
               alt="icon"
               style={{ height: 30 }}
             />
@@ -55,7 +54,7 @@ function NavBar() {
             <Button className={classes.title}>Hypocenter</Button>
           </Typography>
           <Button className={classes.login}>Login</Button>
-          <ToggleBtn/>
+          <ToggleBtn />
         </Toolbar>
       </AppBar>
     </div>

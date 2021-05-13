@@ -12,9 +12,8 @@ export default function Splash() {
 
   return (
     <Fade className="splash" show={!startSite}>
-      <h1>Welcome to </h1>
       <div class="splashlogo">
-      <img src="/images/hypocenter.svg" alt="icon" />
+        <img src="/images/hypocenter.svg" alt="icon" />
       </div>
       <p>
         Live earthquake data and analysis
