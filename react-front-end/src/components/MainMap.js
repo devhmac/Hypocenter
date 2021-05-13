@@ -13,8 +13,6 @@ export default function MainMap(props) {
   const { state, setState } = useContext(stateContext);
   const mapOptions = acDark;
 
-
-
   const eqArr = state.earthquakes.map(earthquake => {
     return (<LocationPin
       key={earthquake.id}
@@ -30,8 +28,6 @@ export default function MainMap(props) {
     />
     );
   });
-
-
 
   return (
     <>
