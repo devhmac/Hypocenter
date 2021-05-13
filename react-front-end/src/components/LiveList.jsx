@@ -27,8 +27,9 @@ const useStyles = makeStyles((theme) => ({
   },
   "list-item": {
     backgroundColor: "rgb(2, 237, 116, 0.3)",
-    border: "2px solid black",
+    //border: "2px solid black",
     borderRadius: "5px",
+    marginTop: "2px",
   },
   "MuiListItemText-secondary": {
     color: "red",
@@ -60,12 +61,12 @@ export default function LiveList(props) {
   const eqList = liveList.map((quake) => {
     return (
       <ListItem
+        key={quake.id}
         button
         onClick={() => quakePage(quake)}
         className={classes["list-item"]}
       >
         <ListItemText
-          key={quake.id}
           className={classes["list-text"]}
           primary={quake.title}
           secondary={quake.magnitude}
