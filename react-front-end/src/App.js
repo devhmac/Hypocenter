@@ -16,7 +16,7 @@ import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
 
 function App() {
-  const { state, setState, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins } = useContext(stateContext);
+  const { state, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
   useEffect(() => {
