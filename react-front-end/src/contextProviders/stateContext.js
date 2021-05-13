@@ -17,6 +17,22 @@ export function StateProvider(props) {
   const [state, setState] = useState(initialPins);
   const [liveList, setLiveList] = useState([]);
 
+
+
+  const addNewEarthquakePin = (data) => {
+    setState(prev => {
+      const earthquakeList = [...prev.earthquakes];
+
+      for (let quake of data) {
+        earthquakeList.push(quake)
+      }
+      return {
+        ...prev,
+        earthquakes: earthquakeList
+      };
+    })
+  };
+
   const liveListUpdate = (data) => {
     const recentEQs = [];
     for (let i = 0; i < 6; i++) {
@@ -46,7 +62,7 @@ export function StateProvider(props) {
 
 
   return (
-    <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate, addNewLiveListItem }}>
+    <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate, addNewLiveListItem, addNewEarthquakePin }}>
       {props.children}
     </stateContext.Provider>
   );
