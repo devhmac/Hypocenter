@@ -2,7 +2,6 @@ import React, { useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { stateContext } from "../contextProviders/stateContext";
-import { yellow } from "@material-ui/core/colors";
 
 const useStyles = makeStyles((theme) => ({
   root: {

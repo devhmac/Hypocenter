@@ -12,7 +12,7 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "15%",
     left: "3%",
-    maxWidth: 300,
+    maxWidth: 330,
     backgroundColor: `transparent`,
     color: "white",
   },
@@ -83,7 +83,7 @@ export default function LiveList(props) {
         <ListItemText
           className={classes["list-text"]}
           primary={quake.title}
-          secondary={`${quake.magnitude}, ${new Date(
+          secondary={`Magnitude: ${quake.magnitude}, ${new Date(
             Number(quake.time_stamp)
           ).toString()}`}
         />
