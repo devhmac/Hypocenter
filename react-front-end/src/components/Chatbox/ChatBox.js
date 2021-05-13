@@ -41,7 +41,7 @@ class App extends Component {
   };
 
   vote = (id, num) => {
-    axios.post("http://localhost:8000/vote", {
+    axios.post("/vote", {
       id,
       vote: num,
     });
