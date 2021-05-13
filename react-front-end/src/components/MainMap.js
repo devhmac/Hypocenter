@@ -10,8 +10,10 @@ import { acDark } from './mapstyles/ac-dark';
 
 
 export default function MainMap(props) {
-  const { state } = useContext(stateContext);
+  const { state, setState } = useContext(stateContext);
   const mapOptions = acDark;
+
+
 
   const eqArr = state.earthquakes.map(earthquake => {
     return (<LocationPin
@@ -29,6 +31,8 @@ export default function MainMap(props) {
     );
   });
 
+
+
   return (
     <>
       <div className="map">
@@ -43,7 +47,8 @@ export default function MainMap(props) {
           </GoogleMapReact>
         </div>
       </div>
-      <LiveList />
+      <LiveList
+      />
     </>
   )
 };

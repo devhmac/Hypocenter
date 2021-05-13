@@ -29,14 +29,29 @@ function ListItemLink(props) {
 
 export default function LiveList(props) {
   const classes = useStyles();
-
-  const { liveList } = useContext(stateContext);
+  const { state, setState, liveList } = useContext(stateContext);
+  const quakePage = function (eq) {
+    setState({
+      ...state,
+      earthquake: {
+        title: eq.title,
+        latitude: eq.latitude,
+        longitude: eq.longitude,
+        depth: eq.depth,
+        magnitude: eq.magnitude,
+        pager: eq.pager,
+        time_stamp: eq.time_stamp,
+        tsunami: eq.tsunami,
+      },
+      mode: "earthquake",
+    });
+  };
 
   const eqList = liveList.map((quake) => {
     return (
-      <ListItem button>
+      <ListItem button onClick={() => quakePage(quake)}>
         <ListItemText
-          onClick={() => props.onClick(quake)}
+          key={quake.id}
           primary={quake.title}
           secondary={quake.magnitude}
         />
