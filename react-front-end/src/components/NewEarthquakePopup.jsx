@@ -41,12 +41,11 @@ export default function NewEarthquakePopup(props) {
 
   useEffect(() => {
     if (eqPopup.new) {
-      const popupTimer = setTimeout(() => {
+      setTimeout(() => {
         setEqPopup((prev) => {
           return { ...prev, new: false, earthquakes: [] };
         });
       }, 4000);
-      //return clearTimeout(popupTimer);
     }
   }, [eqPopup.new]);
 

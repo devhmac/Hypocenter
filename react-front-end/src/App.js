@@ -75,7 +75,7 @@ function App() {
           {state.mode === "main" && mapToggle && <MainMap />}
           {state.mode === "notifications" && <Notifications />}
           {state.mode === "notificationconfirm" && <NotificationConfirm />}
-          {state.mode === "main" && <LiveList />}
+          {state.mode === "main" && <LiveList mapMode={mapToggle} />}
           {state.mode === 'main' && <ToMapButton
             onClick={() => {
               setMapToggle((prev) => {

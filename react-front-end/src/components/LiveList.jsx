@@ -41,6 +41,18 @@ const useStyles = makeStyles((theme) => ({
   red: {
     backgroundColor: "rgb(255, 0, 0, 0.4)",
   },
+  lightgreenMap: {
+    backgroundColor: "rgb(28, 126, 0, 0.9)",
+  },
+  yellowMap: {
+    backgroundColor: "rgb(185, 184, 19, 0.9)",
+  },
+  orangeMap: {
+    backgroundColor: "rgb(216, 115, 2, 0.9)",
+  },
+  redMap: {
+    backgroundColor: "rgb(163, 14, 14, 0.9)",
+  },
   "list-item": {
     //border: "2px solid black",
     borderRadius: "5px",
@@ -83,7 +95,13 @@ export default function LiveList(props) {
         onClick={() => quakePage(quake)}
         className={`
           ${classes["list-item"]}
-          ${classes[`${magnitudeColor(quake.magnitude, quake.pager)}`]}`}
+          ${
+            classes[
+              `${magnitudeColor(quake.magnitude, quake.pager)}${
+                props.mapMode ? "Map" : ""
+              }`
+            ]
+          }`}
       >
         <ListItemText
           className={classes["list-text"]}
