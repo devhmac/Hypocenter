@@ -30,13 +30,18 @@ App.get("/api/earthquakes", (req, res) => {
   });
 });
 
-App.post("/comment", (req, res) => {
+App.post("/api/comments", (req, res) => {
   console.log("test server", req.body.text);
   pusher.trigger("comments", "new-comment", {
     comment: req.body.text,
   });
   console.log("pusher triggered okay");
   res.status(200).send("OK");
+});
+
+App.get('/api/comments', (req, res) => {
+
+
 });
 
 App.post("/api/notifications", (req, res) => {
