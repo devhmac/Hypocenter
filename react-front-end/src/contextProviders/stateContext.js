@@ -57,12 +57,13 @@ export function StateProvider(props) {
 
   //takes in new pushed quake, and adds it to the front of the most recent quakes arr
   const addNewLiveListItem = (data) => {
-    console.log('eqPopup', eqPopup)
+
     setLiveList(prev => {
       const recentEQs = [...prev];
       console.log('prev state list', recentEQs)
       const currentEQs = [];
       const seenEqs = {};
+      recentEQs.forEach(quake => seenEqs[quake.id] = true);
       for (let quake of data) {
         if (!seenEqs[quake.id]) {
           currentEQs.push(quake);
