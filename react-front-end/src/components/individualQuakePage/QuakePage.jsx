@@ -4,7 +4,7 @@ import QuakeInfo from "./QuakeInfo";
 import "./QuakePage.css";
 import EqMap from "./EqMap";
 import UniversalButton from "../Buttons/universalButton";
-import ChatBox from "../Chatbox/ChatBox";
+import ChatBox from "../ChatBox/ChatBox";
 import CommentButton from "../Buttons/CommentButton.jsx";
 import DeleteButton from "../Buttons/DeleteButton.jsx";
 
