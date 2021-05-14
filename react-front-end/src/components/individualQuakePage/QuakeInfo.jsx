@@ -3,6 +3,7 @@ import { List, ListItem, ListItemText } from "@material-ui/core";
 import pagerConversion from "../../helpers/pagerConversion";
 import { stateContext } from "../../contextProviders/stateContext";
 import Tippy from '@tippyjs/react';
+import Typography from "@material-ui/core/Typography";
 
 function QuakeInfo(props) {
   const { state } = useContext(stateContext);
@@ -13,23 +14,47 @@ function QuakeInfo(props) {
     return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
   }
 
+  const pagerColor = function() {
+    if (quake.pager === "green") {
+      return "#03fc17"
+    } else if (quake.pager === "yellow") {
+      return "#f8fc03"
+    } else if (quake.pager === "orange") {
+      return "#ff9900"
+    } else if (quake.pager === "red") {
+      return "#ff1c1c"
+    }
+  }
+
   return (
     <List>
     <Tippy content={`A measure of how powerful an earthquake is. The scale increases in power exponentially - compared to a M5 earthquake, a M6 earthquake has 10 times the seismic wave amplitude and 32 times the energy released.`}>
       <ListItem>
-        <ListItemText primary="Magnitude" secondary={quake.magnitude} />
+        <ListItemText primary="Magnitude" secondary={
+          <Typography style={{ color: "lightgrey", fontSize: "12px" }}>
+            {quake.magnitude}
+          </Typography>}
+          className={'quakeInfo'} />
       </ListItem>
     </Tippy>
     <Tippy content={`The PAGER system provided by USGS allows quick assessment of an earthquake's risk to life and property. PAGER takes into account bedrock conditions, population density, levels of economic development, earthquake depth, and more. There are four possible PAGER levels, from least to most severe: Green, Yellow, Orange, and Red.`}>
       <ListItem>
-        <ListItemText primary="Pager Status" secondary={quake.pager} />
+        <ListItemText primary="Pager Status" secondary={
+          <Typography style={{ color: pagerColor(), fontSize: "12px" }}>
+            {quake.pager}
+          </Typography>}
+          className={'quakeInfo'} />
       </ListItem>
     </Tippy>
     <Tippy content={`The depth of the earthquake in kilometers from the surface. A shallow earthquake can be much more dangerous than its magnitude may imply.`}>
       <ListItem>
         <ListItemText
           primary="Depth"
-          secondary={quake.depth + " km"}
+          secondary={
+            <Typography style={{ color: "lightgrey", fontSize: "12px" }}>
+              {quake.depth + " km"}
+            </Typography>}
+          className={'quakeInfo'}
         />
       </ListItem>
     </Tippy>
@@ -37,7 +62,11 @@ function QuakeInfo(props) {
       <ListItem>
         <ListItemText
           primary="Energy Generated"
-          secondary={`${numberWithCommas(energy)} kJ - equivalent to ${numberWithCommas(Math.round(energy * 0.00000024))} tons of TNT.`}
+          secondary={
+            <Typography style={{ color: "lightgrey", fontSize: "12px" }}>
+              {`${numberWithCommas(energy)} kJ - equivalent to ${numberWithCommas(Math.round(energy * 0.00000024))} tons of TNT.`}
+            </Typography>}
+          className={'quakeInfo'}
         />
       </ListItem>
     </Tippy>
@@ -45,7 +74,10 @@ function QuakeInfo(props) {
       <ListItem>
         <ListItemText
           primary="Estimated Economic Damage"
-          secondary={quake.pager ? pagerConversion[quake.pager].damage : null}
+          secondary={<Typography style={{ color: "lightgrey", fontSize: "12px" }}>
+            {quake.pager ? pagerConversion[quake.pager].damage : null}
+          </Typography>}
+          className={'quakeInfo'}
         />
       </ListItem>
     </Tippy>
@@ -53,9 +85,10 @@ function QuakeInfo(props) {
       <ListItem>
         <ListItemText
           primary="Potential Fatalities"
-          secondary={
-            quake.pager ? pagerConversion[quake.pager].fatalities : null
-          }
+          secondary={<Typography style={{ color: "lightgrey", fontSize: "12px" }}>
+            {quake.pager ? pagerConversion[quake.pager].fatalities : null}
+          </Typography>}
+          className={'quakeInfo'}
         />
       </ListItem>
     </Tippy>
@@ -63,7 +96,10 @@ function QuakeInfo(props) {
       <ListItem>
         <ListItemText
           primary="Time of Occurence"
-          secondary={new Date(Number(quake.time_stamp)).toString()}
+          secondary={<Typography style={{ color: "lightgrey", fontSize: "12px" }}>
+            {new Date(Number(quake.time_stamp)).toString()}
+          </Typography>}
+          className={'quakeInfo'}
         />
       </ListItem>
     </Tippy>
@@ -71,7 +107,10 @@ function QuakeInfo(props) {
       <ListItem>
         <ListItemText
           primary="Danger of Tsunami"
-          secondary={quake.tsunami ? "Yes" : "No"}
+          secondary={<Typography style={{ color: "lightgrey", fontSize: "12px" }}>
+            {quake.tsunami ? "Yes" : "No"}
+          </Typography>}
+          className={'quakeInfo'}
         />
       </ListItem>
     </Tippy>

@@ -8,9 +8,8 @@
 
 
 .eqgoogle-map {
-  width: 60%;
-  height: 60vh;
-  margin-left: 10%;
+  width: 50vw;
+  height: 62vh;
 }
 
 .pin {
@@ -44,10 +43,6 @@
 }
 
 @media screen and (min-width: 799px) {
-  .eqgoogle-map {
-    height: 80vh;
-  }
-
   .map-h2 {
     font-size: 1.3rem;
     font-weight: 400;
