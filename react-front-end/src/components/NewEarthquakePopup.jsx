@@ -18,19 +18,19 @@ const useStyles = makeStyles((theme) => ({
     },
   },
   lightgreen: {
-    backgroundColor: "rgb(2, 237, 116, 0.4)",
+    backgroundColor: "rgb(2, 237, 116, 0.5)",
     border: "2px solid rgb(2, 237, 116, 0.9)",
   },
   yellow: {
-    backgroundColor: "rgb(255,255,0, 0.4)",
+    backgroundColor: "rgb(255,255,0, 0.5)",
     border: "2px solid rgb(255,255,0, 0.9)",
   },
   orange: {
-    backgroundColor: "rgb(255,165,0, 0.4)",
+    backgroundColor: "rgb(255,165,0, 0.5)",
     border: "2px solid rgb(255,165,0, 0.9)",
   },
   red: {
-    backgroundColor: "rgb(255, 0, 0, 0.4)",
+    backgroundColor: "rgb(255, 0, 0, 0.5)",
     border: "2px solid rgb(255,0,0, 0.9)",
   },
 }));
