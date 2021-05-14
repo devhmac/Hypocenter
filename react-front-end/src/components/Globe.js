@@ -90,21 +90,20 @@ export default function Globe(props) {
 
   return (
     <>
-    <div className={globeLoaded ? 'globe' : 'hidden'}>
-      <ReactGlobe
-        onClickMarker={toQuakePage}
-        markers={eqArr}
-        options={options}
-        onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
-        onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
-        onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
-      />
-      <Fade show={startSite}>
-      <LiveList
-      />
-      </ Fade>
-    </div>
-    <Fade animationDuration={3000} className="cover" show={!globeLoaded} />
+      <div className={globeLoaded ? 'globe' : 'hidden'}>
+        <ReactGlobe
+          onClickMarker={toQuakePage}
+          markers={eqArr}
+          options={options}
+          onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
+          onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
+          onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
+        />
+        <Fade show={startSite}>
+          {/* <LiveList /> */}
+        </ Fade>
+      </div>
+      <Fade animationDuration={3000} className="cover" show={!globeLoaded} />
     </>
   )
 }

@@ -8,6 +8,7 @@ import Splash from "./components/Splash";
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
+import ToMapButton from './components/Buttons/ToMapButton'
 import LiveList from './components/LiveList'
 
 import { stateContext } from "./contextProviders/stateContext";
@@ -25,8 +26,8 @@ function App() {
   const { state, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
-  window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
+  window.onbeforeunload = function() {
+    window.scrollTo(0, 0);
   }
 
   useEffect(() => {
@@ -62,7 +63,7 @@ function App() {
     } else {
       document.body.classList.remove('overflow-controller');
     }
-},[state.mode])
+  }, [state.mode])
 
   return (
     <div className="App">
@@ -74,6 +75,17 @@ function App() {
           {state.mode === "main" && mapToggle && <MainMap />}
           {state.mode === "notifications" && <Notifications />}
           {state.mode === "notificationconfirm" && <NotificationConfirm />}
+          {state.mode === "main" && <LiveList />}
+          {state.mode === 'main' && <ToMapButton
+            onClick={() => {
+              setMapToggle((prev) => {
+                return !prev;
+              });
+            }}
+          >
+            {!mapToggle ? 'To Map' : 'To Globe'}
+          </ToMapButton>}
+
         </GlobeLoaderProvider>
         {state.mode === "earthquake" && (
           <>
@@ -83,17 +95,6 @@ function App() {
             <ChatBox />
           </>
         )}
-
-      <button
-        onClick={() => {
-          setMapToggle((prev) => {
-            setMapToggle(!prev);
-          });
-        }}
-      >
-        Fetch Data
-
-      </button>
       </ThemeProvider>
     </div>
   );
