@@ -11,17 +11,19 @@ export default function Splash() {
   const { globeLoaded, setGlobeLoaded, startSite, setStartSite } = useContext(globeLoaderContext)
 
   return (
+    <div class="splashcontrol">
     <Fade className="splash" show={!startSite}>
       <div class="splashlogo">
         <img src="/images/hypocenter.svg" alt="icon" />
       </div>
-      <p>
+      <p className="splashDesc">
         Live earthquake data and analysis
       </p>
       <Fade show={globeLoaded}>
         <EngageButton text="Engage" onClick={() => setStartSite(true)} />
       </Fade>
     </Fade>
+    </div>
   )
 
 }
