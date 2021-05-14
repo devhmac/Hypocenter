@@ -45,7 +45,6 @@ export default function MainMap(props) {
           </GoogleMapReact>
         </div>
       </div>
-      {/* <LiveList /> */}
     </>
   )
 };

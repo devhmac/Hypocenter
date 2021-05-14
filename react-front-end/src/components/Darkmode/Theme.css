@@ -19,7 +19,7 @@
 }
 
 .toggle-btn {
-  display: flex;
+  display: container;
   justify-content: space-between;
   border: none;
   border-radius: 100px;
@@ -27,13 +27,13 @@
 }
 
 .icon {
-  font-size: 1.9rem;
-  padding: 0.2rem 0.5rem;
+  font-size: 2.5rem;
+  padding: 0rem 0rem;
   color: var(--inactive);
 }
 
 .toggle-btn:hover {
-  box-shadow: 0 1px 5px 0 rgb(245, 239, 239);
+  box-shadow: 0 1px 4px 0 rgb(245, 239, 239);
 }
 
 .active {
