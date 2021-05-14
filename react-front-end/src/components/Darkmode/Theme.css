@@ -23,17 +23,17 @@
   justify-content: space-between;
   border: none;
   border-radius: 100px;
-  box-shadow: 0 10px 10px 0 rgba(245, 241, 241, 0.2);
+  box-shadow: 2 0px 0px 2 rgba(245, 241, 241, 0.2);
 }
 
 .icon {
-  font-size: 1.5rem;
-  padding: 0.2rem 0.7rem;
+  font-size: 1.9rem;
+  padding: 0.2rem 0.5rem;
   color: var(--inactive);
 }
 
 .toggle-btn:hover {
-  box-shadow: 0 4px 8px 0 rgb(245, 239, 239);
+  box-shadow: 0 1px 5px 0 rgb(245, 239, 239);
 }
 
 .active {
