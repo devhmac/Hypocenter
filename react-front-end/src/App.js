@@ -73,7 +73,7 @@ function App() {
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
           {state.mode === "notifications" && <Notifications />}
-          {state.mode === "notificationconirm" && <NotificationConfirm />}
+          {state.mode === "notificationconfirm" && <NotificationConfirm />}
         </GlobeLoaderProvider>
         {state.mode === "earthquake" && (
           <>
