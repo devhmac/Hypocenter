@@ -7,3 +7,12 @@
   display: flex;
   flex-direction: row;
 }
+
+.rightNavGroup {
+  display: flex;
+  flex-direction: row;
+}
+
+#welcome {
+  cursor: default;
+}

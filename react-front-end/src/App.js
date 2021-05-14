@@ -14,8 +14,8 @@ import LiveList from './components/LiveList'
 import { stateContext } from "./contextProviders/stateContext";
 import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
-
-
+import Notifications from "./components/Notifications.js";
+import NotificationConfirm from "./components/NotificationConfirm.js";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
@@ -58,7 +58,7 @@ function App() {
 
 
   useEffect(() => {
-    if (state.mode === "main") {
+    if (state.mode === "main" || state.mode === "notifications") {
       document.body.classList.add('overflow-controller');
     } else {
       document.body.classList.remove('overflow-controller');
@@ -73,6 +73,8 @@ function App() {
           {state.mode === "main" && !mapToggle && <Globe />}
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
+          {state.mode === "notifications" && <Notifications />}
+          {state.mode === "notificationconfirm" && <NotificationConfirm />}
           {state.mode === "main" && <LiveList />}
           {state.mode === 'main' && <ToMapButton
             onClick={() => {

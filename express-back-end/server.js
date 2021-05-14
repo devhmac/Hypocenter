@@ -6,6 +6,7 @@ const BodyParser = require("body-parser");
 const PORT = 8000;
 const { getEarthquakeData } = require("./lib/queries/getEarthquakeData.js");
 const { upsert } = require("./lib/queries/upsert.js");
+const { addNotification } = require("./lib/queries/addNotification.js");
 const { getRecentEarthquakes } = require("./lib/queries/getRecentEarthquakes");
 const Pusher = require("pusher");
 
@@ -38,13 +39,20 @@ App.post("/comment", (req, res) => {
   res.status(200).send("OK");
 });
 
-const getEarthquakes = function () {
+App.post("/api/notifications", (req, res) => {
+
+  addNotification(req.body);
+
+  res.status(200).send("OK");
+});
+
+const getEarthquakes = function() {
   return request(
     "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson"
   );
 };
 
-const fn60sec = function () {
+const fn60sec = function() {
   getEarthquakes()
     .then(upsert)
     .then(getRecentEarthquakes)

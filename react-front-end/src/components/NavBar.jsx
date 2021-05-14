@@ -9,6 +9,7 @@ import MenuIcon from "@material-ui/icons/Menu";
 import ToggleBtn from "./Darkmode/ToggleBtn";
 import { stateContext } from "../contextProviders/stateContext";
 import './NavBar.css'
+import axios from "axios";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -27,6 +28,11 @@ const useStyles = makeStyles((theme) => ({
     color: "white",
     float: "right",
   },
+  usergreeting: {
+    color: "white",
+    float: "right",
+    button: "disabled"
+  }
 }));
 
 function NavBar() {
@@ -39,6 +45,24 @@ function NavBar() {
       });
     }
   };
+
+  const loginUser3 = () => {
+    setState((prev) => {
+      return {...prev, user: {id: 3, first_name: "John", email: "hypocentermail@gmail.com" }}
+    })
+  }
+
+  const logout = () => {
+    setState((prev) => {
+      return {...prev, user: false}
+    })
+  }
+
+  const enterNotifications = () => {
+    setState((prev) => {
+      return {...prev, mode: "notifications"}
+    })
+  }
 
   return (
     <div className={classes.root}>
@@ -60,9 +84,14 @@ function NavBar() {
               Hypocenter
             </Button>
           </Typography>
-          <Button className={classes.login}>Login</Button>
-            </div>
+          {state.user === false && <Button className={classes.login} onClick={loginUser3}>Login</Button>}
+          {state.user !== false && <p id="welcome" class="MuiButtonBase-root MuiButton-root MuiButton-text makeStyles-login-4"> Welcome back, {state.user.first_name} </p>}
+          {state.user !== false && <Button className={classes.login} onClick={logout}>Log Out</Button>}
+          </div>
+          <div className="rightNavGroup">
+          {state.user !== false && <Button className={classes.login} onClick={enterNotifications}>Notifications</Button>}
           <ToggleBtn />
+          </div>
         </Toolbar>
       </AppBar>
     </div>
