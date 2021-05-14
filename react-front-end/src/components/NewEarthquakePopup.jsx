@@ -39,7 +39,7 @@ export default function NewEarthquakePopup(props) {
     return (
       <Alert severity="warning">
         <AlertTitle>New Earthquake</AlertTitle>
-        <strong>{quake.title}</strong>
+        <strong>{quake.title}</strong> - Magnitude: {quake.magnitude}
       </Alert>
     );
   });
