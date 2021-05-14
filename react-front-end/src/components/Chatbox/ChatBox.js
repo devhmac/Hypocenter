@@ -31,7 +31,7 @@ class App extends Component {
     };
 
     axios
-      .post("/comment", data)
+      .post("/", data)
       .then(() => {
         this.setState({
           username: "",
@@ -42,7 +42,7 @@ class App extends Component {
   };
 
   vote = (id, num) => {
-    axios.post("/vote", {
+    axios.post("/", {
       id,
       vote: num,
     });

@@ -15,13 +15,15 @@ const useStyles = makeStyles((theme) => ({
   root: {
     // display: `${listToggle ? "none" : "flex"}`,
     position: "absolute",
-    top: "15%",
+    top: "10%",
     left: "3%",
-    maxWidth: '220',
     backgroundColor: `transparent`,
     color: "white",
     transition: "10s",
-    height: '5vh'
+    height: "5vh",
+  },
+  listcomponent: {
+    maxWidth: 400,
   },
 
   "list-title": {
@@ -109,7 +111,8 @@ export default function LiveList(props) {
           primary={<strong>{quake.title}</strong>}
           secondary={
             <Typography style={{ color: "lightgrey", fontSize: "12px" }}>
-              Magnitude: {quake.magnitude} - {new Date(Number(quake.time_stamp)).toString()}
+              Magnitude: {quake.magnitude} -{" "}
+              {new Date(Number(quake.time_stamp)).toString()}
             </Typography>
           }
         />
@@ -122,7 +125,10 @@ export default function LiveList(props) {
       <Fade show={startSite}>
         {listToggle && (
           <div className={classes.root}>
-            <List aria-label="new earthquake list">
+            <List
+              aria-label="new earthquake list"
+              className={classes.listcomponent}
+            >
               <ListItem>
                 <ListItemText
                   className={classes["list-title"]}
