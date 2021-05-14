@@ -1,5 +1,5 @@
 import React from "react";
-import { IoMdMoon as Moon, IoMdSunny as Sun } from "react-icons/io";
+import { IoMdSunny as Sun } from "react-icons/io";
 
 import ThemeContext from "./ThemeContext";
 
@@ -8,7 +8,6 @@ function ToggleBtn() {
   return (
     <button onClick={() => toggle()} className="toggle-btn">
       <Sun className={`icon ${!dark ? "active" : ""}`} />
-      <Moon className={`icon ${dark ? "active" : ""}`} />
     </button>
   );
 }
