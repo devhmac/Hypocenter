@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import Button from "@material-ui/core/Button";
-import { globeLoaderContext } from "../../contextProviders/globeLoaderContext";
-import Fade from "../Fade";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -20,19 +18,16 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default function ListToggleButton(props) {
-  const { startSite } = useContext(globeLoaderContext);
   const classes = useStyles();
   return (
-    <Fade show={startSite}>
-      <div className={classes.root}>
-        <Button
-          variant="contained"
-          className={classes.button}
-          onClick={props.onClick}
-        >
-          {props.children}
-        </Button>
-      </div>
-    </Fade>
+    <div className={classes.root}>
+      <Button
+        variant="contained"
+        className={classes.button}
+        onClick={props.onClick}
+      >
+        {props.children}
+      </Button>
+    </div>
   );
 }
