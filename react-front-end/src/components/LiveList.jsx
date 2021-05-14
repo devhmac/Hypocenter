@@ -8,6 +8,8 @@ import Typography from "@material-ui/core/Typography";
 import { stateContext } from "../contextProviders/stateContext";
 import NewEarthquakePopup from "./NewEarthquakePopup";
 import magnitudeColor from "../helpers/magnitudeColor";
+import Fade from "./Fade";
+import { globeLoaderContext } from "../contextProviders/globeLoaderContext";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -51,6 +53,7 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LiveList(props) {
   const { state, setState, liveList, eqPopup } = useContext(stateContext);
+  const { startSite } = useContext(globeLoaderContext);
   const [listToggle, setListToggle] = useState(false);
 
   const classes = useStyles();
@@ -98,29 +101,31 @@ export default function LiveList(props) {
 
   return (
     <>
-      {listToggle && (
-        <div className={classes.root}>
-          <List aria-label="new earthquake list">
-            <ListItem>
-              <ListItemText
-                className={classes["list-title"]}
-                primary={<strong>Recent Earthquakes</strong>}
-              />
-            </ListItem>
-            {eqList}
-          </List>
-        </div>
-      )}
+      <Fade show={startSite}>
+        {listToggle && (
+          <div className={classes.root}>
+            <List aria-label="new earthquake list">
+              <ListItem>
+                <ListItemText
+                  className={classes["list-title"]}
+                  primary={<strong>Recent Earthquakes</strong>}
+                />
+              </ListItem>
+              {eqList}
+            </List>
+          </div>
+        )}
+        <ListToggleButton
+          onClick={() => {
+            setListToggle((prev) => {
+              return !prev;
+            });
+          }}
+        >
+          Recent Quakes
+        </ListToggleButton>
+      </Fade>
       {eqPopup.new === true && <NewEarthquakePopup />}
-      <ListToggleButton
-        onClick={() => {
-          setListToggle((prev) => {
-            return !prev;
-          });
-        }}
-      >
-        Recent Quakes
-      </ListToggleButton>
     </>
   );
 }
