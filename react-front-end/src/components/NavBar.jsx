@@ -8,6 +8,7 @@ import IconButton from "@material-ui/core/IconButton";
 import MenuIcon from "@material-ui/icons/Menu";
 import ToggleBtn from "./Darkmode/ToggleBtn";
 import { stateContext } from "../contextProviders/stateContext";
+import './NavBar.css'
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -46,7 +47,8 @@ function NavBar() {
         color="transparent"
         style={{ background: "transparent", boxShadow: "none" }}
       >
-        <Toolbar>
+        <Toolbar className="navbarApp">
+        <div className="mainGroup">
           <Typography variant="h6">
             <Button className={classes.title} onClick={setModeToMain}>
               <img
@@ -59,6 +61,7 @@ function NavBar() {
             </Button>
           </Typography>
           <Button className={classes.login}>Login</Button>
+            </div>
           <ToggleBtn />
         </Toolbar>
       </AppBar>

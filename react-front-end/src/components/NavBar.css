@@ -1,0 +1,9 @@
+.navbarApp {
+  display: flex;
+  justify-content: space-between;
+}
+
+.mainGroup {
+  display: flex;
+  flex-direction: row;
+}
