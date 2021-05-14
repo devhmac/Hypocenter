@@ -3,9 +3,10 @@ import { stateContext } from "../../contextProviders/stateContext";
 import QuakeInfo from "./QuakeInfo";
 import "./QuakePage.css";
 import EqMap from "./EqMap";
-import CommentButton from "../Buttons/CommentButton";
-import DeleteButton from "../Buttons/DeleteButton";
 import UniversalButton from "../Buttons/universalButton";
+import ChatBox from "../ChatBox/ChatBox.js";
+import CommentButton from "../Buttons/CommentButton.jsx";
+import DeleteButton from "../Buttons/DeleteButton.jsx";
 
 export default function QuakePage(props) {
   const { state, setState } = useContext(stateContext);
@@ -24,8 +25,8 @@ export default function QuakePage(props) {
         <EqMap />
       </div>
       <UniversalButton onClick={setModeToMain}>Back to Home</UniversalButton>
-      <CommentButton />
       <DeleteButton />
+      <ChatBox />
     </div>
   );
 }
