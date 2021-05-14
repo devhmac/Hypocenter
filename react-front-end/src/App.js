@@ -15,6 +15,7 @@ import { stateContext } from "./contextProviders/stateContext";
 import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
 
+
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
@@ -81,6 +82,7 @@ function App() {
           >
             {!mapToggle ? 'To Map' : 'To Globe'}
           </ToMapButton>}
+          <LiveList />
         </GlobeLoaderProvider>
         {state.mode === "earthquake" && (
           <>
