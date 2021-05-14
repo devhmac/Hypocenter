@@ -72,7 +72,7 @@ function App() {
           {state.mode === "main" && !mapToggle && <Globe />}
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
-          <ToMapButton
+          {state.mode === 'main' && <ToMapButton
             onClick={() => {
               setMapToggle((prev) => {
                 return !prev;
@@ -80,7 +80,7 @@ function App() {
             }}
           >
             {!mapToggle ? 'To Map' : 'To Globe'}
-          </ToMapButton>
+          </ToMapButton>}
         </GlobeLoaderProvider>
         {state.mode === "earthquake" && (
           <>
