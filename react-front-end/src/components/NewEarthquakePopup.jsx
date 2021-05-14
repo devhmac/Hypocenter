@@ -2,14 +2,13 @@ import React, { useContext, useEffect } from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import { Alert, AlertTitle } from "@material-ui/lab";
 import { stateContext } from "../contextProviders/stateContext";
+import magnitudeColor from "../helpers/magnitudeColor";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     width: "100%",
     "& > * + *": {
       marginTop: theme.spacing(2),
-      background: "rgb(255, 218, 124, 0.7)",
-      border: "2px solid rgb(255, 183, 101)",
       Transition: "width 1s",
       position: "absolute",
       top: "25%",
@@ -17,6 +16,22 @@ const useStyles = makeStyles((theme) => ({
       maxWidth: 360,
       color: "white",
     },
+  },
+  lightgreen: {
+    backgroundColor: "rgb(2, 237, 116, 0.4)",
+    border: "2px solid rgb(2, 237, 116, 0.9)",
+  },
+  yellow: {
+    backgroundColor: "rgb(255,255,0, 0.4)",
+    border: "2px solid rgb(255,255,0, 0.9)",
+  },
+  orange: {
+    backgroundColor: "rgb(255,165,0, 0.4)",
+    border: "2px solid rgb(255,165,0, 0.9)",
+  },
+  red: {
+    backgroundColor: "rgb(255, 0, 0, 0.4)",
+    border: "2px solid rgb(255,0,0, 0.9)",
   },
 }));
 
@@ -37,13 +52,15 @@ export default function NewEarthquakePopup(props) {
 
   const popups = eqPopup.earthquakes.map((quake) => {
     return (
-      <Alert severity="warning">
+      <Alert
+        className={classes[`${magnitudeColor(quake.magnitude, quake.pager)}`]}
+        severity="warning"
+      >
         <AlertTitle>New Earthquake</AlertTitle>
         <strong>{quake.title}</strong> - Magnitude: {quake.magnitude}
       </Alert>
     );
   });
-  //{eqPopup.new ? eqPopup.}
 
   return (
     <div className={classes.root}>
