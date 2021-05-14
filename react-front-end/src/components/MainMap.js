@@ -12,7 +12,7 @@ import { acDark } from './mapstyles/ac-dark';
 export default function MainMap(props) {
 
   const { state, setState } = useContext(stateContext);
-  const mapOptions = acDark;
+  const mapStyle = acDark;
 
   const eqArr = state.earthquakes.map(earthquake => {
     return (<LocationPin
@@ -30,6 +30,7 @@ export default function MainMap(props) {
     );
   });
 
+
   return (
     <>
       <div className="map">
@@ -38,7 +39,7 @@ export default function MainMap(props) {
             bootstrapURLKeys={{ key: 'AIzaSyBRh1M71jpKwzOH6qrK6FsmmBRu7Ukzt5Q' }}
             center={{ lat: 0, lng: 0 }}
             defaultZoom={1}
-            options={{ styles: mapOptions }}
+            options={{ styles: mapStyle, fullscreenControl: false }}
           >
             {eqArr}
           </GoogleMapReact>
