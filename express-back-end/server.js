@@ -8,6 +8,7 @@ const { getEarthquakeData } = require("./lib/queries/getEarthquakeData.js");
 const { upsert } = require("./lib/queries/upsert.js");
 const { addNotification } = require("./lib/queries/addNotification.js");
 const { getRecentEarthquakes } = require("./lib/queries/getRecentEarthquakes");
+const { getCommentsByEq } = require('./lib/queries/getCommentsByEq');
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
@@ -40,8 +41,10 @@ App.post("/api/comments", (req, res) => {
 });
 
 App.get('/api/comments', (req, res) => {
-
-
+  getCommentsByEq(req.body.quake_id)
+    .then((response) => {
+      res.status(200).json(response);
+    });
 });
 
 App.post("/api/notifications", (req, res) => {
