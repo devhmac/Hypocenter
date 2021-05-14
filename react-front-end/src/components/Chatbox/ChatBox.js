@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import Pusher from "pusher-js";
 import axios from "axios";
 import "./ChatBox.css";
+import CommentButton from "../Buttons/CommentButton";
 
 class App extends Component {
   state = {
@@ -132,7 +133,7 @@ class App extends Component {
               value={newComment}
               onChange={this.updateInput}
             />
-            <button type="submit">Share useful info</button>
+            <CommentButton type="submit"></CommentButton>
           </form>
         </section>
         <section className="comments-section">{userComments}</section>
