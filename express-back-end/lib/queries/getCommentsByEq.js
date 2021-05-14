@@ -4,12 +4,15 @@ const db = require('../db');
 const getCommentsByEq = (earthquakeId) => {
 
   const queryString = `
-  SELECT * FROM comments WHERE earthquake_id = $1
-    `;
-
+  SELECT users.username, comments.user_id, comments.content FROM comments
+  JOIN users ON users.id = comments.user_id
+  WHERE earthquake_id = $1`;
   const queryParams = [earthquakeId];
 
-  db.query(queryString, queryParams);
+  db.query(queryString, queryParams)
+    .then((response) => {
+      return response.rows;
+    });
 
 };
 
