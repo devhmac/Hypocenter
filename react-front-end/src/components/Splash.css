@@ -21,6 +21,16 @@
 .engage {
   cursor: pointer;
   pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+}
+
+.splashDesc {
+  display: inline;
+}
+
+.engage:hover {
+  background-color: #fd5f00;
 }
 
 .hidden {

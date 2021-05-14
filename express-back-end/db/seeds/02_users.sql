@@ -2,7 +2,7 @@ INSERT INTO users (email, username, phone_number, first_name, last_name, passwor
 
 INSERT INTO users (email, username, phone_number, first_name, last_name, password) VALUES ('pampam@gmail.com', 'pam123','3003003000', 'Pamela', 'Parnell', 'password');
 
-INSERT INTO users (email, username, phone_number, first_name, last_name, password) VALUES ('john@gmail.com', 'johnsmith','4004004000', 'John', 'Smith', 'password');
+INSERT INTO users (email, username, phone_number, first_name, last_name, password) VALUES ('hypocentermail@gmail.com', 'johnsmith','4004004000', 'John', 'Smith', 'password');
 
 INSERT INTO users (email, username, phone_number, first_name, last_name, password) VALUES ('jane@gmail.com', 'janerocks','5005005000', 'Jane', 'Smith', 'password');
 

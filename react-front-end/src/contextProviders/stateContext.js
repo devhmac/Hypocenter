@@ -9,6 +9,7 @@ const initialPins = {
   earthquakes: [],
   startSite: false,
   globeLoaded: false,
+  user: false
 };
 
 const initPopup = {
