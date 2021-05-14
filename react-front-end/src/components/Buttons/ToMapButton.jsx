@@ -10,7 +10,7 @@ const useStyles = makeStyles((theme) => ({
       margin: theme.spacing(1),
     },
     position: "absolute",
-    bottom: "7%",
+    top: "87%",
     right: "5%",
   },
   button: {
