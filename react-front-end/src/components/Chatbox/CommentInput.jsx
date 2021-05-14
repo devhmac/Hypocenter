@@ -37,18 +37,20 @@ export default function CommentInput() {
   };
 
   return (
-    <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
-      <p> Comment: </p>
-      <input
-        className="notification-input"
-        name="country"
-        type="text"
-        placeholder="Country to be notified of earthquakes ex. Canada"
-        value={comment}
-        onChange={(event) => setComment(event.target.value)}
-      />
+    <div className="input-form">
+      <form autoComplete="off" onSubmit={(event) => event.preventDefault()}>
+        <p> Comment: </p>
+        <input
+          className="notification-input"
+          name="country"
+          type="text"
+          placeholder="Country to be notified of earthquakes ex. Canada"
+          value={comment}
+          onChange={(event) => setComment(event.target.value)}
+        />
 
-      <CommentButton onClick={() => validate()}>Comment</CommentButton>
-    </form>
+        <CommentButton onClick={() => validate()}>Comment</CommentButton>
+      </form>
+    </div>
   );
 }
