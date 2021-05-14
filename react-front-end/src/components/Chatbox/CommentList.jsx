@@ -1,19 +1,33 @@
 import React, { useState, useContext, useEffect } from "react";
 import axios from "axios";
 import { stateContext } from "../../contextProviders/stateContext";
+import CommentItem from "./CommentItem";
 
 export default function CommentInput() {
-  const { state, setState } = useContext(stateContext);
-  const [comment, setComment] = useState("");
+  const { state, setState, listOfComments, setListOfComments } =
+    useContext(stateContext);
 
   useEffect(() => {
+    console.log("just before axios");
+    console.log(state.earthquake.id);
     axios
-      .get("/api/comments", state.earthquake.id)
+      .get(`/api/comments/${state.earthquake.id}`)
       .then((response) => {
         console.log(response.data);
+        setListOfComments(response.data);
       })
       .catch((error) => console.log(error));
   }, []);
 
-  return <ul></ul>;
+  const comments = listOfComments.map((comment) => {
+    return (
+      <CommentItem
+        key={comment.comment_id}
+        username={comment.username}
+        content={comment.content}
+      />
+    );
+  });
+
+  return <ul>{comments}</ul>;
 }

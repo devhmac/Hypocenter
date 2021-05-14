@@ -7,6 +7,7 @@ import UniversalButton from "../Buttons/universalButton";
 import ChatBox from "../Chatbox/ChatBox";
 import CommentButton from "../Buttons/CommentButton.jsx";
 import DeleteButton from "../Buttons/DeleteButton.jsx";
+import CommentList from "../Chatbox/CommentList";
 
 export default function QuakePage(props) {
   const { state, setState } = useContext(stateContext);
@@ -27,6 +28,7 @@ export default function QuakePage(props) {
       <UniversalButton onClick={setModeToMain}>Back to Home</UniversalButton>
       <DeleteButton />
       <ChatBox />
+      <CommentList />
     </div>
   );
 }
