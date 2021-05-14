@@ -9,50 +9,50 @@ import { stateContext } from "../contextProviders/stateContext";
 import NewEarthquakePopup from "./NewEarthquakePopup";
 import magnitudeColor from "../helpers/magnitudeColor";
 
-//map through livelist state, put each one into a list item, but that in {var} list
+const useStyles = makeStyles((theme) => ({
+  root: {
+    // display: `${listToggle ? "none" : "flex"}`,
+    position: "absolute",
+    top: "15%",
+    left: "3%",
+    maxWidth: 330,
+    backgroundColor: `transparent`,
+    color: "white",
+    transition: "10s",
+  },
+
+  "list-title": {
+    "text-decoration": "underline",
+  },
+  "list-text": {
+    //color: "white",
+  },
+  lightgreen: {
+    backgroundColor: "rgb(2, 237, 116, 0.4)",
+  },
+  yellow: {
+    backgroundColor: "rgb(255,255,0, 0.4)",
+  },
+  orange: {
+    backgroundColor: "rgb(255,165,0, 0.4)",
+  },
+  red: {
+    backgroundColor: "rgb(255, 0, 0, 0.4)",
+  },
+  "list-item": {
+    //border: "2px solid black",
+    borderRadius: "5px",
+    marginTop: "2px",
+    "&:hover": {
+      border: "2px solid rgb(255,255,255,0.5)",
+    },
+  },
+}));
 
 export default function LiveList(props) {
   const { state, setState, liveList, eqPopup } = useContext(stateContext);
-  const [listToggle, setListToggle] = useState(true);
-  const useStyles = makeStyles((theme) => ({
-    root: {
-      display: `${listToggle ? "none" : "flex"}`,
-      position: "absolute",
-      top: "15%",
-      left: "3%",
-      maxWidth: 330,
-      backgroundColor: `transparent`,
-      color: "white",
-      transition: "10s",
-    },
+  const [listToggle, setListToggle] = useState(false);
 
-    "list-title": {
-      "text-decoration": "underline",
-    },
-    "list-text": {
-      //color: "white",
-    },
-    lightgreen: {
-      backgroundColor: "rgb(2, 237, 116, 0.4)",
-    },
-    yellow: {
-      backgroundColor: "rgb(255,255,0, 0.4)",
-    },
-    orange: {
-      backgroundColor: "rgb(255,165,0, 0.4)",
-    },
-    red: {
-      backgroundColor: "rgb(255, 0, 0, 0.4)",
-    },
-    "list-item": {
-      //border: "2px solid black",
-      borderRadius: "5px",
-      marginTop: "2px",
-      "&:hover": {
-        border: "2px solid rgb(255,255,255,0.5)",
-      },
-    },
-  }));
   const classes = useStyles();
 
   const quakePage = function (eq) {
@@ -71,7 +71,6 @@ export default function LiveList(props) {
       mode: "earthquake",
     });
   };
-  //et secondary =
 
   const eqList = liveList.map((quake) => {
     return (
@@ -99,17 +98,19 @@ export default function LiveList(props) {
 
   return (
     <>
-      <div className={classes.root}>
-        <List aria-label="new earthquake list">
-          <ListItem>
-            <ListItemText
-              className={classes["list-title"]}
-              primary={<strong>Recent Earthquakes</strong>}
-            />
-          </ListItem>
-          {eqList}
-        </List>
-      </div>
+      {listToggle && (
+        <div className={classes.root}>
+          <List aria-label="new earthquake list">
+            <ListItem>
+              <ListItemText
+                className={classes["list-title"]}
+                primary={<strong>Recent Earthquakes</strong>}
+              />
+            </ListItem>
+            {eqList}
+          </List>
+        </div>
+      )}
       {eqPopup.new === true && <NewEarthquakePopup />}
       <ListToggleButton
         onClick={() => {
