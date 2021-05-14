@@ -109,8 +109,7 @@ export default function LiveList(props) {
           primary={<strong>{quake.title}</strong>}
           secondary={
             <Typography style={{ color: "lightgrey", fontSize: "12px" }}>
-              Magnitude: {quake.magnitude},
-              {new Date(Number(quake.time_stamp)).toString()}
+              Magnitude: {quake.magnitude} - {new Date(Number(quake.time_stamp)).toString()}
             </Typography>
           }
         />
