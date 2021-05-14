@@ -14,6 +14,7 @@ import { stateContext } from "./contextProviders/stateContext";
 import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
 import Notifications from "./components/Notifications.js";
+import NotificationConfirm from "./components/NotificationConfirm.js";
 import CommentButton from "./components/Buttons/CommentButton.jsx";
 import DeleteButton from "./components/Buttons/DeleteButton.jsx";
 import ChatBox from "./components/Chatbox/ChatBox";
@@ -72,15 +73,16 @@ function App() {
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
           {state.mode === "notifications" && <Notifications />}
-          </GlobeLoaderProvider>
-      {state.mode === "earthquake" && (
-        <>
-          <QuakePage />
-          <CommentButton />
-          <DeleteButton />
-          <ChatBox />
-        </>
-      )}
+          {state.mode === "notificationconirm" && <NotificationConfirm />}
+        </GlobeLoaderProvider>
+        {state.mode === "earthquake" && (
+          <>
+            <QuakePage />
+            <CommentButton />
+            <DeleteButton />
+            <ChatBox />
+          </>
+        )}
 
       <button
         onClick={() => {

@@ -20,7 +20,7 @@ export default function Splash() {
       <p className="splashDesc">
         Live earthquake data and analysis
       </p>
-      <Fade className={'engage'} show={globeLoaded}>
+      <Fade show={globeLoaded}>
         <EngageButton text="Engage" onClick={() => setStartSite(true)} />
       </Fade>
     </Fade>

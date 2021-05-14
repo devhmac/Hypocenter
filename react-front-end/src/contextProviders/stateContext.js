@@ -9,7 +9,9 @@ const initialPins = {
   earthquakes: [],
   startSite: false,
   globeLoaded: false,
-  user: false
+  user: false,
+  countryNotifications: "",
+  magnitudeNotifications: "",
 };
 
 const initPopup = {

@@ -1,0 +1,13 @@
+.notificationHolder {
+  color: white;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 25vh;
+}
+
+.notification-input {
+  margin-right: 20vw;
+  margin-left: -1vw
+}

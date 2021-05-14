@@ -23,6 +23,7 @@
   pointer-events: auto;
   display: inline-flex;
   align-items: center;
+  margin-right: 0.5rem;
 }
 
 .splashDesc {
