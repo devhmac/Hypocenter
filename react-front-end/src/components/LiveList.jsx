@@ -17,10 +17,11 @@ const useStyles = makeStyles((theme) => ({
     position: "absolute",
     top: "15%",
     left: "3%",
-    maxWidth: 330,
+    maxWidth: '220',
     backgroundColor: `transparent`,
     color: "white",
     transition: "10s",
+    height: '5vh'
   },
 
   "list-title": {
