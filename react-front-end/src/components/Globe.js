@@ -99,10 +99,7 @@ export default function Globe(props) {
           onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
           onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
         />
-        <Fade show={startSite}>
-        </ Fade>
       </div>
-      <Fade animationDuration={3000} className="cover" show={!globeLoaded} />
     </>
   )
 }

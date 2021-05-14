@@ -13,6 +13,8 @@
   display: flex;
   flex-direction: row;
   color: white;
+  font-weight: bold;
+  font-family: "Oxygen";
   justify-content: space-around;
 }
 

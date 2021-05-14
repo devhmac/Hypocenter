@@ -99,7 +99,7 @@ class App extends Component {
     ));
 
     return (
-      <div className="App">
+      <div className="Chatbox">
         <article className="post">
           <iframe
             title="video"
