@@ -4,15 +4,15 @@
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  margin-top: 25vh;
+  padding-top: 25vh;
 }
 
 .notification-input {
   margin-right: 20vw;
-  margin-left: -1vw
+  margin-left: -1vw;
 }
 
 .magnitudeNote {
   margin-right: 10vw;
-  margin-left: -1vw
+  margin-left: -1vw;
 }
