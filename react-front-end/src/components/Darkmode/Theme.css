@@ -27,13 +27,13 @@
 }
 
 .icon {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   padding: 0rem 0rem;
   color: var(--inactive);
 }
 
 .toggle-btn:hover {
-  box-shadow: 0 1px 4px 0 rgb(245, 239, 239);
+  box-shadow: 1 0px 0px 1 rgb(245, 239, 239);
 }
 
 .active {
@@ -42,7 +42,7 @@
 
 @media (max-width: 400px) {
   .toggle-container {
-    top: 10%;
-    right: 20%;
+    top: 0%;
+    right: 50%;
   }
 }
