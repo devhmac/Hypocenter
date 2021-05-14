@@ -72,6 +72,15 @@ function App() {
           {state.mode === "main" && !mapToggle && <Globe />}
           <Splash />
           {state.mode === "main" && mapToggle && <MainMap />}
+          <ToMapButton
+            onClick={() => {
+              setMapToggle((prev) => {
+                return !prev;
+              });
+            }}
+          >
+            {!mapToggle ? 'To Map' : 'To Globe'}
+          </ToMapButton>
         </GlobeLoaderProvider>
         {state.mode === "earthquake" && (
           <>
@@ -81,24 +90,6 @@ function App() {
             <ChatBox />
           </>
         )}
-        <ToMapButton
-          onClick={() => {
-            setMapToggle((prev) => {
-              setMapToggle(!prev);
-            });
-          }}
-        >{!mapToggle ? 'To Map' : 'To Globe'}</ToMapButton>
-
-        <button
-          onClick={() => {
-            setMapToggle((prev) => {
-              setMapToggle(!prev);
-            });
-          }}
-        >
-          Fetch Data
-
-      </button>
       </ThemeProvider>
     </div>
   );
