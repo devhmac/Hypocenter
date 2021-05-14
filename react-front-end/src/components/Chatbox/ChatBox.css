@@ -36,8 +36,8 @@ button {
   text-decoration: none;
   white-space: nowrap;
   border-radius: 2px;
-  background-color: transparent;
-  border: 1px solid white;
+  background-color: grey;
+  border: 1px solid greenyellow;
   cursor: pointer;
   box-sizing: border-box;
 }

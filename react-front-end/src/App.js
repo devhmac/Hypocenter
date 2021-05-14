@@ -16,9 +16,6 @@ import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
 import Notifications from "./components/Notifications.js";
 import NotificationConfirm from "./components/NotificationConfirm.js";
-import CommentButton from "./components/Buttons/CommentButton.jsx";
-import DeleteButton from "./components/Buttons/DeleteButton.jsx";
-import ChatBox from "./components/Chatbox/ChatBox";
 import { ThemeProvider } from "./components/Darkmode/ThemeContext";
 import "./components/Darkmode/Theme.css";
 
@@ -90,9 +87,7 @@ function App() {
         {state.mode === "earthquake" && (
           <>
             <QuakePage />
-            <CommentButton />
-            <DeleteButton />
-            <ChatBox />
+          
           </>
         )}
       </ThemeProvider>

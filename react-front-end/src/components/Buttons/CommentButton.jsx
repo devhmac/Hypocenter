@@ -15,7 +15,7 @@ export default function TextButtons(props) {
 
   return (
     <div className={classes.root}>
-      <Button color="primary">Comment</Button>
+      <Button color="primary">Share useful info</Button>
     </div>
   );
 }
