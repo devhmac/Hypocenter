@@ -77,28 +77,30 @@ const fn60sec = function() {
             seen[eq.id] = true;
           }
         }
-        console.log("new pushed quake", actualNewEarthquakes);
+        if (actualNewEarthquakes.length > 0) {
+          console.log("new pushed quake", actualNewEarthquakes);
 
-        pusher.trigger("quakes", "new-earthquakes", {
-          earthquakes: actualNewEarthquakes,
-        });
-
-        const msg = {
-          to: 'hypocentermail@gmail.com',
-          from: 'hypocentermail@gmail.com',
-          subject: 'New Earthquake Alert.',
-          text: `There was a new Earthquake located ${actualNewEarthquakes[0].title}, \n Magnitude: ${actualNewEarthquakes[0].magnitude}, Pager Alert Status: ${actualNewEarthquakes[0].pager}. \n For more information check it out at Hypocenter.`,
-          html: '<strong>Hypocenter</strong>',
-        };
-
-        sgMail
-          .send(msg)
-          .then(() => {
-            console.log('Email sent');
-          })
-          .catch((error) => {
-            console.error(error);
+          pusher.trigger("quakes", "new-earthquakes", {
+            earthquakes: actualNewEarthquakes,
           });
+
+          const msg = {
+            to: 'hypocentermail@gmail.com',
+            from: 'hypocentermail@gmail.com',
+            subject: 'New Earthquake Alert.',
+            text: `There was a new Earthquake located ${actualNewEarthquakes[0].title}, \n Magnitude: ${actualNewEarthquakes[0].magnitude}, Pager Alert Status: ${actualNewEarthquakes[0].pager}. \n For more information check it out at Hypocenter.`,
+            html: '<strong>Hypocenter</strong>',
+          };
+
+          sgMail
+            .send(msg)
+            .then(() => {
+              console.log('Email sent');
+            })
+            .catch((error) => {
+              console.error(error);
+            });
+        }
       }
     })
     .catch((err) => console.log("err", err));
