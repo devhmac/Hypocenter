@@ -13,7 +13,7 @@ export default function CommentBox(props) {
 
 
   return (
-    <div style={{ background: 'white' }}>
+    <div style={{ color: 'white' }}>
       {state.user && <CommentInput />}
       <CommentList />
     </div>

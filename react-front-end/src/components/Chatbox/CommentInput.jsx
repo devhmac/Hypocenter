@@ -20,6 +20,7 @@ export default function CommentInput() {
         setListOfComments((prev) => {
           return [newComment, ...prev];
         });
+        setComment("");
       })
       .catch((err) => console.log(err));
   };
@@ -38,9 +39,9 @@ export default function CommentInput() {
         <p> Comment: </p>
         <input
           className="notification-input"
-          name="country"
+          name="comment"
           type="text"
-          placeholder="Country to be notified of earthquakes ex. Canada"
+          placeholder="What's Shakin'?"
           value={comment}
           onChange={(event) => setComment(event.target.value)}
         />

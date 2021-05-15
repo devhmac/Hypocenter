@@ -29,5 +29,5 @@ export default function CommentInput() {
     );
   });
 
-  return <ul>{comments}</ul>;
+  return <div>{comments}</div>;
 }
