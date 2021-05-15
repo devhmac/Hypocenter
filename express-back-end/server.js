@@ -57,15 +57,28 @@ const getEarthquakes = function() {
   );
 };
 
+const seen = {};
+
 const fn60sec = function() {
+
   getEarthquakes()
     .then(upsert)
     .then(getRecentEarthquakes)
     .then((res) => {
       if (res.length > 0) {
+
+        let actualNewEarthquakes = [];
+
+        for (let eq of res) {
+          if (!seen[eq.id]) {
+            actualNewEarthquakes.push(eq);
+            seen[eq.id] = true;
+          }
+        }
+
         console.log("new pushed quake", res);
         pusher.trigger("quakes", "new-earthquakes", {
-          earthquakes: res,
+          earthquakes: actualNewEarthquakes,
         });
       }
     })
@@ -73,6 +86,18 @@ const fn60sec = function() {
   console.log("polling api");
 };
 
+const firstRun = function() {
+  getEarthquakes()
+    .then((res) => {
+      const initialEqs = JSON.parse(res);
+      const earthquakes = initialEqs.features;
+      for (let earthquake of earthquakes) {
+        seen[earthquake.id] = true;
+      }
+    });
+};
+
+firstRun();
 fn60sec();
 setInterval(fn60sec, 60000);
 
