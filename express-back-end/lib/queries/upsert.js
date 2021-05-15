@@ -12,7 +12,7 @@ const upsert = (body) => {
     }
 
     const queryString = `
-    INSERT INTO earthquakes (id, title, magnitude, pager, longitude, latitude, depth, tsunami, time_stamp)
+    INSERT INTO earthquakes (id, title, magnitude, pager, longitude, latitude, depth, tsunami, time_stamp, added)
     VALUES ($1, $2, $3, $4, $5, $6, $7, $8, $9, $10)
     ON CONFLICT (id) DO UPDATE SET title = $2, magnitude = $3, pager = $4, longitude = $5, latitude = $6, depth = $7, tsunami = $8, time_stamp = $9`;
 
