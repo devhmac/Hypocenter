@@ -1,12 +1,6 @@
-import React, { useState, useContext, useEffect } from "react";
-import axios from "axios";
-import { stateContext } from "../../contextProviders/stateContext";
+import React from "react";
 
 export default function CommentItem(props) {
-  const { state, setState } = useContext(stateContext);
-  const [comment, setComment] = useState("");
-
-
 
   return (
     <li>
