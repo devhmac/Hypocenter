@@ -114,7 +114,7 @@ const fn60sec = function() {
 
               for (let email of response) {
 
-                const emailContent = `There was a new Earthquake located ${actualNewEarthquakes[0].title} <br> Magnitude: ${actualNewEarthquakes[0].magnitude} <br> Pager Alert Status: ${actualNewEarthquakes[0].pager} <br> For more information check it out at Hypocenter.`;
+                const emailContent = `There was a new earthquake located ${actualNewEarthquakes[0].title} <br> Magnitude: ${actualNewEarthquakes[0].magnitude} <br> Pager Alert Status: ${actualNewEarthquakes[0].pager} <br> For more information check it out at Hypocenter.`;
 
                 const msg = {
                   to: email,

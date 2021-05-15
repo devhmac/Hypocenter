@@ -6,13 +6,13 @@ import './MainMap.css'
 import LiveList from './LiveList'
 import LocationPin from "./LocationPin";
 import { acDark } from './mapstyles/ac-dark';
-// import { lightMode } from './mapstyles/lightmode';
+import { lightMode } from './mapstyles/lightmode';
 
 
 export default function MainMap(props) {
 
   const { state, setState } = useContext(stateContext);
-  const mapStyle = acDark;
+  const mapStyle = state.dark ? acDark : lightMode;
 
   const eqArr = state.earthquakes.map(earthquake => {
     return (<LocationPin

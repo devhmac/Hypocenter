@@ -92,14 +92,23 @@ export default function Globe(props) {
   return (
     <>
       <div className={globeLoaded ? 'globe' : 'hidden'}>
-        <ReactGlobe
+        {state.dark && <ReactGlobe
+          globeTexture={"https://raw.githubusercontent.com/chrisrzhou/react-globe/main/textures/globe_dark.jpg"}
           onClickMarker={toQuakePage}
           markers={eqArr}
           options={options}
           onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
           onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
           onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
-        />
+        />}
+        {!state.dark && <ReactGlobe
+          onClickMarker={toQuakePage}
+          markers={eqArr}
+          options={options}
+          onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
+          onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
+          onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
+        />}
         <Fade show={startSite}>
         </ Fade>
       </div>

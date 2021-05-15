@@ -5,12 +5,13 @@ import './EqMap.css'
 
 import LocationPin from "../LocationPin";
 import { acDark } from '../mapstyles/ac-dark';
+import { lightMode } from '../mapstyles/lightmode';
 
 
 export default function EqMap(props) {
   const { state } = useContext(stateContext);
   const quake = state.earthquake;
-  const mapOptions = acDark;
+  const mapStyle = state.dark ? acDark : lightMode;
 
   return (
     <div className="map">
@@ -19,7 +20,7 @@ export default function EqMap(props) {
           bootstrapURLKeys={{ key: 'AIzaSyBRh1M71jpKwzOH6qrK6FsmmBRu7Ukzt5Q' }}
           center={{ lat: Number(quake.latitude), lng: Number(quake.longitude) }}
           defaultZoom={4}
-          options={{styles: mapOptions}}
+          options={{styles: mapStyle}}
         >
           <LocationPin
           key={quake.id}

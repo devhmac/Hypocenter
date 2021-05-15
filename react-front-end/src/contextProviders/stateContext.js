@@ -12,6 +12,7 @@ const initialPins = {
   user: false,
   countryNotifications: "",
   magnitudeNotifications: "",
+  dark: false,
 };
 
 const initPopup = {
