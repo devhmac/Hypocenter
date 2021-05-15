@@ -14,21 +14,14 @@ export default function CommentInput() {
       content: comment,
       earthquake_id: state.earthquake.id,
     };
-    setListOfComments((prev) => {
-      return [newComment, ...prev];
-    });
-    //axios.post("/api/comment", newComment);
-    // .then(() => {
-    //   setState((prev) => {
-    //     //need to set this to show the new comment in the comment list
-    //     return {
-    //       ...prev,
-    //       mode: "notificationconfirm",
-    //       countryNotifications: country,
-    //       magnitudeNotifications: magnitude,
-    //     };
-    //   });
-    // });
+    axios
+      .post("/api/comments", newComment)
+      .then(() => {
+        setListOfComments((prev) => {
+          return [newComment, ...prev];
+        });
+      })
+      .catch((err) => console.log(err));
   };
 
   const validate = function () {
