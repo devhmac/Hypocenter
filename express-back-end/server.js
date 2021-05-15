@@ -11,6 +11,8 @@ const { addNotification } = require("./lib/queries/addNotification.js");
 const { getRecentEarthquakes } = require("./lib/queries/getRecentEarthquakes");
 const { getCommentsByEq } = require('./lib/queries/getCommentsByEq');
 const { insertComment } = require('./lib/queries/insertComment');
+const { addDemoEq } = require('./lib/queries/addDemoEq');
+const { deleteDemoEq } = require('./lib/queries/deleteDemoEq');
 const Pusher = require("pusher");
 const sgMail = require('@sendgrid/mail');
 
@@ -47,6 +49,28 @@ App.get('/api/comments/:id', (req, res) => {
     .then((response) => {
       res.status(200).json(response);
     });
+});
+
+// Demo earthquake for presentation
+
+App.get('/api/demoON', (req, res) => {
+  console.log('add');
+  addDemoEq()
+    .then((response) => {
+      console.log('Demo Earthquake Added');
+      pusher.trigger("quakes", "new-earthquakes", {
+        earthquakes: response.rows
+      });
+    });
+  res.status(200).send("OK");
+});
+
+App.get('/api/demoOFF', (req, res) => {
+  deleteDemoEq()
+    .then(() => {
+      console.log('Demo Earthquake Deleted');
+    });
+  res.status(200).send("OK");
 });
 
 App.post("/api/notifications", (req, res) => {
@@ -90,13 +114,13 @@ const fn60sec = function() {
 
               for (let email of response) {
 
-                const emailContent = `There was a new Earthquake located ${actualNewEarthquakes[0].title}, \n Magnitude: ${actualNewEarthquakes[0].magnitude}, Pager Alert Status: ${actualNewEarthquakes[0].pager}. \n For more information check it out at Hypocenter.`;
+                const emailContent = `There was a new Earthquake located ${actualNewEarthquakes[0].title} <br> Magnitude: ${actualNewEarthquakes[0].magnitude} <br> Pager Alert Status: ${actualNewEarthquakes[0].pager} <br> For more information check it out at Hypocenter.`;
 
                 const msg = {
                   to: email,
                   from: 'hypocentermail@gmail.com',
                   subject: 'New Earthquake Alert.',
-                  text: "",
+                  text: "Earthquake Mail",
                   html: '<h4>' + emailContent + '<br><br></h4><strong>Hypocenter</strong>',
                 };
 

@@ -37,6 +37,16 @@ export default function Notifications() {
     return;
   }
 
+  if (country === "DEMO" && magnitude === "DEMO") {
+    setState(prev => {
+      return {
+        ...prev,
+        mode: 'demoearthquake'
+      }
+    })
+    return;
+  }
+
   save()
 }
 
