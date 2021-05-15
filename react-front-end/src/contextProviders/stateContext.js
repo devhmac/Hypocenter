@@ -69,10 +69,10 @@ export function StateProvider(props) {
       const seenEqs = {};
       recentEQs.forEach(quake => seenEqs[quake.id] = true);
       for (let quake of data) {
-        if (!seenEqs[quake.id]) {
-          currentEQs.push(quake);
-          recentEQs.pop();
-          seenEqs[quake.id] = true;
+        if ((quake.timestamp > recentEQs[0].timestamp) && (!seenEqs[quake.id])) {
+            currentEQs.push(quake);
+            recentEQs.pop();
+            seenEqs[quake.id] = true;
         }
       };
       // sets eqPopup state with brand new eq's to set notifications
