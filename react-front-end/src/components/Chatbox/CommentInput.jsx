@@ -4,17 +4,20 @@ import { stateContext } from "../../contextProviders/stateContext";
 import CommentButton from "../Buttons/CommentButton";
 
 export default function CommentInput() {
-  const { state, setState } = useContext(stateContext);
+  const { state, setListOfComments } = useContext(stateContext);
   const [comment, setComment] = useState("");
 
   const save = () => {
     const newComment = {
-      comment: comment,
+      username: state.user.username,
       user_id: state.user.id,
-      quake_id: state.earthquake.id,
+      content: comment,
+      earthquake_id: state.earthquake.id,
     };
-
-    return axios.post("/api/comment", newComment);
+    setListOfComments((prev) => {
+      return [newComment, ...prev];
+    });
+    //axios.post("/api/comment", newComment);
     // .then(() => {
     //   setState((prev) => {
     //     //need to set this to show the new comment in the comment list

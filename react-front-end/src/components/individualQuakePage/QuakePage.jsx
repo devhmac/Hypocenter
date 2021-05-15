@@ -28,7 +28,6 @@ export default function QuakePage(props) {
       <UniversalButton onClick={setModeToMain}>Back to Home</UniversalButton>
       <DeleteButton />
       <ChatBox />
-      <CommentList />
     </div>
   );
 }

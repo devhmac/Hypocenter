@@ -19,10 +19,10 @@ export default function CommentInput() {
       .catch((error) => console.log(error));
   }, []);
 
-  const comments = listOfComments.map((comment) => {
+  const comments = listOfComments.map((comment, index) => {
     return (
       <CommentItem
-        key={comment.comment_id}
+        key={index}
         username={comment.username}
         content={comment.content}
       />
