@@ -5,6 +5,7 @@ const App = Express();
 const BodyParser = require("body-parser");
 const PORT = 8000;
 const { getEarthquakeData } = require("./lib/queries/getEarthquakeData.js");
+const { searchForNotifications } = require("./lib/queries/searchForNotifications.js");
 const { upsert } = require("./lib/queries/upsert.js");
 const { addNotification } = require("./lib/queries/addNotification.js");
 const { getRecentEarthquakes } = require("./lib/queries/getRecentEarthquakes");
@@ -84,21 +85,28 @@ const fn60sec = function() {
             earthquakes: actualNewEarthquakes,
           });
 
-          const msg = {
-            to: 'hypocentermail@gmail.com',
-            from: 'hypocentermail@gmail.com',
-            subject: 'New Earthquake Alert.',
-            text: `There was a new Earthquake located ${actualNewEarthquakes[0].title}, \n Magnitude: ${actualNewEarthquakes[0].magnitude}, Pager Alert Status: ${actualNewEarthquakes[0].pager}. \n For more information check it out at Hypocenter.`,
-            html: '<strong>Hypocenter</strong>',
-          };
+          searchForNotifications(actualNewEarthquakes[0].title)
+            .then((response) => {
 
-          sgMail
-            .send(msg)
-            .then(() => {
-              console.log('Email sent');
-            })
-            .catch((error) => {
-              console.error(error);
+              for (let email of response) {
+
+                const emailContent = `There was a new Earthquake located ${actualNewEarthquakes[0].title}, \n Magnitude: ${actualNewEarthquakes[0].magnitude}, Pager Alert Status: ${actualNewEarthquakes[0].pager}. \n For more information check it out at Hypocenter.`;
+
+                const msg = {
+                  to: email,
+                  from: 'hypocentermail@gmail.com',
+                  subject: 'New Earthquake Alert.',
+                  text: "",
+                  html: '<h4>' + emailContent + '<br><br></h4><strong>Hypocenter</strong>',
+                };
+
+                sgMail
+                  .send(msg)
+                  .then(() => {
+                    console.log('Email sent');
+                  });
+
+              }
             });
         }
       }
