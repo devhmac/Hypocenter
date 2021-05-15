@@ -97,7 +97,7 @@ const fn60sec = function() {
                   from: 'hypocentermail@gmail.com',
                   subject: 'New Earthquake Alert.',
                   text: "",
-                  html: '<h4>' + emailContent + '</h4><strong>Hypocenter</strong>',
+                  html: '<h4>' + emailContent + '<br><br></h4><strong>Hypocenter</strong>',
                 };
 
                 sgMail
