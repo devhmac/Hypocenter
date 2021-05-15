@@ -4,6 +4,7 @@ import pagerConversion from "../../helpers/pagerConversion";
 import { stateContext } from "../../contextProviders/stateContext";
 import Tippy from "@tippyjs/react";
 import Typography from "@material-ui/core/Typography";
+import TsunamiBanner from "./TsunamiBanner";
 
 function QuakeInfo(props) {
   const { state } = useContext(stateContext);
@@ -28,6 +29,7 @@ function QuakeInfo(props) {
 
   return (
     <div class="eqInfoPanel">
+      {quake.tsunami === 1 && <TsunamiBanner />}
       <List className="noPaddingTop">
         <Tippy
           content={`A measure of how powerful an earthquake is. The scale increases in power exponentially - compared to a M5 earthquake, a M6 earthquake has 10 times the seismic wave amplitude and 32 times the energy released.`}
