@@ -9,6 +9,7 @@ const { upsert } = require("./lib/queries/upsert.js");
 const { addNotification } = require("./lib/queries/addNotification.js");
 const { getRecentEarthquakes } = require("./lib/queries/getRecentEarthquakes");
 const { getCommentsByEq } = require('./lib/queries/getCommentsByEq');
+const { insertComment } = require('./lib/queries/insertComment');
 const Pusher = require("pusher");
 
 const pusher = new Pusher({
@@ -32,13 +33,11 @@ App.get("/api/earthquakes", (req, res) => {
 });
 
 App.post("/api/comments", (req, res) => {
-  console.log("test incoming comment", req.body);
-
+  insertComment(req.body);
   res.status(200).send("OK");
 });
 
 App.get('/api/comments/:id', (req, res) => {
-  console.log('in get comments', req.params);
   getCommentsByEq(req.params.id)
     .then((response) => {
       res.status(200).json(response);
