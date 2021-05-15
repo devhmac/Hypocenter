@@ -69,7 +69,7 @@ export function StateProvider(props) {
       const seenEqs = {};
       recentEQs.forEach(quake => seenEqs[quake.id] = true);
       for (let quake of data) {
-        if ((quake.timestamp > recentEQs[0].timestamp) && (!seenEqs[quake.id])) {
+        if (!seenEqs[quake.id]) {
             currentEQs.push(quake);
             recentEQs.pop();
             seenEqs[quake.id] = true;
