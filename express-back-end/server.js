@@ -11,6 +11,10 @@ const { getRecentEarthquakes } = require("./lib/queries/getRecentEarthquakes");
 const { getCommentsByEq } = require('./lib/queries/getCommentsByEq');
 const { insertComment } = require('./lib/queries/insertComment');
 const Pusher = require("pusher");
+const sgMail = require('@sendgrid/mail');
+
+sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+
 
 const pusher = new Pusher({
   appId: process.env.PUSHER_APP_ID,
@@ -66,20 +70,35 @@ const fn60sec = function() {
     .then(getRecentEarthquakes)
     .then((res) => {
       if (res.length > 0) {
-
         let actualNewEarthquakes = [];
-
         for (let eq of res) {
           if (!seen[eq.id]) {
             actualNewEarthquakes.push(eq);
             seen[eq.id] = true;
           }
         }
-
         console.log("new pushed quake", actualNewEarthquakes);
+
         pusher.trigger("quakes", "new-earthquakes", {
           earthquakes: actualNewEarthquakes,
         });
+
+        const msg = {
+          to: 'hypocentermail@gmail.com',
+          from: 'hypocentermail@gmail.com',
+          subject: 'New Earthquake Alert.',
+          text: `There was a new Earthquake located ${actualNewEarthquakes[0].title}, \n Magnitude: ${actualNewEarthquakes[0].magnitude}, Pager Alert Status: ${actualNewEarthquakes[0].pager}. \n For more information check it out at Hypocenter.`,
+          html: '<strong>Hypocenter</strong>',
+        };
+
+        sgMail
+          .send(msg)
+          .then(() => {
+            console.log('Email sent');
+          })
+          .catch((error) => {
+            console.error(error);
+          });
       }
     })
     .catch((err) => console.log("err", err));
