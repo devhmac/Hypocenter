@@ -29,7 +29,7 @@ function QuakeInfo(props) {
 
   return (
     <div class="eqInfoPanel">
-      <TsunamiBanner />
+      {quake.tsunami === 1 && <TsunamiBanner />}
       <List className="noPaddingTop">
         <Tippy
           content={`A measure of how powerful an earthquake is. The scale increases in power exponentially - compared to a M5 earthquake, a M6 earthquake has 10 times the seismic wave amplitude and 32 times the energy released.`}
