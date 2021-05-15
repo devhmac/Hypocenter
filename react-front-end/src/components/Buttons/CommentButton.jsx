@@ -5,9 +5,16 @@ import Button from "@material-ui/core/Button";
 const useStyles = makeStyles((theme) => ({
   root: {
     "& > *": {
-      margin: theme.spacing(1),
+      margin: theme.spacing(3),
+      color: " #ff1c1c ",
+      border: " 1px solid",
+      shadow: "3px",
+      borderRadius: "100px",
+      bold: "1px"
     },
+
   },
+
 }));
 
 export default function TextButtons(props) {
