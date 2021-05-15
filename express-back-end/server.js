@@ -76,7 +76,7 @@ const fn60sec = function() {
           }
         }
 
-        console.log("new pushed quake", res);
+        console.log("new pushed quake", actualNewEarthquakes);
         pusher.trigger("quakes", "new-earthquakes", {
           earthquakes: actualNewEarthquakes,
         });
