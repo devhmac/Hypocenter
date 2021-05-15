@@ -26,6 +26,8 @@ export function StateProvider(props) {
   const [state, setState] = useState(initialPins);
   const [liveList, setLiveList] = useState([]);
   const [eqPopup, setEqPopup] = useState(initPopup)
+  const [listOfComments, setListOfComments] = useState([]);
+
 
   const earthquakePins = (data) => {
     setState(prev => {
@@ -63,7 +65,6 @@ export function StateProvider(props) {
 
     setLiveList(prev => {
       const recentEQs = [...prev];
-      console.log('prev state list', recentEQs)
       const currentEQs = [];
       const seenEqs = {};
       recentEQs.forEach(quake => seenEqs[quake.id] = true);
@@ -83,14 +84,14 @@ export function StateProvider(props) {
           earthquakes: [...currentEQs]
         };
       })
-      console.log('pushed eqs', currentEQs)
       return [...currentEQs, ...recentEQs];
     })
   };
 
+  const exports = { state, setState, liveList, setLiveList, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins, eqPopup, setEqPopup, listOfComments, setListOfComments }
 
   return (
-    <stateContext.Provider value={{ state, setState, liveList, setLiveList, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins, eqPopup, setEqPopup }}>
+    <stateContext.Provider value={exports}>
       {props.children}
     </stateContext.Provider>
   );

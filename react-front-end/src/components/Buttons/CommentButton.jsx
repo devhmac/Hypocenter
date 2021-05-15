@@ -15,7 +15,9 @@ export default function TextButtons(props) {
 
   return (
     <div className={classes.root}>
-      <Button color="primary">Share useful info</Button>
+      <Button onClick={props.onClick} color="primary">
+        {props.children}
+      </Button>
     </div>
   );
 }

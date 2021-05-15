@@ -77,6 +77,7 @@ export default function LiveList(props) {
     setState({
       ...state,
       earthquake: {
+        id: eq.id,
         title: eq.title,
         latitude: eq.latitude,
         longitude: eq.longitude,

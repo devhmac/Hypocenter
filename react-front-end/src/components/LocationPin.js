@@ -15,6 +15,7 @@ export default function LocationPin(props) {
       return {
         ...prev,
         earthquake: {
+          id: quake.key,
           title: quake.title,
           latitude: quake.lat,
           longitude: quake.lng,

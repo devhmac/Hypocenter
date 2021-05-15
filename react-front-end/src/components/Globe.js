@@ -49,6 +49,7 @@ export default function Globe(props) {
         return {
           ...prev,
           earthquake: {
+            id: marker.id,
             title: marker.title,
             latitude: marker.latitude,
             longitude: marker.longitude,
