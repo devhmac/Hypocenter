@@ -20,12 +20,18 @@ import { ThemeProvider } from "./components/Darkmode/ThemeContext";
 import "./components/Darkmode/Theme.css";
 
 function App() {
-  const { state, liveListUpdate, addNewLiveListItem, addNewEarthquakePin, earthquakePins } = useContext(stateContext);
+  const {
+    state,
+    liveListUpdate,
+    addNewLiveListItem,
+    addNewEarthquakePin,
+    earthquakePins,
+  } = useContext(stateContext);
   const [mapToggle, setMapToggle] = useState(false);
 
-  window.onbeforeunload = function() {
+  window.onbeforeunload = function () {
     window.scrollTo(0, 0);
-  }
+  };
 
   useEffect(() => {
     //initial get request for eq's
@@ -33,7 +39,7 @@ function App() {
       .get("/api/earthquakes")
       .then((response) => {
         console.log(response.data);
-        earthquakePins(response.data)
+        earthquakePins(response.data);
         liveListUpdate(response.data);
       })
       .catch((error) => console.log(error));
@@ -43,24 +49,21 @@ function App() {
       cluster: "us3",
       encrypted: true,
     });
-    const channel = pusher.subscribe('quakes');
-    channel.bind('new-earthquakes', (data) => {
-
+    const channel = pusher.subscribe("quakes");
+    channel.bind("new-earthquakes", (data) => {
       //updates state in contextProvider for livelist and pins
       addNewEarthquakePin(data.earthquakes);
       addNewLiveListItem(data.earthquakes);
-    })
+    });
   }, []);
-
-
 
   useEffect(() => {
     if (state.mode === "main" || state.mode === "notifications") {
-      document.body.classList.add('overflow-controller');
+      document.body.classList.add("overflow-controller");
     } else {
-      document.body.classList.remove('overflow-controller');
+      document.body.classList.remove("overflow-controller");
     }
-  }, [state.mode])
+  }, [state.mode]);
 
   return (
     <div className="App">
@@ -74,21 +77,21 @@ function App() {
           {state.mode === "notificationconfirm" && <NotificationConfirm />}
           {state.mode === "demoearthquake" && <DemoEarthquake />}
           {state.mode === "main" && <LiveList mapMode={mapToggle} />}
-          {state.mode === 'main' && <ToMapButton
-            onClick={() => {
-              setMapToggle((prev) => {
-                return !prev;
-              });
-            }}
-          >
-            {!mapToggle ? 'To Map' : 'To Globe'}
-          </ToMapButton>}
-
+          {state.mode === "main" && (
+            <ToMapButton
+              onClick={() => {
+                setMapToggle((prev) => {
+                  return !prev;
+                });
+              }}
+            >
+              {!mapToggle ? "To Map" : "To Globe"}
+            </ToMapButton>
+          )}
         </GlobeLoaderProvider>
         {state.mode === "earthquake" && (
           <>
             <QuakePage />
-
           </>
         )}
       </ThemeProvider>

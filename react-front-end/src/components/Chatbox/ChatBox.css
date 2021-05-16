@@ -1,7 +1,11 @@
 .Chatbox {
   width: 50%;
-  max-width: 400px;
+  max-width: 200px;
   margin: 0 auto;
+}
+
+* {
+  box-sizing: border-box;
 }
 
 .post {
@@ -15,11 +19,12 @@ label {
 }
 
 input,
-textarea {
-  width: 100%;
-  margin-bottom: 20px;
-  border: 1px solid #dedede;
-  padding: 10px;
+.textarea {
+  width: 40%;
+  margin-bottom: 50px;
+  border: 1px solid Orange;
+  padding: 20px;
+  text-align: left;
 }
 
 button {
@@ -40,27 +45,4 @@ button {
   border: 1px solid white;
   cursor: pointer;
   box-sizing: border-box;
-}
-
-.comment {
-  padding-top: 20px;
-  padding-bottom: 20px;
-  border-bottom: 1px solid #ccc;
-}
-
-.voting {
-  display: flex;
-  justify-content: space-between;
-  align-content: center;
-}
-
-.upvote {
-  background-color: #073525;
-  border: 1px solid #073525;
-  margin-right: 10px;
-}
-
-.downvote {
-  background-color: #ff0026;
-  border: 1px solid #ff0026;
 }
