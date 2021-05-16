@@ -59,7 +59,7 @@ button[type="submit"] {
 .comment-box {
   display: flex;
   flex-wrap: wrap;
-  max-width: 60vw;
+  width: 50vw;
   margin: 50px auto;
   background: var(--white);
   border-radius: var(--border-radius);
