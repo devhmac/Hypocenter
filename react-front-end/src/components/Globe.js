@@ -77,7 +77,6 @@ export default function Globe(props) {
   ));
 
   const options = {
-    cameraRotateSpeed: 0.5,
     focusAnimationDuration: 1000,
     focusEasingFunction: ['Linear', 'None'],
     globeGlowColor: 'grey',
@@ -86,7 +85,7 @@ export default function Globe(props) {
     markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
     markerRadiusScaleRange: [0.005, 0.009],
     markerGlowRadiusScale: 0,
-    enableCameraRotate: startSite
+    enableCameraRotate: startSite,
   };
 
   // http://www.planetaryvisions.com/libsamples/4104_1.jpg
@@ -96,10 +95,9 @@ export default function Globe(props) {
     <>
       <div className={globeLoaded ? 'globe' : 'hidden'}>
         {state.dark && <ReactGlobe
-          globeTexture={"/images/night.jpg"}
           onClickMarker={toQuakePage}
           markers={eqArr}
-          options={options}
+          options={{...options, pointLightIntensity: 0, globeGlowColor: 'gold', ambientLightColor: 'darkgrey',}}
           onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
           onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
           onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
