@@ -3,7 +3,7 @@ import React from "react";
 export default function CommentItem(props) {
 
   return (
-    <div className='comment-box'>
+    <div className='singleComment'>
       <div className='comment-username'>
         {props.username}
       </div>

@@ -10,28 +10,28 @@
   --capacity: 50%;
 }
 
-* {
+/* * {
   box-sizing: border-box;
-}
+} */
 
 body {
   font-family: var(--font-family);
 }
 
-textarea {
+/* textarea {
   font-family: var(--font-family);
   border: none;
   resize: none;
-}
+} */
 
 textarea::placeholder {
   color: var(--gray);
 }
 
-label {
+/* label {
   color: white;
   text-align: center;
-}
+} */
 
 button {
   cursor: pointer;
@@ -59,7 +59,7 @@ button[type="submit"] {
 .comment-box {
   display: flex;
   flex-wrap: wrap;
-  max-width: 400px;
+  max-width: 60vw;
   margin: 50px auto;
   background: var(--white);
   border-radius: var(--border-radius);
@@ -71,11 +71,14 @@ button[type="submit"] {
   visibility: 50px;
 }
 
-.header {
-  transition: opacity var(--transition) 0.2s;
-  opacity: 0;
-  visibility: hidden;
+.headerInput {
+  position: relative;
+  width: 100%;
   transform: translateY(-40px);
+  display: flex;
+  flex-direction: row;
+  margin-top: 3rem;
+  justify-content: space-between;
 }
 
 .user {
@@ -94,34 +97,49 @@ button[type="submit"] {
   font-size: 18px;
   width: 100%;
   outline: none;
-  padding: 0;
+  padding: 0.2rem;
   min-height: 60px;
   transform: translateY(-32px);
   line-height: 1;
+  width: 100%;
+  border: 1px solid #dedede;
+  font-family: var(--font-family);
+  border: none;
+  resize: none;
+  visibility: none;
+  transition: opacity var(--transition) 0.2s;
+  opacity: 0;
 }
 
 .comment-box.expanded .comment-field {
   transform: translateY(40px);
+  visibility: visible;
+  transition: opacity var(--transition) 0.2s;
+  opacity: 1;
 }
 
-.comment-box.expanded .header {
+.comment-box.expanded .headerInput {
   transform: translateY(10px);
   opacity: 1;
   visibility: visible;
+  margin-top: 0;
 }
 
 .actions {
+  padding-top: 2rem;
   width: 100%;
   display: flex;
   align-self: flex-end;
   justify-content: flex-end;
-  margin-top: 50px;
   opacity: 0;
+  visibility: none;
   transition: opacity var(--transition) 0.2s;
 }
 
 .comment-box.expanded .actions {
   opacity: 1;
+  transition: opacity var(--transition) 0.2s;
+  visibility: visible;
 }
 
 .actions button {
@@ -136,6 +154,10 @@ button[type="submit"] {
   background: none;
 }
 
-.comment-box.modified {
-  max-height: unset;
+
+.inputPrompt {
+  color: white;
+  text-align: center;
+  margin-top: 5px;
+  margin-right: 2rem;
 }
