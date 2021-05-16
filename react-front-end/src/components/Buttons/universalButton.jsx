@@ -17,6 +17,7 @@ const useStyles = makeStyles((theme) => ({
 export default function UniversalButton(props) {
   const classes = useStyles();
   return (
+  <div className={props.className}>
     <div className={classes.root}>
       <Button
         variant="contained"
@@ -26,5 +27,6 @@ export default function UniversalButton(props) {
         {props.children}
       </Button>
     </div>
+  </div>
   );
 }

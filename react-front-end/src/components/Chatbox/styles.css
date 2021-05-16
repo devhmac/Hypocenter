@@ -92,23 +92,32 @@ button[type="submit"] {
 }
 
 .comment-field {
-  color: var(--black);
+  color: lightgrey;
   transition: transform var(--transition);
   font-size: 18px;
   width: 100%;
   outline: none;
   padding: 0.2rem;
+  padding-top: 0.5rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
   min-height: 60px;
   transform: translateY(-32px);
   line-height: 1;
   width: 100%;
-  border: 1px solid #dedede;
-  font-family: var(--font-family);
+  /* border: 1px solid #dedede; */
   border: none;
+  border-radius: 15px;
+  font-family: var(--font-family);
   resize: none;
   visibility: none;
   transition: opacity var(--transition) 0.2s;
   opacity: 0;
+  background-color: #363232;
+}
+
+.comment-box.expanded {
+  max-height: none;
 }
 
 .comment-box.expanded .comment-field {

@@ -25,3 +25,9 @@ li.noPaddingTop {
 .quakeInfo {
   border-bottom: 1px solid white;
 }
+
+.backToHome {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+}
