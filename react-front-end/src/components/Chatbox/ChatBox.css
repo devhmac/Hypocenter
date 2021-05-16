@@ -1,11 +1,7 @@
 .Chatbox {
   width: 50%;
-  max-width: 200px;
+  max-width: 400px;
   margin: 0 auto;
-}
-
-* {
-  box-sizing: border-box;
 }
 
 .post {
@@ -19,12 +15,11 @@ label {
 }
 
 input,
-.textarea {
-  width: 40%;
-  margin-bottom: 50px;
-  border: 1px solid Orange;
-  padding: 20px;
-  text-align: left;
+textarea {
+  width: 100%;
+  margin-bottom: 20px;
+  border: 1px solid #dedede;
+  padding: 10px;
 }
 
 button {
@@ -45,4 +40,69 @@ button {
   border: 1px solid white;
   cursor: pointer;
   box-sizing: border-box;
+}
+
+.comment {
+  padding-top: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid #ccc;
+}
+
+.voting {
+  display: flex;
+  justify-content: space-between;
+  align-content: center;
+}
+
+.upvote {
+  background-color: #073525;
+  border: 1px solid #073525;
+  margin-right: 10px;
+}
+
+.downvote {
+  background-color: #ff0026;
+  border: 1px solid #ff0026;
+}
+
+.commentController {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.inputLogo {
+  max-height: 2rem;
+  max-width: 2rem;
+}
+
+.singleComment {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: rgba(32, 30, 30, 0.8);
+  box-shadow: 0 0 8px rgba(102, 98, 98, 0.2);
+  width: 40vw;
+  padding: 1rem;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+}
+
+.comment-username {
+  position: relative;
+  width: 100%;
+  color: white;
+  font-size: 1.2rem;
+  padding-bottom: 1rem;
+  text-decoration: underline;
+  text-align: left;
+}
+
+.comment-content {
+  position: relative;
+  width: 100%;
+  color: lightgrey;
+  font-size: 0.9rem;
+  text-align: left;
 }

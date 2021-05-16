@@ -10,7 +10,7 @@ export default function CommentBox(props) {
   const { state } = useContext(stateContext);
 
   return (
-    <div>
+    <div class="commentController">
       {state.user && <CommentInput />}
       <CommentList />
     </div>

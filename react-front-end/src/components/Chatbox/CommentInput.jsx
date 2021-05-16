@@ -14,7 +14,7 @@ export default function CommentInput() {
   const [comment, setComment] = useState("");
 
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
 
   const outerHeight = useRef(INITIAL_HEIGHT);
   const textRef = useRef(null);
@@ -23,7 +23,7 @@ export default function CommentInput() {
 
   const onExpand = () => {
     if (!isExpanded) {
-      outerHeight.current = containerRef.current.scrollHeight;
+      outerHeight.current = 200;
       setIsExpanded(true);
     }
   };
@@ -36,7 +36,7 @@ export default function CommentInput() {
     setComment("");
     setIsExpanded(false);
   };
-  
+
 
   const save = () => {
     const newComment = {
@@ -45,7 +45,7 @@ export default function CommentInput() {
       content: comment,
       earthquake_id: state.earthquake.id,
     };
-    
+
     axios
       .post("/api/comments", newComment)
       .then(() => {
@@ -66,7 +66,7 @@ export default function CommentInput() {
       onMouseEnter={onExpand}
       className={cn("comment-box", {
         expanded: isExpanded,
-      
+
         collapsed: !isExpanded,
         modified: comment.length > 0
       })}
@@ -74,16 +74,15 @@ export default function CommentInput() {
         minHeight: isExpanded ? outerHeight.current : INITIAL_HEIGHT
       }}
     >
-      <div className="header">
-        <div>
+      <div className="headerInput">
           <img
             src="images/orange-logo.svg"
             alt="User avatar"
+            class="inputLogo"
           />
-          <span></span>
-        </div>
+          <label htmlFor="comment" class="inputPrompt">Leave a comment here!</label>
+          <div></div>
       </div>
-      <label htmlFor="comment">Leave a comment here!</label>
       <textarea
         ref={textRef}
         onClick={onExpand}
@@ -100,7 +99,7 @@ export default function CommentInput() {
           Cancel
         </button>
         <button type="submit" onClick={() => save()} disabled={comment.length < 1}>
-          Respond
+          Post
         </button>
       </div>
     </form>
