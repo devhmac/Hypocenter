@@ -17,6 +17,10 @@
   font-family: "Oxygen";
   justify-content: space-around;
 }
+ul.noPaddingTop,
+li.noPaddingTop {
+  padding-top: 0;
+}
 
 .quakeInfo {
   border-bottom: 1px solid white;

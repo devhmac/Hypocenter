@@ -10,6 +10,7 @@
     "db:reset": "node bin/resetdb.js"
   },
   "dependencies": {
+    "@sendgrid/mail": "^7.4.4",
     "axios": "^0.21.1",
     "body-parser": "^1.18.3",
     "chalk": "^4.1.1",

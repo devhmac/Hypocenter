@@ -8,9 +8,9 @@ import Splash from "./components/Splash";
 import Globe from "./components/Globe";
 import MainMap from "./components/MainMap";
 import NavBar from "./components/NavBar";
-import ToMapButton from "./components/Buttons/ToMapButton";
-import LiveList from "./components/LiveList";
-
+import ToMapButton from './components/Buttons/ToMapButton'
+import LiveList from './components/LiveList'
+import DemoEarthquake from "./components/DemoEarthquake";
 import { stateContext } from "./contextProviders/stateContext";
 import { GlobeLoaderProvider } from "./contextProviders/globeLoaderContext";
 import QuakePage from "./components/individualQuakePage/QuakePage";
@@ -75,6 +75,7 @@ function App() {
           {state.mode === "main" && mapToggle && <MainMap />}
           {state.mode === "notifications" && <Notifications />}
           {state.mode === "notificationconfirm" && <NotificationConfirm />}
+          {state.mode === "demoearthquake" && <DemoEarthquake />}
           {state.mode === "main" && <LiveList mapMode={mapToggle} />}
           {state.mode === "main" && (
             <ToMapButton
