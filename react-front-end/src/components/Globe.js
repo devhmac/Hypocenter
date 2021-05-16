@@ -89,11 +89,14 @@ export default function Globe(props) {
     enableCameraRotate: startSite
   };
 
+  // http://www.planetaryvisions.com/libsamples/4104_1.jpg
+  // https://media.istockphoto.com/photos/tectonic-plates-move-constantly-making-new-areas-of-ocean-floor-picture-id1146522618?k=6&amp;m=1146522618&amp;s=612x612&amp;w=0&amp;h=5xKyOD-rqC1URJiG71YE4lrqrTAE3YA_Hu0Q9ooxNrU=
+
   return (
     <>
       <div className={globeLoaded ? 'globe' : 'hidden'}>
         {state.dark && <ReactGlobe
-          globeTexture={"https://raw.githubusercontent.com/chrisrzhou/react-globe/main/textures/globe_dark.jpg"}
+          globeTexture={"/images/night.jpg"}
           onClickMarker={toQuakePage}
           markers={eqArr}
           options={options}
