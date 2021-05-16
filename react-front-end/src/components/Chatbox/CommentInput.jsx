@@ -52,7 +52,7 @@ export default function CommentInput() {
         setListOfComments((prev) => {
           return [newComment, ...prev];
         });
-        setComment("");
+        onClose();
       })
       .catch((err) => console.log(err));
   };

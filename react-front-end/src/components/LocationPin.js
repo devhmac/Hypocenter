@@ -11,11 +11,12 @@ export default function LocationPin(props) {
 
   const { state, setState } = useContext(stateContext);
   const quakePage = function(quake) {
+    console.log(quake);
     setState(prev => {
       return {
         ...prev,
         earthquake: {
-          id: quake.key,
+          id: quake.id,
           title: quake.title,
           latitude: quake.lat,
           longitude: quake.lng,

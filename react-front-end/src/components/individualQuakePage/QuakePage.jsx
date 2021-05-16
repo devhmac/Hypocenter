@@ -25,7 +25,7 @@ export default function QuakePage(props) {
         <QuakeInfo />
         <EqMap />
       </div>
-      <UniversalButton onClick={setModeToMain}>Back to Home</UniversalButton>
+      <UniversalButton onClick={setModeToMain} className="backToHome">Back to Home</UniversalButton>
       <DeleteButton />
       <ChatBox />
     </div>
