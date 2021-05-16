@@ -28,13 +28,13 @@ export const acDark = [
               "saturation": 36
           },
           {
-              "color": "#000000"
+              "color": "#FFFFFF"
           },
           {
               "lightness": 40
           },
           {
-              "visibility": "off"
+              "visibility": "on"
           }
       ]
   },
