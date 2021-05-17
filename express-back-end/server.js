@@ -109,7 +109,7 @@ const fn60sec = function() {
             earthquakes: actualNewEarthquakes,
           });
 
-          searchForNotifications(actualNewEarthquakes[0].title)
+          searchForNotifications(actualNewEarthquakes[0].title, Number(actualNewEarthquakes[0].magnitude))
             .then((response) => {
 
               for (let email of response) {
