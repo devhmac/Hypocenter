@@ -13,7 +13,7 @@ Hypocenter is a full-stack application that collects live earthquake data from t
 
 # Details
 
-Hypocenter utilizes the USGS live earthquake API (https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_month.geojson). We chose to display all earthquakes that are 'human feel-able' (magnitude 4.5+) that occurred in the last month. We wanted Hypocenter to be a place for anyone impacted by an earthquake, even if they have minimal knowledge on how they work - we also wanted the site to be updated constantly, and completely different month to month.
+Hypocenter utilizes the USGS live earthquake API, which delivers earthquake data the moment is is available. We chose to display all earthquakes that are 'human feel-able' (magnitude 4.5+) that occurred in the last month. We wanted Hypocenter to be a place for anyone impacted by an earthquake, even if they have minimal knowledge on how they work - we also wanted the site to be updated constantly, and completely different month to month.
 
 We display data to users not only through the globe and map modes, but also through our unique livelist feature - the top five most recent earthquakes are displayed here. Do you think you just felt and earthquake and want to know for sure? Livelist has your back, making recent earthquakes easy to access and comment on. We also display an alert when a new earthquake occurs while the user is on the globe or map mode - a rare occurrence, but exciting when it happens.
 
@@ -26,6 +26,7 @@ Hypocenter also offers dark mode/light mode options, which completely change the
 # Stack Choices
 
 Front-End: React, nodeJS, CSS
+
 Back-End: Express, PostgreSQL
 
 We made our stack choices based on both what made sense for a project like this, and what we were eager to work with. React is an incredibly powerful tool, and we all feel that it has a place in the industry for many years to come - we were enthusiastic about enhancing our React skillset. React turned out to be the perfect choice for this project - the various components and state management tools offered a simple logical solution for site navigation and conditional component rendering.
@@ -39,7 +40,9 @@ On the Back-End, our choices were based on pragmatism and reliability. We wanted
 # Credits and Links
 
 [David Radvan](https://github.com/DavidRadvan)
+
 [Devin MacGillivray](https://github.com/devhmac)
+
 [Farouk Alsajee](https://github.com/faroukalsajee)
 
 [Hypocenter Planning Repo (contains ERD, site outlines, user stories, etc.)](https://github.com/DavidRadvan/Hypocenter-Planning)
