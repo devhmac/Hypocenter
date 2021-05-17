@@ -3,15 +3,15 @@
 </p>
 
 
-## Hypocenter - Earthquake Data and Analysis
+# Hypocenter - Earthquake Data and Analysis
 
-# Introduction
+## Introduction
 
 This was the final project for the Lighthouse Labs Web Development bootcamp, built by David Radvan, Devin MacGillivray, and Farouk Alsajee.
 
 Hypocenter is a full-stack application that collects live earthquake data from the USGS API and displays it on an interactive 3d globe. A google maps mode is also included using the google maps API. Users can click on an individual earthquake to display in-depth data for that earthquake, with tooltips offered to educated users on earthquake data. Users can also post a comment on that earthquake. Additionally, users can sign up for notifications - an email will be sent to the user when an earthquake occurs that satisfies that conditions set by that user (country and minimum magnitude).
 
-# Details
+## Details
 
 Hypocenter utilizes the USGS live earthquake API, which delivers earthquake data the moment is is available. We chose to display all earthquakes that are 'human feel-able' (magnitude 4.5+) that occurred in the last month. We wanted Hypocenter to be a place for anyone impacted by an earthquake, even if they have minimal knowledge on how they work - we also wanted the site to be updated constantly, and completely different month to month.
 
@@ -23,7 +23,7 @@ Each earthquake we display has dynamic data displayed right on the page - helpfu
 
 Hypocenter also offers dark mode/light mode options, which completely change the look and feel of both the globe and map views. While just a cosmetic change, offering users a choice increases engagement and a feeling of personalization, while catering to different user needs.
 
-# Stack Choices
+## Stack Choices
 
 Front-End: React, nodeJS, CSS
 
@@ -33,11 +33,11 @@ We made our stack choices based on both what made sense for a project like this,
 
 On the Back-End, our choices were based on pragmatism and reliability. We wanted a back-end stack that we were familiar with and would work seamlessly, allowing us to devote the majority of our efforts to learning the intricacies of React. Express was the perfect choice for routing and data management - we utilized Axios to control data flow from front-end to back-end, and Pusher to control live data flow. Our database management was based in PostgreSQL, which provided the perfect platform to handle earthquake and user data.
 
-# Screenshots
+## Screenshots
 
-# How to Run
+## How to Run
 
-# Credits and Links
+## Credits and Links
 
 [David Radvan](https://github.com/DavidRadvan)
 
