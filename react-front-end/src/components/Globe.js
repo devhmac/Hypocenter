@@ -79,8 +79,8 @@ export default function Globe(props) {
   const options = {
     focusAnimationDuration: 1000,
     focusEasingFunction: ['Linear', 'None'],
-    globeGlowColor: 'grey',
-    ambientLightColor: 'grey',
+    globeGlowColor: 'lightblue',
+    ambientLightColor: '#b6bbc2',
     ambientLightIntensity: 1,
     markerTooltipRenderer: marker => `${marker.title} \n${marker.date} \nMagnitude ${marker.magnitude}`,
     markerRadiusScaleRange: [0.005, 0.009],
@@ -97,7 +97,7 @@ export default function Globe(props) {
         {state.dark && <ReactGlobe
           onClickMarker={toQuakePage}
           markers={eqArr}
-          options={{...options, pointLightIntensity: 0.5, globeGlowColor: 'gold', ambientLightIntensity: 1, ambientLightColor: '#474643', globeGlowPower: 5,}}
+          options={{...options, pointLightIntensity: 0.5, globeGlowColor: 'lightblue', ambientLightIntensity: 1, ambientLightColor: '#474643', globeGlowPower: 4,}}
           onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
           onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
           onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
