@@ -35,7 +35,11 @@ On the Back-End, our choices were based on pragmatism and reliability. We wanted
 
 ## Screenshots
 
-## How to Run
+## Local Installation
+
+* Install all dependencies in both react-front-end and express-back-end folders with ```npm install```.
+
+* ```npm start``` in both directories to run the server and front-end.
 
 ## Credits and Links
 
