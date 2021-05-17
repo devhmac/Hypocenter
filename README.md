@@ -2,7 +2,6 @@
   <img src="https://raw.githubusercontent.com/devhmac/Hypocenter/1dc649c3db201c5a4edd69787f2da23c114aa419/react-front-end/public/images/hypocenter.svg">
 </p>
 
-
 # Hypocenter - Earthquake Data and Analysis
 
 ## Introduction
@@ -10,6 +9,10 @@
 This was the final project for the Lighthouse Labs Web Development bootcamp, built by David Radvan, Devin MacGillivray, and Farouk Alsajee.
 
 Hypocenter is a full-stack application that collects live earthquake data from the USGS API and displays it on an interactive 3d globe. A google maps mode is also included using the google maps API. Users can click on an individual earthquake to display in-depth data for that earthquake, with tooltips offered to educated users on earthquake data. Users can also post a comment on that earthquake. Additionally, users can sign up for notifications - an email will be sent to the user when an earthquake occurs that satisfies that conditions set by that user (country and minimum magnitude).
+
+---
+
+<img src='./readme-resources/homescreen.gif'>
 
 ## Details
 
