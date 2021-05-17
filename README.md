@@ -1,5 +1,3 @@
-![image](https://raw.githubusercontent.com/devhmac/Hypocenter/1dc649c3db201c5a4edd69787f2da23c114aa419/react-front-end/public/images/hypocenter.svg)
-
 <p align="center">
   <img src="https://raw.githubusercontent.com/devhmac/Hypocenter/1dc649c3db201c5a4edd69787f2da23c114aa419/react-front-end/public/images/hypocenter.svg">
 </p>
