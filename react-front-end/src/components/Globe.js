@@ -97,7 +97,7 @@ export default function Globe(props) {
         {state.dark && <ReactGlobe
           onClickMarker={toQuakePage}
           markers={eqArr}
-          options={{...options, pointLightIntensity: 0, globeGlowColor: 'gold', ambientLightColor: 'darkgrey',}}
+          options={{...options, pointLightIntensity: 0.5, globeGlowColor: 'gold', ambientLightIntensity: 1, ambientLightColor: '#474643', globeGlowPower: 5,}}
           onGlobeTextureLoaded={() => setHasGlobeTextureLoaded(true)}
           onGlobeBackgroundTextureLoaded={() => setHasGlobeBackgroundTextureLoaded(true)}
           onGlobeCloudsTextureLoaded={() => setHasGlobeCloudsTextureLoaded(true)}
