@@ -1,8 +1,19 @@
-<p align="center">
-  <img src="https://raw.githubusercontent.com/devhmac/Hypocenter/1dc649c3db201c5a4edd69787f2da23c114aa419/react-front-end/public/images/hypocenter.svg">
-</p>
+<div align="center">
+  <span><img src="https://raw.githubusercontent.com/devhmac/Hypocenter/1dc649c3db201c5a4edd69787f2da23c114aa419/react-front-end/public/images/hypocenter.svg" height=300 ></span>
 
-# Hypocenter - Earthquake Data and Analysis
+## Hypocenter
+
+### Earthquake Data and Analysis
+
+## [Check it out live ](https://hypocenter.netlify.app/)
+
+_Front end Hosted on Netlify, API database hosted on Heroku_
+
+_Built by [David Radvan](https://github.com/DavidRadvan), [Devin MacGillivray](https://github.com/devhmac),
+[Farouk Alsajee](https://github.com/faroukalsajee)_
+
+</div>
+<br>
 
 ## Introduction
 
@@ -13,6 +24,18 @@ Hypocenter is a full-stack application that collects live earthquake data from t
 ---
 
 <img src='./readme-resources/homescreen.gif'>
+
+### <ins> New Quake Popups </ins>
+
+<img src='./readme-resources/quakepopup.gif'>
+
+### <ins> See Earthquake Data </ins>
+
+<img src='./readme-resources/toquake.gif'>
+
+### <ins> Interact via comments </ins>
+
+<img src='./readme-resources/comment.gif'>
 
 ## Details
 
@@ -40,16 +63,10 @@ On the Back-End, our choices were based on pragmatism and reliability. We wanted
 
 ## Local Installation
 
-* Install all dependencies in both react-front-end and express-back-end folders with ```npm install```.
+- Install all dependencies in both react-front-end and express-back-end folders with `npm install`.
 
-* ```npm start``` in both directories to run the server and front-end.
+- `npm start` in both directories to run the server and front-end.
 
-## Credits and Links
-
-[David Radvan](https://github.com/DavidRadvan)
-
-[Devin MacGillivray](https://github.com/devhmac)
-
-[Farouk Alsajee](https://github.com/faroukalsajee)
+### Other Links
 
 [Hypocenter Planning Repo (contains ERD, site outlines, user stories, etc.)](https://github.com/DavidRadvan/Hypocenter-Planning)
