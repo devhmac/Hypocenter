@@ -61,13 +61,5 @@ export default function NewEarthquakePopup(props) {
     );
   });
 
-  return (
-    <div className={classes.root}>
-      <Alert severity="warning">
-        <AlertTitle>New Earthquake</AlertTitle>
-        new eq — <strong>check it out!</strong>
-      </Alert>
-      {popups}
-    </div>
-  );
+  return <div className={classes.root}>{popups}</div>;
 }
