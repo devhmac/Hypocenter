@@ -5,7 +5,7 @@
 
 ### Earthquake Data and Analysis
 
-## [Check it out live ](https://hypocenter.netlify.app/)
+## [Check it out live ](https://hypocenter.ca/)
 
 _Front end Hosted on Netlify, API database hosted on Heroku_
 
