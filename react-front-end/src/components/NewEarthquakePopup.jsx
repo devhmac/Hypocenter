@@ -47,7 +47,7 @@ export default function NewEarthquakePopup(props) {
         });
       }, 4000);
     }
-  }, [eqPopup.new]);
+  }, [eqPopup]);
 
   const popups = eqPopup.earthquakes.map((quake) => {
     return (
@@ -61,5 +61,10 @@ export default function NewEarthquakePopup(props) {
     );
   });
 
-  return <div className={classes.root}>{popups}</div>;
+  return (
+    <div className={classes.root}>
+      <Alert />
+      {popups}
+    </div>
+  );
 }
