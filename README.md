@@ -5,7 +5,7 @@
 
 ### Earthquake Data and Analysis
 
-## [Check it out live ](https://hypocenter.ca/)
+<!--## [Check it out live ](https://hypocenter.ca/)-->
 
 _Front end Hosted on Netlify, API database hosted on Heroku_
 
@@ -51,7 +51,7 @@ Hypocenter also offers dark mode/light mode options, which completely change the
 
 ## Stack Choices
 
-Front-End: React, nodeJS, CSS
+Front-End: React
 
 Back-End: Express, PostgreSQL
 
